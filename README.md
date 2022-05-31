@@ -32,3 +32,24 @@
 </p>
 </details>
 
+### Popup Controller
+<details><summary>Adding new popup</summary>
+<p>
+
+- _Step 1: Create a new prefab attaching a script extend an popup interface (for example: ```public class PopupLose : Popup```)_
+![image](https://user-images.githubusercontent.com/88299194/171231178-8c2bbbb7-43ed-48a5-b017-d489daaeea6c.png)
+![image](https://user-images.githubusercontent.com/88299194/171231384-a286ccac-ecf0-4926-80ab-c375d9b8ea2c.png)
+- _Step 2: Attach the prefab to PopupController list_
+![image](https://user-images.githubusercontent.com/88299194/171232063-7661a9c1-b1f9-4bbe-a524-2dfc034c1648.png)
+
+</p>
+</details>
+
+<details><summary>Playing sound</summary>
+<p>
+
+```SoundController.Instance.PlayBackground(SoundType.Background)``` or ```SoundController.Instance.PlayFX(SoundType.Win)```
+  
+</p>
+</details>
+
