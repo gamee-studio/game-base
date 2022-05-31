@@ -3,6 +3,8 @@
 - [Introduction](#Introduce)
 - [Installation](#Install)
 - [Documentation](#Documents)
+  - [Sound](#Sound-Controller)
+  - [Popup](#Popup-Controller)
 
 ## Introduce
 - This is a basic casual game base for intern and junior, it's integrated with [ads](https://github.com/gamee-studio/ads), [notification](https://github.com/pancake-llc/local-notification), [firebase tracking](https://github.com/pancake-llc/firebase-app), [firebase remote config](https://github.com/pancake-llc/firebase-remote-config)
@@ -45,10 +47,21 @@
 </p>
 </details>
 
-<details><summary>Playing sound</summary>
+<details><summary>Handling popup</summary>
 <p>
 
-```SoundController.Instance.PlayBackground(SoundType.Background)``` or ```SoundController.Instance.PlayFX(SoundType.Win)```
+- Get a popup: ```PopupController.Instance.Get<PopupInGame>()```
+- Show a popup: ```PopupController.Instance.Show<PopupInGame>()```
+- Hide a popup: ```PopupController.Instance.Hide<PopupInGame>()```
+
+- Here some override functions you can use:
+```
+protected virtual void AfterInstantiate() { }
+protected virtual void BeforeShow() { }
+protected virtual void AfterShown() { }
+protected virtual void BeforeHide() { }
+protected virtual void AfterHidden() { }
+```
   
 </p>
 </details>
