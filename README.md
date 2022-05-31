@@ -12,5 +12,22 @@
 - Type select: **Android**
 
 ## Documents
-- Updating ....
+### Sound Controller
+<details><summary>Adding new sound</summary>
+<p>
+
+- Add sound by adding new **SoundType** in file **SoundConfig.cs** then click **Update sound list** in **SoundConfig scriptable object**.
+![image](https://user-images.githubusercontent.com/88299194/171227540-bb29f744-2e3c-4d64-8bad-07094f2fc9bb.png)
+![image](https://user-images.githubusercontent.com/88299194/171226912-166151c1-c0f8-4730-ac9f-636a8070eae5.png)
+  
+</p>
+</details>
+
+<details><summary>Playing sound</summary>
+<p>
+
+```SoundController.Instance.PlayBackground(SoundType.Background)``` or ```SoundController.Instance.PlayFX(SoundType.Win)```
+  
+</p>
+</details>
 
