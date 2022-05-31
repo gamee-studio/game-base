@@ -14,7 +14,8 @@ public class SoundConfigEditor : Editor
         {
             soundConfig.UpdateSoundDatas();
         }
-         
+
+        serializedObject.ApplyModifiedProperties();
     }
 }
 #endif
