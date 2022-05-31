@@ -2,7 +2,7 @@
 ## Table of contents
 - [Introduction](#Introduce)
 - [Installation](#Install)
-- [Documentations](#Documents)
+- [Documentation](#Documents)
 
 ## Introduce
 - This is a basic casual game base for intern and junior, it's integrated with [ads](https://github.com/gamee-studio/ads), [notification](https://github.com/pancake-llc/local-notification), [firebase tracking](https://github.com/pancake-llc/firebase-app), [firebase remote config](https://github.com/pancake-llc/firebase-remote-config)
