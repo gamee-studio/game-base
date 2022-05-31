@@ -19,3 +19,9 @@ public class DailyRewardData
     public string SkinID;
     public int Value;
 }
+
+public enum DailyRewardType
+{
+    Currency,
+    Skin,
+}

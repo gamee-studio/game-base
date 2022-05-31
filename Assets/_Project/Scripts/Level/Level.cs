@@ -5,12 +5,5 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    public LevelUsedType LevelUsedType;
-    public RaycastHit RaycastHit;
-    public LayerMask LayerMask;
-
-    public void OnDrawGizmos()
-    {
-        
-    }
+    
 }

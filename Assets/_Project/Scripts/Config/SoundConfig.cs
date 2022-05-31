@@ -42,3 +42,12 @@ public class SoundData
     public SoundType SoundType;
     public AudioClip Clip;
 }
+
+public enum SoundType
+{
+    BackgroundInGame,
+    BackgroundHome,
+    ButtonClick,
+    Win,
+    Lose,
+}
