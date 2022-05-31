@@ -1,4 +1,4 @@
-# Game base for Gamee
+# Gamee game base
 ## Table of contents
 - [Introduction](#Introduce)
 - [Installation](#Install)
