@@ -66,3 +66,14 @@ protected virtual void AfterHidden() { }
 </p>
 </details>
 
+### Config Controller
+<details><summary>How to use</summary>
+<p>
+
+- Config Controller use for getting all scriptable object in game
+![image](https://user-images.githubusercontent.com/88299194/171412334-bb2f666e-7fc4-4160-887d-84e22aeab4fc.png)
+![image](https://user-images.githubusercontent.com/88299194/171412741-244d5fcb-55fe-4428-ac61-26b8fef0acf1.png)
+
+</p>
+</details>
+
