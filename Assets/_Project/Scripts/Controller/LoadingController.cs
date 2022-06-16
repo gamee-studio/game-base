@@ -19,10 +19,6 @@ public class LoadingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        #if Unity_Editor
-            TimeLoading = 1f;        
-        #endif
-    
         AdsManager.Initialize();
         FirebaseManager.Initialize();
         
