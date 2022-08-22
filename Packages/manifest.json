@@ -9,6 +9,7 @@
     "com.gamee.ads": "https://github.com/gamee-studio/ads.git?path=Assets/_Root#1.0.8",
     "com.snorlax.simplejson": "https://github.com/snorluxe/SimpleJSON.git?path=Assets/_Root",
     "com.snorlax.local-notification": "https://github.com/snorluxe/local-notification.git?path=Assets/_Root#2022.5.13",
+    "com.sabresaurus.playerprefseditor": "https://github.com/sabresaurus/PlayerPrefsEditor.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.addressables": "1.19.19",
     "com.unity.collab-proxy": "1.15.15",

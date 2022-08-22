@@ -1,9 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 public class VFXSpawnController : Singleton<VFXSpawnController>
 {
@@ -18,16 +19,18 @@ public class VFXSpawnController : Singleton<VFXSpawnController>
         return VisualEffectDatas.Find(item => item.VisualEffectType == visualEffectType);
     }
     
-    public void SpawnVFX(VisualEffectType visualEffectType,Vector3 position, Transform parent, Vector3? localScale = null)
+    public void SpawnVFX(VisualEffectType visualEffectType,Vector3 position, Transform parent, Vector3? localScale = null, bool isDestroyedOnEnd = true, float timeDestroy = 3f)
     {
         // Get vfx data
         VisualEffectData visualEffectData = GetVisualEffectDataByType(visualEffectType);
         if (visualEffectData == null) return;
+        GameObject randomEffect = visualEffectData.GetRandomEffect();
+        if (randomEffect == null) return;
         // Spawn vfx
-        GameObject vfxSpawn = Instantiate(visualEffectData.EffectGO, parent, false);
+        GameObject vfxSpawn = Instantiate(randomEffect, parent, false);
         vfxSpawn.transform.position = position;
         if (localScale != null) vfxSpawn.transform.localScale = localScale.Value;
-        Destroy(vfxSpawn, 3f);
+        if (isDestroyedOnEnd) Destroy(vfxSpawn, timeDestroy);
     }
     
     private bool IsItemExistedByVisualEffectType(VisualEffectType visualEffectType)
@@ -60,8 +63,13 @@ public class VFXSpawnController : Singleton<VFXSpawnController>
 [Serializable]
 public class VisualEffectData
 {
-    public GameObject EffectGO;
+    public List<GameObject> EffectList;
     public VisualEffectType VisualEffectType;
+
+    public GameObject GetRandomEffect()
+    {
+        return EffectList[Random.Range(0, EffectList.Count)];
+    }
 }
 
 public enum VisualEffectType
