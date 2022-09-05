@@ -1376,7 +1376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProgressBar: {fileID: 1926659687}
   LoadingText: {fileID: 1603526854}
-  TimeLoading: 5
+  TimeLoading: 1
 --- !u!4 &1885131756
 Transform:
   m_ObjectHideFlags: 0

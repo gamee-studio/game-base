@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
@@ -16,12 +17,15 @@ public class LoadingController : MonoBehaviour
 
     private bool flagDoneProgress;
     private AsyncOperation _operation;
-    // Start is called before the first frame update
-    void Start()
+
+    public void Awake()
     {
         AdsManager.Initialize();
         FirebaseManager.Initialize();
-        
+    }
+    
+    void Start()
+    {
         _operation = SceneManager.LoadSceneAsync(Constant.GAMEPLAY_SCENE);
         _operation.allowSceneActivation = false;
 
