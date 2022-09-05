@@ -47,7 +47,7 @@ public class PopupInGame : Popup
    {
       if (Data.IsTesting)
       {
-         GameManager.Instance.NextLevel();
+         GameManager.Instance.ReplayGame();
       }
       else
       {

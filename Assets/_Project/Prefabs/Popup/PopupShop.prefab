@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfcf405286e2c74fa0638d8bb9a6e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onClick:
+  OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2915254623132364138}
@@ -382,11 +382,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onPress:
+  OnPress:
     m_PersistentCalls:
       m_Calls: []
   CanClick: 1
   HavePressEffect: 1
+  IsMoveEnter: 0
+  LocalScale: {x: 0, y: 0, z: 0}
 --- !u!1 &8722397669771440195
 GameObject:
   m_ObjectHideFlags: 0

@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfcf405286e2c74fa0638d8bb9a6e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onClick:
+  OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7403689956956133583}
@@ -151,11 +151,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onPress:
+  OnPress:
     m_PersistentCalls:
       m_Calls: []
   CanClick: 1
   HavePressEffect: 1
+  IsMoveEnter: 0
+  LocalScale: {x: 0, y: 0, z: 0}
 --- !u!1 &475742146554789590
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfcf405286e2c74fa0638d8bb9a6e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onClick:
+  OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7403689956956133583}
@@ -397,11 +399,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onPress:
+  OnPress:
     m_PersistentCalls:
       m_Calls: []
   CanClick: 1
   HavePressEffect: 1
+  IsMoveEnter: 0
+  LocalScale: {x: 0, y: 0, z: 0}
 --- !u!1 &1680069359137271434
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfcf405286e2c74fa0638d8bb9a6e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onClick:
+  OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7403689956956133583}
@@ -507,11 +511,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onPress:
+  OnPress:
     m_PersistentCalls:
       m_Calls: []
   CanClick: 1
   HavePressEffect: 1
+  IsMoveEnter: 0
+  LocalScale: {x: 0, y: 0, z: 0}
 --- !u!1 &2137328525725874286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,7 +1032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfcf405286e2c74fa0638d8bb9a6e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onClick:
+  OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7403689956956133583}
@@ -1041,11 +1047,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onPress:
+  OnPress:
     m_PersistentCalls:
       m_Calls: []
   CanClick: 1
   HavePressEffect: 1
+  IsMoveEnter: 0
+  LocalScale: {x: 0, y: 0, z: 0}
 --- !u!1 &4429355886652026346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,7 +1144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfcf405286e2c74fa0638d8bb9a6e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onClick:
+  OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7403689956956133583}
@@ -1151,11 +1159,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onPress:
+  OnPress:
     m_PersistentCalls:
       m_Calls: []
   CanClick: 1
   HavePressEffect: 1
+  IsMoveEnter: 0
+  LocalScale: {x: 0, y: 0, z: 0}
 --- !u!1 &4957344726548281664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,7 +1392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfcf405286e2c74fa0638d8bb9a6e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onClick:
+  OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7403689956956133583}
@@ -1397,11 +1407,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onPress:
+  OnPress:
     m_PersistentCalls:
       m_Calls: []
   CanClick: 1
   HavePressEffect: 1
+  IsMoveEnter: 0
+  LocalScale: {x: 0, y: 0, z: 0}
 --- !u!1 &6631244465714846239
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,7 +2117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfcf405286e2c74fa0638d8bb9a6e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onClick:
+  OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7403689956956133583}
@@ -2120,11 +2132,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onPress:
+  OnPress:
     m_PersistentCalls:
       m_Calls: []
   CanClick: 1
   HavePressEffect: 1
+  IsMoveEnter: 0
+  LocalScale: {x: 0, y: 0, z: 0}
 --- !u!1 &9054173132683076706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,7 +2229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfcf405286e2c74fa0638d8bb9a6e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onClick:
+  OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7403689956956133583}
@@ -2230,8 +2244,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onPress:
+  OnPress:
     m_PersistentCalls:
       m_Calls: []
   CanClick: 1
   HavePressEffect: 1
+  IsMoveEnter: 0
+  LocalScale: {x: 0, y: 0, z: 0}
