@@ -5,26 +5,26 @@ using UnityEngine.UI;
 
 public class ButtonCustom : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private Button.ButtonClickedEvent onClick;
-    [SerializeField] private Button.ButtonClickedEvent onPress;
+    public Button.ButtonClickedEvent OnClick;
+    public Button.ButtonClickedEvent OnPress;
 
     public bool CanClick = true;
     public bool HavePressEffect = true;
-    private bool isMoveEnter = false;
-    private Vector3 localScale;
+    [ReadOnly] public bool IsMoveEnter;
+    [ReadOnly] public Vector3 LocalScale;
     
     private void Awake()
     {
-        localScale = transform.localScale;
+        LocalScale = transform.localScale;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (CanClick)
         {
-            onPress?.Invoke();
-            if (HavePressEffect) transform.DOScale(localScale-(Vector3.one*0.1f), .01f).SetEase(Ease.OutQuint);
-            isMoveEnter = true;
+            OnPress?.Invoke();
+            if (HavePressEffect) transform.DOScale(LocalScale-(Vector3.one*0.1f), .01f).SetEase(Ease.OutQuint);
+            IsMoveEnter = true;
         }
     }
 
@@ -32,10 +32,10 @@ public class ButtonCustom : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         if (CanClick)
         {
-            transform.localScale = localScale;
-            if (isMoveEnter)
+            transform.localScale = LocalScale;
+            if (IsMoveEnter)
             {
-                onClick.Invoke();
+                OnClick.Invoke();
                 SoundController.Instance.PlayFX(SoundType.ButtonClick);
             }
         }
@@ -43,11 +43,11 @@ public class ButtonCustom : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        isMoveEnter = true;
+        IsMoveEnter = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        isMoveEnter = false;
+        IsMoveEnter = false;
     }
 }
