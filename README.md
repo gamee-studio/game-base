@@ -1,4 +1,4 @@
-# Gamee base
+# Gamee base (Gamebase for hyper casual game)
 ## Table of contents
 - [Introduction](#Introduce)
 - [Installation](#Install)
