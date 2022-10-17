@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
-using JetBrains.Annotations;
-using Pancake.Common;
+using Pancake;
 using UnityEngine;
 
 public class MoveObject : MonoBehaviour
