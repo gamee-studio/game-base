@@ -43,23 +43,31 @@ public static partial class Data
     
     #endregion
     
-    #region SOUND_DATA
+    #region SETTING_DATA
 
-    public static bool SoundState
+    public static bool BgSoundState
     {
-        get => GetBool(Constant.SOUND_STATE, true);
-        set => SetBool(Constant.SOUND_STATE, value);
+        get => GetBool(Constant.BACKGROUND_SOUND_STATE, true);
+        set
+        {
+            SetBool(Constant.BACKGROUND_SOUND_STATE, value);
+            EventController.OnSoundChanged?.Invoke();
+        }
     }
 
-    public static bool MusicState
+    public static bool FxSoundState
     {
-        get => GetBool(Constant.MUSIC_STATE, true);
-        set => SetBool(Constant.MUSIC_STATE, value);
+        get => GetBool(Constant.FX_SOUND_STATE, true);
+        set
+        {
+            SetBool(Constant.FX_SOUND_STATE, value);
+            EventController.OnSoundChanged?.Invoke();
+        }
     }
 
     public static bool VibrateState
     {
-        get => GetBool(Constant.VIBRATE_STATE, false);
+        get => GetBool(Constant.VIBRATE_STATE, true);
         set => SetBool(Constant.VIBRATE_STATE, value);
     }
 

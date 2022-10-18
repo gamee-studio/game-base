@@ -10,8 +10,8 @@ public class Constant
     public const string INDEX_LEVEL_CURRENT = "INDEX_LEVEL_CURRENT";
 
     // Sound
-    public const string SOUND_STATE = "SOUND_STATE";
-    public const string MUSIC_STATE = "MUSIC_STATE";
+    public const string BACKGROUND_SOUND_STATE = "BACKGROUND_SOUND_STATE";
+    public const string FX_SOUND_STATE = "FX_SOUND_STATE";
     public const string VIBRATE_STATE = "VIBRATE_STATE";
 
     // Data

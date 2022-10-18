@@ -10,4 +10,6 @@ public static class EventController
     public static Action SaveCurrencyTotal;
     public static Action CurrencyTotalChanged;
     public static Action CurrentLevelChanged;
+    public static Action OnSoundChanged;
+    
 }

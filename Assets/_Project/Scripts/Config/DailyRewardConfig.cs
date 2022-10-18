@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DailyRewardConfig", menuName = "ScriptableObject/DailyRewardConfig")]
@@ -16,8 +17,8 @@ public class DailyRewardData
 {
     public DailyRewardType DailyRewardType;
     public Sprite Icon;
-    public string SkinID;
-    public int Value;
+    [ShowIf("@DailyRewardType",DailyRewardType.Skin)] public string SkinID;
+    [ShowIf("@DailyRewardType",DailyRewardType.Currency)]public int Value;
 }
 
 public enum DailyRewardType

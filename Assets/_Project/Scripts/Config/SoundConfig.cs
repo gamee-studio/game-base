@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName ="SoundConfig",menuName = "ScriptableObject/SoundConfig")]
 public class SoundConfig : ScriptableObject
@@ -33,6 +34,11 @@ public class SoundConfig : ScriptableObject
 
         return false;
     }
+
+    public SoundData GetSoundDataByType(SoundType soundType)
+    {
+        return SoundDatas.Find(item => item.SoundType == soundType);
+    }
     
 }
 
@@ -40,7 +46,17 @@ public class SoundConfig : ScriptableObject
 public class SoundData
 {
     public SoundType SoundType;
-    public AudioClip Clip;
+    public List<AudioClip> Clips;
+
+    public AudioClip GetRandomAudioClip()
+    {
+        if (Clips.Count > 0)
+        {
+            return Clips[Random.Range(0, Clips.Count)];
+        }
+
+        return null;
+    }
 }
 
 public enum SoundType
@@ -48,6 +64,8 @@ public enum SoundType
     BackgroundInGame,
     BackgroundHome,
     ButtonClick,
+    CompletePurchase,
+    ClaimReward,
     Win,
     Lose,
 }

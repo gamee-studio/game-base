@@ -14,12 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SoundDatas:
   - SoundType: 0
-    Clip: {fileID: 0}
+    Clips: []
   - SoundType: 1
-    Clip: {fileID: 0}
+    Clips: []
   - SoundType: 2
-    Clip: {fileID: 0}
+    Clips:
+    - {fileID: 8300000, guid: ace45cf110d1bc7408ee20f51318c4a2, type: 3}
   - SoundType: 3
-    Clip: {fileID: 0}
+    Clips:
+    - {fileID: 8300000, guid: 3351374e9b19d7a4cbdb139022a09c5f, type: 3}
   - SoundType: 4
-    Clip: {fileID: 0}
+    Clips:
+    - {fileID: 8300000, guid: 3351374e9b19d7a4cbdb139022a09c5f, type: 3}
+  - SoundType: 5
+    Clips: []
+  - SoundType: 6
+    Clips: []

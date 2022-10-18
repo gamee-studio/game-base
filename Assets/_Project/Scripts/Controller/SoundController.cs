@@ -1,48 +1,57 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundController : Singleton<SoundController>
 {
     public AudioSource BackgroundAudio;
     public AudioSource FxAudio;
-    public List<AudioClip> AudioClips = new List<AudioClip>();
+    public SoundConfig SoundConfig => ConfigController.Sound;
 
-    private void Start()
+    private void Awake()
     {
         DontDestroyOnLoad(this);
-        Init();
     }
 
-    private void Init()
+    public void Start()
     {
-        BackgroundAudio.loop = true;
+        Setup();
 
-        for (int i = 0; i < Enum.GetNames(typeof(SoundType)).Length; i++)
-        {
-            SoundData soundData = ConfigController.Sound.SoundDatas.Find(item => item.SoundType == (SoundType) i);
-            AudioClips.Add(soundData.Clip);
-        }
+        EventController.OnSoundChanged += Setup;
+    }
+
+    public void Setup()
+    {
+        BackgroundAudio.mute = !Data.BgSoundState;
+        FxAudio.mute = !Data.FxSoundState;
     }
 
     public void PlayFX(SoundType soundType)
     {
-        AudioClip clip = AudioClips[(int)soundType];
+        SoundData soundData = SoundConfig.GetSoundDataByType(soundType);
 
-        if (!clip || !Data.SoundState) return;
-
-        FxAudio.PlayOneShot(clip);
+        if (soundData != null)
+        {
+            FxAudio.PlayOneShot(soundData.GetRandomAudioClip());
+        }
+        else
+        {
+            Debug.LogWarning("Can't found sound data");
+        }
     }
 
     public void PlayBackground(SoundType soundType)
     {
-        AudioClip clip = AudioClips[(int)soundType];
+        SoundData soundData = SoundConfig.GetSoundDataByType(soundType);
 
-        if (!clip || !Data.MusicState) return;
-        
-        BackgroundAudio.clip = clip;
-        BackgroundAudio.Play();
+        if (soundData != null)
+        {
+            BackgroundAudio.clip = soundData.GetRandomAudioClip();
+            BackgroundAudio.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Can't found sound data");
+        }
     }
 
     public void PauseBackground()
@@ -51,20 +60,5 @@ public class SoundController : Singleton<SoundController>
         {
             BackgroundAudio.Pause();
         }
-    }
-
-    public AudioSource PlayLoop(SoundType soundType)
-    {
-        AudioClip clip = AudioClips[(int)soundType];
-
-        if (!clip || !Data.SoundState) return null;
-
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = clip;
-        audioSource.playOnAwake = true;
-        audioSource.loop = true;
-        audioSource.Play();
-
-        return audioSource;
     }
 }

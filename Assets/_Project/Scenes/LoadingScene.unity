@@ -330,7 +330,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
 --- !u!114 &653625965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,7 +677,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BackgroundAudio: {fileID: 1875187658}
   FxAudio: {fileID: 1971299803}
-  AudioClips: []
 --- !u!4 &1047350084
 Transform:
   m_ObjectHideFlags: 0
@@ -1200,7 +1199,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.75
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
