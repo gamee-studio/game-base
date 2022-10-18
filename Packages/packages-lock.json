@@ -76,11 +76,11 @@
       "hash": "e39981bca07f08f068231f651e1e8d0f69397222"
     },
     "com.pancake.gameservice": {
-      "version": "https://github.com/pancake-llc/game-service.git?path=Assets/_Root#2.146.221011",
+      "version": "https://github.com/pancake-llc/game-service.git?path=Assets/_Root",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "174dfc39433dbc8b0ee37b76d1d139937a57ab36"
+      "hash": "288ac4f36fa879af78ec289914656e775e15bce4"
     },
     "com.pancake.heart": {
       "version": "https://github.com/pancake-llc/heart.git?path=Assets/_Root",

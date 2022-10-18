@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.pancake.gameservice": "https://github.com/pancake-llc/game-service.git?path=Assets/_Root#2.146.221011",
+    "com.pancake.gameservice": "https://github.com/pancake-llc/game-service.git?path=Assets/_Root", 
     "com.lupidan.apple-signin-unity": "https://github.com/lupidan/apple-signin-unity.git#v1.4.2",
     "com.pancake.heart": "https://github.com/pancake-llc/heart.git?path=Assets/_Root",
     "com.coffee.ui-effect": "https://github.com/mob-sakai/UIEffect.git",
