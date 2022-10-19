@@ -63,9 +63,11 @@ public enum SoundType
 {
     BackgroundInGame,
     BackgroundHome,
-    ButtonClick,
+    ClickButton,
     CompletePurchase,
     ClaimReward,
-    Win,
-    Lose,
+    WinGame,
+    LoseGame,
+    ShowPopupWin,
+    ShowPopupLose,
 }

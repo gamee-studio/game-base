@@ -1,11 +1,9 @@
-
-
 public class PopupLose : Popup
 {
     protected override void BeforeShow()
     {
         base.BeforeShow();
-        SoundController.Instance.PlayFX(SoundType.Lose);
+        SoundController.Instance.PlayFX(SoundType.ShowPopupLose);
         PopupController.Instance.Show<PopupUI>();
     }
 

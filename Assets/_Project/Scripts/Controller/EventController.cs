@@ -5,11 +5,12 @@ using UnityEngine;
 
 public static class EventController
 {
-    public static Action OnWin;
-    public static Action OnLose;
+    // Data event
     public static Action SaveCurrencyTotal;
     public static Action CurrencyTotalChanged;
     public static Action CurrentLevelChanged;
     public static Action OnSoundChanged;
-    
+    // Game event
+    public static Action OnWinLevel;
+    public static Action OnLoseLevel;
 }

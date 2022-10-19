@@ -33,30 +33,17 @@ public class LevelController : Singleton<LevelController>
     public Level GetLevelByIndex(int indexLevel)
     {
         GameObject levelGO;
-        if (Data.UseLevelABTesting==0)
-        {
-            levelGO = Resources.Load($"Levels_A/Level_A {indexLevel}") as GameObject;
-        }
-        else
-        {
-            levelGO = Resources.Load($"Levels_B/Level_B {indexLevel}") as GameObject;
-        }
-        
+        levelGO = Resources.Load($"Levels/Level {indexLevel}") as GameObject;
         return levelGO.GetComponent<Level>();
     }
     
     public void OnLoseGame()
     {
-       
+        CurrentLevel.OnLoseGame();
     }
 
     public void OnWinGame()
     {
-     
-    }
-        
-    public void OnReplay()
-    {
-        
+        CurrentLevel.OnWinGame();
     }
 }

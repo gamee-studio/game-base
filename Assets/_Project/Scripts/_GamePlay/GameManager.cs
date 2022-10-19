@@ -77,19 +77,17 @@ public class GameManager : Singleton<GameManager>
     {
         if (GameState == GameState.LoseGame || GameState == GameState.WinGame) return;
         GameState = GameState.WinGame;
-        
+        // Data setup
         FirebaseManager.OnWinGame(Data.CurrentLevel,LevelController.Instance.CurrentLevel.gameObject.name);
         AdsManager.TotalLevelWinLose++;
         Data.CurrentLevel++;
-        
+        // Effect and sounds
+        SoundController.Instance.PlayFX(SoundType.WinGame);
+        // Event invoke
         LevelController.OnWinGame();
-        
-        //SoundController.Instance.PlayFX(SoundType.FinishLevel);
-
         DOTween.Sequence().AppendInterval(delayPopupShowTime).AppendCallback(() =>
         {
-            //SoundController.Instance.PlayFX(SoundType.Congrats);
-            //PopupController.Instance.Hide<PopupIngame>();
+            PopupController.Instance.Hide<PopupInGame>();
             PopupController.Instance.Show<PopupWin>();
         });
     }
@@ -98,15 +96,16 @@ public class GameManager : Singleton<GameManager>
     {
         if (GameState == GameState.LoseGame || GameState == GameState.WinGame) return;
         GameState = GameState.LoseGame;
-        
+        // Data setup
         FirebaseManager.OnLoseGame(Data.CurrentLevel,LevelController.Instance.CurrentLevel.gameObject.name);
         AdsManager.TotalLevelWinLose++;
-        
+        // Effect and sounds
+        SoundController.Instance.PlayFX(SoundType.LoseGame);
+        // Event invoke
         LevelController.OnLoseGame();
-        //SoundController.Instance.PlayFX(SoundType.Lose);
         DOTween.Sequence().AppendInterval(delayPopupShowTime).AppendCallback(() =>
         {
-            //PopupController.Instance.Hide<PopupIngame>();
+            PopupController.Instance.Hide<PopupInGame>();
             PopupController.Instance.Show<PopupLose>();
         });
     }
