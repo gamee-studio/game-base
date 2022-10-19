@@ -17,9 +17,13 @@ public static partial class Data
     public static bool IsTesting
     {
         get => PlayerPrefs.GetInt(Constant.IS_TESTING, 0) == 1;
-        set => PlayerPrefs.SetInt(Constant.IS_TESTING, value ? 1 : 0);
+        set
+        {
+            PlayerPrefs.SetInt(Constant.IS_TESTING, value ? 1 : 0);
+            EventController.OnDebugChanged?.Invoke();
+        }
     }
-    
+
     public static int CurrentLevel
     {
         get { return GetInt(Constant.INDEX_LEVEL_CURRENT, 1); }

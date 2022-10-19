@@ -8,8 +8,6 @@ public class DailyRewardConfig : ScriptableObject
 {
     public List<DailyRewardData> DailyRewardDatas;
     public List<DailyRewardData> DailyRewardDatasLoop;
-    
-    
 }
 
 [Serializable]

@@ -37,23 +37,26 @@ public class CurrencyCounter : MonoBehaviour
 
     private void IncreaseCurrency()
     {
-        bool isPopupUIActive = PopupController.Instance.Get<PopupUI>().isActiveAndEnabled;
-        if (!isPopupUIActive) PopupController.Instance.Show<PopupUI>();
-        bool isFirstMove = false;
-        CurrencyGenerate.GenerateCoin(() =>
+        if (Application.isPlaying)
         {
-            if (!isFirstMove)
+            bool isPopupUIActive = PopupController.Instance.Get<PopupUI>().isActiveAndEnabled;
+            if (!isPopupUIActive) PopupController.Instance.Show<PopupUI>();
+            bool isFirstMove = false;
+            CurrencyGenerate.GenerateCoin(() =>
             {
-                isFirstMove = true;
-                int currentCurrencyAmount = int.Parse(CurrencyAmountText.text);
-                int nextAmount = (Data.CurrencyTotal - currentCurrencyAmount)/StepCount;
-                int step = StepCount;
-                CurrencyTextCount(currentCurrencyAmount, nextAmount,step);
-            }
-        }, ()=>
-        {
-            if (!isPopupUIActive) PopupController.Instance.Hide<PopupUI>();
-        });
+                if (!isFirstMove)
+                {
+                    isFirstMove = true;
+                    int currentCurrencyAmount = int.Parse(CurrencyAmountText.text);
+                    int nextAmount = (Data.CurrencyTotal - currentCurrencyAmount)/StepCount;
+                    int step = StepCount;
+                    CurrencyTextCount(currentCurrencyAmount, nextAmount,step);
+                }
+            }, ()=>
+            {
+                if (!isPopupUIActive) PopupController.Instance.Hide<PopupUI>();
+            });
+        }
     }
 
     private void DecreaseCurrency()

@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public static class EventController
 {
     // Data event
+    public static Action OnDebugChanged;
     public static Action SaveCurrencyTotal;
     public static Action CurrencyTotalChanged;
     public static Action CurrentLevelChanged;
