@@ -23,7 +23,6 @@ public class PopupDebug : Popup
         }
         if (SetCoin.text != null && SetCoin.text != "")
         {
-            Debug.Log(SetCoin.text);
             Data.CurrencyTotal = int.Parse(SetCoin.text);
         }
 

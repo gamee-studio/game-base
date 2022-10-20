@@ -481,6 +481,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe72c5a9370eda449c125131734502f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseAnimation: 0
+  Background: {fileID: 0}
+  Container: {fileID: 0}
+  UseShowAnimation: 0
   ShowAnimationType: 0
+  UseHideAnimation: 0
   HideAnimationType: 0

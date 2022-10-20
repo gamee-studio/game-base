@@ -6,16 +6,17 @@ public class Popup : MonoBehaviour
 {
     public GameObject Background;
     public GameObject Container;
-    public bool UseAnimation;
-    [ShowIf("UseAnimation")] public ShowAnimationType ShowAnimationType;
-    [ShowIf("UseAnimation")] public HideAnimationType HideAnimationType;
+    public bool UseShowAnimation;
+    [ShowIf("UseShowAnimation")] public ShowAnimationType ShowAnimationType;
+    public bool UseHideAnimation;
+    [ShowIf("UseHideAnimation")] public HideAnimationType HideAnimationType;
     public CanvasGroup CanvasGroup => GetComponent<CanvasGroup>();
     public Canvas Canvas => GetComponent<Canvas>();
     public void Show()
     {
         BeforeShow();
         gameObject.SetActive(true);
-        if (UseAnimation)
+        if (UseShowAnimation)
         {
             switch (ShowAnimationType)
             {
@@ -39,7 +40,24 @@ public class Popup : MonoBehaviour
     public void Hide()
     {
         BeforeHide();
-        gameObject.SetActive(false);
+        if (UseHideAnimation)
+        {
+            switch (HideAnimationType)
+            {
+                case HideAnimationType.Fade:
+                    CanvasGroup.DOFade(0, ConfigController.Game.DurationPopup).OnComplete(() =>
+                    {
+                        CanvasGroup.alpha = 1;
+                        gameObject.SetActive(false);
+                    });
+                    break;
+            }
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+        
         AfterHidden();
     }
 
@@ -57,10 +75,6 @@ public enum ShowAnimationType
 
 public enum HideAnimationType
 {
-    FadeCenter,
-    MoveToLeft,
-    MoveToRight,
-    MoveToDown,
-    MoveToUp,
+    Fade,
 }
 

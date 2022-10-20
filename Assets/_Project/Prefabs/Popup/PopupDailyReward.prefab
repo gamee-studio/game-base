@@ -620,7 +620,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -60}
+  m_AnchoredPosition: {x: 20, y: -20}
   m_SizeDelta: {x: 149, y: 159}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1143591768907714668
@@ -2003,8 +2003,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Background: {fileID: 87697190871830783}
   Container: {fileID: 65604307107627601}
-  UseAnimation: 1
+  UseShowAnimation: 1
   ShowAnimationType: 0
+  UseHideAnimation: 0
   HideAnimationType: 0
   BtnWatchVideo: {fileID: 2509353737946875765}
   BtnClaim: {fileID: 7151091472365318068}

@@ -1683,8 +1683,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Background: {fileID: 3684874296046234267}
   Container: {fileID: 44115311812151522}
-  UseAnimation: 1
+  UseShowAnimation: 1
   ShowAnimationType: 0
+  UseHideAnimation: 0
   HideAnimationType: 0
   SetLevel: {fileID: 2288434987761459271}
   SetCoin: {fileID: 7397408201461823702}

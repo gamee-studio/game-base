@@ -181,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Background: {fileID: 0}
   Container: {fileID: 0}
-  UseAnimation: 0
+  UseShowAnimation: 0
   ShowAnimationType: 0
+  UseHideAnimation: 0
   HideAnimationType: 0

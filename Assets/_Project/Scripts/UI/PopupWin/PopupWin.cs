@@ -2,6 +2,11 @@
 
 public class PopupWin : Popup
 {
+    // public int MoneyWin => ConfigController.Game.c;
+    // public void SetupMoneyWin(int money)
+    // {
+    //     TotalMoney = 
+    // }
     protected override void BeforeShow()
     {
         base.BeforeShow();

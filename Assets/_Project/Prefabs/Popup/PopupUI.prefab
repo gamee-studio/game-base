@@ -170,8 +170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 20.276917, y: 0}
-  m_SizeDelta: {x: -88.434, y: 0}
+  m_AnchoredPosition: {x: 20.25, y: 0}
+  m_SizeDelta: {x: -88.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3294868608566648749
 CanvasRenderer:
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100000
+  m_text: 1000000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d15ab71442963c47b22b47460111e35, type: 2}
   m_sharedMaterial: {fileID: 3604630249188092411, guid: 8d15ab71442963c47b22b47460111e35,
@@ -229,14 +229,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43
-  m_fontSizeBase: 43
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.1359253, y: 0.22619629, z: -0.14404297, w: 0.5272217}
+  m_margin: {x: -10.507202, y: 0.22619629, z: 2.2492676, w: 0.01184082}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -391,7 +391,7 @@ RectTransform:
   m_GameObject: {fileID: 4114352211823136304}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7359593019894932124}
@@ -814,8 +814,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42617f2f5cc91dd4e92a75e680e45c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseAnimation: 0
+  Background: {fileID: 0}
+  Container: {fileID: 0}
+  UseShowAnimation: 0
   ShowAnimationType: 0
+  UseHideAnimation: 0
   HideAnimationType: 0
 --- !u!1 &8102002126672621462
 GameObject:
