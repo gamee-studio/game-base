@@ -40,7 +40,7 @@ public class Switcher : MonoBehaviour
     
     private void SetupUI()
     {
-        SwitchText.text = IsOn ? "On" : "Off";
+        if (SwitchText) SwitchText.text = IsOn ? "On" : "Off";
         if (IsOn)
         {
             Switch.sprite = On;

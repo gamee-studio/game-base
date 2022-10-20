@@ -28,8 +28,6 @@ public class PopupController : Singleton<PopupController>
             Popup popupInstance = Instantiate(popup, CanvasTransform);
             popupInstance.gameObject.SetActive(false);
             popupInstance.Canvas.sortingOrder = index++;
-            popupInstance.CanvasGroup.alpha = 0;
-            popupInstance.CanvasGroup.interactable = false;
             dictionary.Add(popupInstance.GetType(), popupInstance);
         });
     }

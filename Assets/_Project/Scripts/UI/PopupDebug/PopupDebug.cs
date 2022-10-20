@@ -1,9 +1,11 @@
+using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PopupDebug : Popup
 {
-    public Text SetCoin;
-    public Text SetLevel;
+    public TMP_InputField SetLevel;
+    public TMP_InputField SetCoin;
     public Toggle ToggleTesting;
 
     public void OnEnable()
@@ -13,15 +15,16 @@ public class PopupDebug : Popup
 
     public void OnClickAccept()
     {
-        if (SetCoin.text != null && SetCoin.text != "")
-        {
-            Data.CurrencyTotal = int.Parse(SetCoin.text);
-        }
         if (SetLevel.text != null && SetLevel.text != "")
         {
             Data.CurrentLevel = int.Parse(SetLevel.text);
             GameManager.Instance.PrepareLevel();
             GameManager.Instance.StartGame();
+        }
+        if (SetCoin.text != null && SetCoin.text != "")
+        {
+            Debug.Log(SetCoin.text);
+            Data.CurrencyTotal = int.Parse(SetCoin.text);
         }
 
         SetCoin.text = string.Empty;

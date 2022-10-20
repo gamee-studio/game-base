@@ -2001,6 +2001,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 485fc0ab257c6a34d92a1db4879e8e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Background: {fileID: 87697190871830783}
+  Container: {fileID: 65604307107627601}
+  UseAnimation: 1
+  ShowAnimationType: 0
+  HideAnimationType: 0
   BtnWatchVideo: {fileID: 2509353737946875765}
   BtnClaim: {fileID: 7151091472365318068}
   CurrentItem: {fileID: 0}

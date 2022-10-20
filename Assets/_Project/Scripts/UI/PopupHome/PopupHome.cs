@@ -1,10 +1,5 @@
-using System;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
 public class PopupHome : Popup
 {
-
     protected override void BeforeShow()
     {
         base.BeforeShow();

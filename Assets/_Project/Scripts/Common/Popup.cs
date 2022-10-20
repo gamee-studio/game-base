@@ -1,32 +1,44 @@
 using UnityEngine;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 
 public class Popup : MonoBehaviour
 {
-    public CanvasGroup CanvasGroup { get; set; }
-    public Canvas Canvas { get; set; }
-
-    private void Awake()
-    {
-        CanvasGroup = GetComponent<CanvasGroup>();
-        Canvas = GetComponent<Canvas>();
-    }
-
+    public GameObject Background;
+    public GameObject Container;
+    public bool UseAnimation;
+    [ShowIf("UseAnimation")] public ShowAnimationType ShowAnimationType;
+    [ShowIf("UseAnimation")] public HideAnimationType HideAnimationType;
+    public CanvasGroup CanvasGroup => GetComponent<CanvasGroup>();
+    public Canvas Canvas => GetComponent<Canvas>();
     public void Show()
     {
         BeforeShow();
         gameObject.SetActive(true);
-        CanvasGroup.DOFade(1, ConfigController.Game.DurationPopup).OnComplete(() =>
+        if (UseAnimation)
         {
-            CanvasGroup.interactable = true;
+            switch (ShowAnimationType)
+            {
+                case ShowAnimationType.OutBack:
+                    DOTween.Sequence().OnStart(() => Container.transform.localScale = Vector3.one*.5f)
+                        .Append(Container.transform.DOScale(Vector3.one, ConfigController.Game.DurationPopup).SetEase(Ease.OutBack).OnComplete(() =>
+                        {
+                            AfterShown();
+                        }));
+                    break;
+            }
+        }
+        else
+        {
             AfterShown();
-        });
+        }
+        
+        
     }
 
     public void Hide()
     {
         BeforeHide();
-        CanvasGroup.interactable = false;
         gameObject.SetActive(false);
         AfterHidden();
     }
@@ -37,3 +49,18 @@ public class Popup : MonoBehaviour
     protected virtual void BeforeHide() { }
     protected virtual void AfterHidden() { }
 }
+
+public enum ShowAnimationType
+{
+    OutBack,
+}
+
+public enum HideAnimationType
+{
+    FadeCenter,
+    MoveToLeft,
+    MoveToRight,
+    MoveToDown,
+    MoveToUp,
+}
+

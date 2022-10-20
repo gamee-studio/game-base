@@ -1764,7 +1764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2020,6 +2020,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4ad34b92746294397a5c815d61ea88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseAnimation: 0
+  ShowAnimationType: 0
+  HideAnimationType: 0
   LevelText: {fileID: 3421561290902501057}
   LevelTypeText: {fileID: 4609003189904288388}
 --- !u!1 &7582038696164621230
