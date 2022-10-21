@@ -40,8 +40,6 @@ public class Popup : MonoBehaviour
         {
             AfterShown();
         }
-        
-        
     }
 
     public virtual void Hide()
@@ -51,11 +49,19 @@ public class Popup : MonoBehaviour
         {
             switch (HideAnimationType)
             {
+                case HideAnimationType.InBack:
+                    DOTween.Sequence().Append(Container.transform.DOScale(Vector3.one*.7f, ConfigController.Game.DurationPopup).SetEase(Ease.InBack).OnComplete(() =>
+                        {
+                            gameObject.SetActive(false);
+                            AfterShown();
+                        }));
+                    break;
                 case HideAnimationType.Fade:
                     CanvasGroup.DOFade(0, ConfigController.Game.DurationPopup).OnComplete(() =>
                     {
                         CanvasGroup.alpha = 1;
                         gameObject.SetActive(false);
+                        AfterHidden();
                     });
                     break;
             }
@@ -63,9 +69,8 @@ public class Popup : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
+            AfterHidden();
         }
-        
-        AfterHidden();
     }
 
     protected virtual void AfterInstantiate() { }
@@ -83,6 +88,7 @@ public enum ShowAnimationType
 
 public enum HideAnimationType
 {
+    InBack,
     Fade,
 }
 
