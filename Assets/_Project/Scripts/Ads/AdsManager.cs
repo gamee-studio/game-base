@@ -29,8 +29,7 @@ public class AdsManager
         _callbackRewardCompleted?.Invoke();
         _callbackRewardCompleted = null;
     }
-
-
+    
     public static bool IsSufficientConditionToShowInter()
     {
         if (Data.CurrentLevel>Data.LevelTurnOnInterstitial && TotalLevelWinLose >= Data.CounterNumbBetweenTwoInterstitial && TotalTimesPlay>=Data.TimeWinBetweenTwoInterstitial)

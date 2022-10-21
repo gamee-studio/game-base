@@ -370,7 +370,6 @@ GameObject:
   - component: {fileID: 4241444007514722542}
   - component: {fileID: 5582595640170456508}
   - component: {fileID: 8508592946234801848}
-  - component: {fileID: 1502795791365181244}
   m_Layer: 5
   m_Name: BtnDebug
   m_TagString: Untagged
@@ -470,18 +469,6 @@ MonoBehaviour:
   HavePressEffect: 1
   IsMoveEnter: 0
   LocalScale: {x: 0, y: 0, z: 0}
---- !u!114 &1502795791365181244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2357932876705697321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02447ce1639b4144db27f56d61535a35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2653305589341099279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,9 +1118,9 @@ RectTransform:
   m_Father: {fileID: 264459451850572050}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -726}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 234}
   m_SizeDelta: {x: 1080, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2534875439027961027

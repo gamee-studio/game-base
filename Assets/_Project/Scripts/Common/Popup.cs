@@ -21,7 +21,7 @@ public class Popup : MonoBehaviour
             switch (ShowAnimationType)
             {
                 case ShowAnimationType.OutBack:
-                    DOTween.Sequence().OnStart(() => Container.transform.localScale = Vector3.one*.5f)
+                    DOTween.Sequence().OnStart(() => Container.transform.localScale = Vector3.one*.9f)
                         .Append(Container.transform.DOScale(Vector3.one, ConfigController.Game.DurationPopup).SetEase(Ease.OutBack).OnComplete(() =>
                         {
                             AfterShown();
