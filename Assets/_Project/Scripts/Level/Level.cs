@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
+    [ReadOnly] public int BonusMoney;
     private void Start()
     {
         

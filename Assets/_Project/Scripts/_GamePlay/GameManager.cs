@@ -87,8 +87,10 @@ public class GameManager : Singleton<GameManager>
         LevelController.OnWinGame();
         DOTween.Sequence().AppendInterval(delayPopupShowTime).AppendCallback(() =>
         {
-            PopupController.Instance.Hide<PopupInGame>();
-            PopupController.Instance.Show<PopupWin>();
+            PopupController.Instance.HideAll();
+            PopupWin popupWin = PopupController.Instance.Get<PopupWin>() as PopupWin;
+            popupWin.SetupMoneyWin(LevelController.CurrentLevel.BonusMoney);
+            popupWin.Show();
         });
     }
     

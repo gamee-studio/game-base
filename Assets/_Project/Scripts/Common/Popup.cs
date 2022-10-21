@@ -12,7 +12,7 @@ public class Popup : MonoBehaviour
     [ShowIf("UseHideAnimation")] public HideAnimationType HideAnimationType;
     public CanvasGroup CanvasGroup => GetComponent<CanvasGroup>();
     public Canvas Canvas => GetComponent<Canvas>();
-    public void Show()
+    public virtual void Show()
     {
         BeforeShow();
         gameObject.SetActive(true);
@@ -27,6 +27,13 @@ public class Popup : MonoBehaviour
                             AfterShown();
                         }));
                     break;
+                case ShowAnimationType.Flip:
+                    DOTween.Sequence().OnStart(() => Container.transform.localEulerAngles = new Vector3(0,180,0))
+                        .Append(Container.transform.DORotate(Vector3.zero, ConfigController.Game.DurationPopup)).SetEase(Ease.Linear).OnComplete(() =>
+                        {
+                            AfterShown();
+                        });
+                    break;
             }
         }
         else
@@ -37,7 +44,7 @@ public class Popup : MonoBehaviour
         
     }
 
-    public void Hide()
+    public virtual void Hide()
     {
         BeforeHide();
         if (UseHideAnimation)
@@ -71,6 +78,7 @@ public class Popup : MonoBehaviour
 public enum ShowAnimationType
 {
     OutBack,
+    Flip,
 }
 
 public enum HideAnimationType

@@ -11,7 +11,9 @@ public class GameConfig : ScriptableObject
     public LevelLoopType LevelLoopType;
     public int MaxLevel = 2;
     public int StartLoopLevel;
-    //[Header("Gameplay config")]
+    [Header("Gameplay config")]
+    public int WinLevelMoney = 100;
+    
 }
 
 public enum LevelLoopType
