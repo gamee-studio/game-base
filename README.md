@@ -67,3 +67,18 @@ protected virtual void AfterHidden() { }
 </p>
 </details>
 
+## References
+### Asset Store
+- DOTWEEN Pro: https://assetstore.unity.com/packages/tools/visual-scripting/dotween-pro-32416
+- OOdin Inspector and Serializer: https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041
+- Rainbow Folders 2: https://assetstore.unity.com/packages/tools/utilities/rainbow-folders-2-143526
+- Toony Colors Pro 2: https://assetstore.unity.com/packages/vfx/shaders/toony-colors-pro-2-8105
+### Package
+- Ads: https://github.com/gamee-studio/ads
+- Notification: https://github.com/pancake-llc/local-notification
+- Firebase Tracking: https://github.com/pancake-llc/firebase-app
+- Firebase Remote Config: https://github.com/pancake-llc/firebase-remote-config
+- UI Effect: https://github.com/mob-sakai/UIEffect.git
+- UI Particle: https://github.com/mob-sakai/ParticleEffectForUGUI.git
+- PlayPref Debug: https://github.com/sabresaurus/PlayerPrefsEditor.git
+- IAP: https://github.com/gamee-studio/iap.git
