@@ -10,7 +10,7 @@ public class BonusArrowHandler : MonoBehaviour
         if (other.CompareTag("BonusArea"))
         {
             CurrentAreaItem = other.GetComponent<AreaItem>();
-            CurrentAreaItem.ActivateBoderLight();
+            CurrentAreaItem.ActivateBorderLight();
         }
     }
 
@@ -18,7 +18,7 @@ public class BonusArrowHandler : MonoBehaviour
     {
         if (other.CompareTag("BonusArea"))
         {
-            other.GetComponent<AreaItem>().DeActivateBoderLight();
+            other.GetComponent<AreaItem>().DeActivateBorderLight();
         }
     }
 }

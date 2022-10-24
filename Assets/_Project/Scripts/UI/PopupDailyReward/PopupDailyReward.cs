@@ -67,16 +67,25 @@ public class PopupDailyReward : Popup
             if (IsCurrentItem(item.dayIndex)) CurrentItem = item;
         }
 
-        if (CurrentItem.DailyRewardItemState == DailyRewardItemState.ReadyToClaim)
+        if (CurrentItem)
         {
-            BtnWatchVideo.SetActive(CurrentItem.DailyRewardData.DailyRewardType == DailyRewardType.Currency);
-            BtnClaim.SetActive(true);
+            if (CurrentItem.DailyRewardItemState == DailyRewardItemState.ReadyToClaim)
+            {
+                BtnWatchVideo.SetActive(CurrentItem.DailyRewardData.DailyRewardType == DailyRewardType.Currency);
+                BtnClaim.SetActive(true);
+            }
+            else
+            {
+                BtnWatchVideo.SetActive(false);
+                BtnClaim.SetActive(false);
+            }
         }
         else
         {
             BtnWatchVideo.SetActive(false);
             BtnClaim.SetActive(false);
         }
+           
     }
 
     public void OnClickBtnClaimX5Video()
