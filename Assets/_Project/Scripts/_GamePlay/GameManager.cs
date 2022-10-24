@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Pancake.GameService;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -15,8 +16,15 @@ public class GameManager : Singleton<GameManager>
     {
         DontDestroyOnLoad(this);
         ReturnHome();
+        EventController.CurrentLevelChanged += UpdateScore;
     }
-
+    public void UpdateScore()
+    {
+        if (AuthService.Instance.isLoggedIn && AuthService.Instance.IsCompleteSetupName)
+        {
+            AuthService.UpdatePlayerStatistics("RANK_LEVEL", Data.CurrentLevel);
+        }
+    }
     private void FixedUpdate()
     {
         if (GameState == GameState.PlayingGame)
