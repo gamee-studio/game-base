@@ -7,12 +7,12 @@ public class AreaItem : MonoBehaviour
     public int MultiBonus = 1;
     public GameObject BoderLight;
 
-    public void ActivateBoderLight()
+    public void ActivateBorderLight()
     {
         BoderLight.SetActive(true);
     }
 
-    public void DeActivateBoderLight()
+    public void DeActivateBorderLight()
     {
         BoderLight.SetActive(false);
     }
