@@ -85,6 +85,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (GameState == GameState.LoseGame || GameState == GameState.WinGame) return;
         GameState = GameState.WinGame;
+        EventController.OnWinLevel?.Invoke();
         // Data setup
         FirebaseManager.OnWinGame(Data.CurrentLevel,LevelController.Instance.CurrentLevel.gameObject.name);
         AdsManager.TotalLevelWinLose++;
@@ -106,6 +107,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (GameState == GameState.LoseGame || GameState == GameState.WinGame) return;
         GameState = GameState.LoseGame;
+        EventController.OnLoseLevel?.Invoke();
         // Data setup
         FirebaseManager.OnLoseGame(Data.CurrentLevel,LevelController.Instance.CurrentLevel.gameObject.name);
         AdsManager.TotalLevelWinLose++;
