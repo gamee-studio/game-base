@@ -18,6 +18,13 @@ public class GameManager : Singleton<GameManager>
         ReturnHome();
         EventController.CurrentLevelChanged += UpdateScore;
     }
+
+    public void PlayCurrentLevel()
+    {
+        PrepareLevel();
+        StartGame();
+    }
+    
     public void UpdateScore()
     {
         if (AuthService.Instance.isLoggedIn && AuthService.Instance.IsCompleteSetupName)

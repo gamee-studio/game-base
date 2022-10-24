@@ -546,7 +546,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7338174430931127897}
         m_TargetAssemblyTypeName: PopupWin, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: OnClickAdsReward
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f911d2f644cac604ebea30cf347aaaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MultiBonus: 1
+  MultiBonus: 4
   BoderLight: {fileID: 5595375695612604955}
 --- !u!1 &1212940024880597540
 GameObject:
@@ -1363,7 +1363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f911d2f644cac604ebea30cf347aaaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MultiBonus: 1
+  MultiBonus: 2
   BoderLight: {fileID: 1212940024880597540}
 --- !u!1 &1724939685910425582
 GameObject:
@@ -2291,7 +2291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f911d2f644cac604ebea30cf347aaaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MultiBonus: 1
+  MultiBonus: 2
   BoderLight: {fileID: 32323722070775065}
 --- !u!1 &3029345834608417408
 GameObject:
@@ -2619,7 +2619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f911d2f644cac604ebea30cf347aaaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MultiBonus: 1
+  MultiBonus: 4
   BoderLight: {fileID: 1442236493854253807}
 --- !u!1 &3646090322479814939
 GameObject:
@@ -2932,7 +2932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f911d2f644cac604ebea30cf347aaaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MultiBonus: 1
+  MultiBonus: 5
   BoderLight: {fileID: 872215847354943931}
 --- !u!1 &4741496314679020074
 GameObject:
@@ -3148,7 +3148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f911d2f644cac604ebea30cf347aaaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MultiBonus: 1
+  MultiBonus: 3
   BoderLight: {fileID: 382367105787821335}
 --- !u!1 &5148697986640772953
 GameObject:
@@ -3228,7 +3228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f911d2f644cac604ebea30cf347aaaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MultiBonus: 1
+  MultiBonus: 3
   BoderLight: {fileID: 1724939685910425582}
 --- !u!1 &5489148110521580800
 GameObject:
@@ -3674,6 +3674,9 @@ MonoBehaviour:
   ShowAnimationType: 1
   UseHideAnimation: 0
   HideAnimationType: 0
+  BonusArrowHandler: {fileID: 4182017765428493193}
+  BtnRewardAds: {fileID: 684091610695217680}
+  BtnTapToContinue: {fileID: 9196906812386607124}
   TotalMoney: 0
 --- !u!1 &7418177931432179246
 GameObject:

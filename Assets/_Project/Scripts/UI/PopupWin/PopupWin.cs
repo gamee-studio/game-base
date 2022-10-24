@@ -1,8 +1,17 @@
 
 
+using DG.Tweening;
+using Pancake.Monetization;
+using UnityEngine;
+
 public class PopupWin : Popup
 {
-    [ReadOnly] public int TotalMoney; 
+    public BonusArrowHandler BonusArrowHandler;
+    public GameObject BtnRewardAds;
+    public GameObject BtnTapToContinue;
+    [ReadOnly] public int TotalMoney;
+
+    private Sequence sequence;
     public int MoneyWin => ConfigController.Game.WinLevelMoney;
     public void SetupMoneyWin(int bonusMoney)
     {
@@ -14,6 +23,13 @@ public class PopupWin : Popup
         base.BeforeShow();
         SoundController.Instance.PlayFX(SoundType.ShowPopupWin);
         PopupController.Instance.Show<PopupUI>();
+        
+        sequence = DOTween.Sequence().AppendInterval(2f).AppendCallback(() => { BtnTapToContinue.SetActive(true); });
+    }
+
+    public void Setup()
+    {
+        
     }
 
     protected override void BeforeHide()
@@ -22,9 +38,47 @@ public class PopupWin : Popup
         PopupController.Instance.Hide<PopupUI>();
     }
 
+    public void OnClickAdsReward()
+    {
+        if (Data.IsTesting)
+        {
+            GetRewardAds();
+            SoundController.Instance.PlayFX(SoundType.ClaimReward);
+        }
+        else
+        {
+            if (Advertising.IsRewardedAdReady()) BonusArrowHandler.MoveObject.IsRun = false;
+            AdsManager.ShowRewardAds(() =>
+            {
+                //FirebaseManager.OnWatchAdsRewardWin();
+                GetRewardAds();
+                SoundController.Instance.PlayFX(SoundType.ClaimReward);
+            }, (() =>
+            {
+                BonusArrowHandler.MoveObject.IsRun = true;
+                BtnRewardAds.SetActive(true);
+                BtnTapToContinue.SetActive(true);
+            }));
+        }
+    }
+    
+    public void GetRewardAds()
+    {
+        Data.CurrencyTotal += TotalMoney * BonusArrowHandler.CurrentAreaItem.MultiBonus;
+        BonusArrowHandler.MoveObject.IsRun = false;
+        BtnRewardAds.SetActive(false);
+        BtnTapToContinue.SetActive(false);
+        sequence?.Kill();
+
+        DOTween.Sequence().AppendInterval(2f).AppendCallback(() => { GameManager.Instance.PlayCurrentLevel(); });
+    }
+
     public void OnClickContinue()
     {
-        GameManager.Instance.PrepareLevel();
-        GameManager.Instance.StartGame();
+        Data.CurrencyTotal += TotalMoney;
+        BtnRewardAds.SetActive(false);
+        BtnTapToContinue.SetActive(false);
+
+        DOTween.Sequence().AppendInterval(2f).AppendCallback(() => { GameManager.Instance.PlayCurrentLevel(); });
     }
 }

@@ -1,7 +1,6 @@
 using System;
-using Pancake.Iap;
+using Pancake.Threading.Tasks;
 using Pancake.Monetization;
-using UnityEngine;
 
 public class AdsManager
 {
@@ -11,11 +10,29 @@ public class AdsManager
 
     private static Action _callbackInterstitialCompleted;
     private static Action _callbackRewardCompleted;
+    private static Action _callBackRewardSkipped;
 
-    public static void Initialize()
+    public static async void Initialize()
     {
         Advertising.InterstitialAdCompletedEvent += OnInterstitialAdCompleted;
         Advertising.RewardedAdCompletedEvent += OnRewardAdCompleted;
+        Advertising.RewardedAdSkippedEvent += OnRewardedAdSkippedEvent;
+        await UniTask.WaitUntil(() => Advertising.ApplovinAdClient.IsInitialized);
+        Advertising.ApplovinAdClient.OnRewardedAdRevenuePaid += OnRevenuePaid;
+        Advertising.ApplovinAdClient.OnBannerAdRevenuePaid += OnRevenuePaid;
+        Advertising.ApplovinAdClient.OnInterstitialAdRevenuePaid += OnRevenuePaid;
+    }
+    
+    private static void OnRevenuePaid(MaxSdkBase.AdInfo adInfo)
+    {
+        // Ad revenue paid. Use this callback to track user revenue.
+        // send ad revenue info to Adjust
+        // AdjustAdRevenue adRevenue = new AdjustAdRevenue(AdjustConfig.AdjustAdRevenueSourceAppLovinMAX);
+        // adRevenue.setRevenue(adInfo.Revenue, "USD");
+        // adRevenue.setAdRevenueNetwork(adInfo.NetworkName);
+        // adRevenue.setAdRevenuePlacement(adInfo.Placement);
+        // adRevenue.setAdRevenueUnit(adInfo.AdUnitIdentifier);
+        // Adjust.trackAdRevenue(adRevenue);
     }
 
     private static void OnInterstitialAdCompleted(EInterstitialAdNetwork val)
@@ -30,8 +47,14 @@ public class AdsManager
         _callbackRewardCompleted = null;
     }
     
+    private static void OnRewardedAdSkippedEvent(ERewardedAdNetwork val)
+    {
+        _callBackRewardSkipped?.Invoke();
+    }
+    
     public static bool IsSufficientConditionToShowInter()
     {
+        if (Data.IsTesting) return true;
         if (Data.CurrentLevel>Data.LevelTurnOnInterstitial && TotalLevelWinLose >= Data.CounterNumbBetweenTwoInterstitial && TotalTimesPlay>=Data.TimeWinBetweenTwoInterstitial)
         {
             return true;
@@ -64,15 +87,23 @@ public class AdsManager
         }
     }
     
-    public static void ShowRewardAds(Action callBack)
+    public static void ShowRewardAds(Action callBack, Action skip = null)
     {
-        FirebaseManager.OnRequestReward();
-        if (Advertising.IsRewardedAdReady())
+        if (Data.IsTesting)
         {
-            FirebaseManager.OnShowReward();
-            
             _callbackRewardCompleted = callBack;
-            Advertising.ShowRewardedAd();
+            _callbackRewardCompleted?.Invoke();
+        }
+        else
+        {
+            FirebaseManager.OnRequestReward();
+            if (Advertising.IsRewardedAdReady())
+            {
+                FirebaseManager.OnShowReward();
+            
+                _callbackRewardCompleted = callBack;
+                Advertising.ShowRewardedAd();
+            }
         }
     }
 
