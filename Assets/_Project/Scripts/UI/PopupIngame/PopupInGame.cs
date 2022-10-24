@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +9,20 @@ public class PopupInGame : Popup
    [Header("Components")]
    public TextMeshProUGUI LevelText;
    public TextMeshProUGUI LevelTypeText;
+
+   private List<UIEffect> UIEffects => GetComponentsInChildren<UIEffect>().ToList();
+
+   public void Start()
+   {
+      EventController.OnWinLevel += HideUI;
+      EventController.OnLoseLevel += HideUI;
+   }
+
+   public void OnDestroy()
+   {
+      EventController.OnWinLevel -= HideUI;
+      EventController.OnLoseLevel -= HideUI;
+   }
 
    protected override void BeforeShow()
    {
@@ -84,11 +100,19 @@ public class PopupInGame : Popup
 
    public void OnClickLose()
    {
-      GameManager.Instance.OnLoseGame(0f);
+      GameManager.Instance.OnLoseGame(1f);
    }
 
    public void OnClickWin()
    {
-      GameManager.Instance.OnWinGame(0f);
+      GameManager.Instance.OnWinGame(1f);
+   }
+
+   private void HideUI()
+   {
+      foreach (UIEffect item in UIEffects)
+      {
+         item.PlayAnim();
+      }
    }
 }

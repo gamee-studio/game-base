@@ -1,5 +1,5 @@
+using System;
 using DG.Tweening;
-using MessagePack.Formatters;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -17,12 +17,14 @@ public class UIEffect : MonoBehaviour
     [ShowIf("UIEffectType", UIEffectType.Move)] [Header("Move Effect")] 
     [ShowIf("UIEffectType", UIEffectType.Move)] public MoveType MoveType;
     [ShowIf("IsShowAttributeFromPosition")] public Vector3 FromPosition;
+    [ShowIf("IsShowAttributesMoveDirection")] public DirectionType DirectionType;
+    [ShowIf("IsShowAttributesMoveDirection")] public float Offset;
     [ShowIf("UIEffectType", UIEffectType.Move)] [ReadOnly] public Vector3 LocalPostion; 
-    [ShowIf("MoveType", MoveType.Direction)] public DirectionType DirectionType;
-    [ShowIf("MoveType", MoveType.Direction)] public float Offset;
+    
     private Sequence sequence;
 
     private bool IsShowAttributeFromPosition => UIEffectType == UIEffectType.Move && MoveType == MoveType.Vector3;
+    private bool IsShowAttributesMoveDirection => UIEffectType == UIEffectType.Move && MoveType == MoveType.Direction;
 
     public void Awake()
     {
@@ -50,24 +52,46 @@ public class UIEffect : MonoBehaviour
                 sequence = DOTween.Sequence().Append(transform.DOShakeRotation(Time, Strength).SetEase(Ease.Linear));
                 break;
             case UIEffectType.Move:
+                transform.localPosition = LocalPostion;
                 switch (MoveType)
                 {
                     case MoveType.Vector3:
-                        transform.localPosition = FromPosition;
-                        transform.DOMove(LocalPostion, Time).SetEase(Ease.Linear);
+                        transform.DOLocalMove(LocalPostion, Time).SetEase(Ease.Linear);
                         break;
                     case MoveType.Direction:
-                        
+                        switch (DirectionType)
+                        {
+                            case DirectionType.Up:
+                                sequence = DOTween.Sequence().Append(transform.DOLocalMoveY(transform.localPosition.y + Offset, Time).SetEase(Ease.InBack));
+                                break;
+                            case DirectionType.Down:
+                                sequence = DOTween.Sequence().Append(transform.DOLocalMoveY(transform.localPosition.y - Offset, Time).SetEase(Ease.InBack));
+                                break;
+                            case DirectionType.Left:
+                                sequence = DOTween.Sequence().Append(transform.DOLocalMoveX(transform.localPosition.x - Offset, Time).SetEase(Ease.InBack));
+                                break;
+                            case DirectionType.Right:
+                                sequence = DOTween.Sequence().Append(transform.DOLocalMoveX(transform.localPosition.x + Offset, Time).SetEase(Ease.InBack));
+                                break;
+                        } 
                         break;
                 }
-
                 break;
         }
     }
 
     public void OnDisable()
     {
+        Reset();
         sequence?.Kill();
+    }
+    
+    
+    public void Reset()
+    {
+        if (!Application.isPlaying) return;
+        transform.localPosition = LocalPostion;
+        transform.localScale = LocalScale;
     }
 }
 

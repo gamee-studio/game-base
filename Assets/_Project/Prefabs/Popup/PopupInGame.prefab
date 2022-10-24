@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 8288219723752485141}
   - component: {fileID: 4794834346965749724}
   - component: {fileID: 251626907942662346}
+  - component: {fileID: 331501569123143340}
   m_Layer: 5
   m_Name: BtnWin
   m_TagString: Untagged
@@ -187,6 +188,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02447ce1639b4144db27f56d61535a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &331501569123143340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337785703427156683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe270764967ed7b4abbfde5c9a04e74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIEffectType: 2
+  PlayOnAwake: 0
+  Time: 0.5
+  FromScale: {x: 0, y: 0, z: 0}
+  LocalScale: {x: 0, y: 0, z: 0}
+  Strength: 3
+  MoveType: 1
+  FromPosition: {x: 0, y: 0, z: 0}
+  DirectionType: 3
+  Offset: 375
+  LocalPostion: {x: 0, y: 0, z: 0}
 --- !u!1 &500080215166614254
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +359,7 @@ GameObject:
   - component: {fileID: 8275243719829209432}
   - component: {fileID: 4995003225708122407}
   - component: {fileID: 6217234010448412660}
+  - component: {fileID: 4139460289340240365}
   m_Layer: 5
   m_Name: BtnHome
   m_TagString: Untagged
@@ -434,6 +459,29 @@ MonoBehaviour:
   HavePressEffect: 1
   IsMoveEnter: 0
   LocalScale: {x: 0, y: 0, z: 0}
+--- !u!114 &4139460289340240365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972229794992604582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe270764967ed7b4abbfde5c9a04e74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIEffectType: 2
+  PlayOnAwake: 0
+  Time: 0.5
+  FromScale: {x: 0, y: 0, z: 0}
+  LocalScale: {x: 0, y: 0, z: 0}
+  Strength: 3
+  MoveType: 1
+  FromPosition: {x: 0, y: 0, z: 0}
+  DirectionType: 2
+  Offset: 200
+  LocalPostion: {x: 0, y: 0, z: 0}
 --- !u!1 &1680069359137271434
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,6 +495,7 @@ GameObject:
   - component: {fileID: 7405959458051577280}
   - component: {fileID: 8317380730413678338}
   - component: {fileID: 5567821807431455429}
+  - component: {fileID: 3062342282396356421}
   m_Layer: 5
   m_Name: BtnLevelB
   m_TagString: Untagged
@@ -559,6 +608,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02447ce1639b4144db27f56d61535a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3062342282396356421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680069359137271434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe270764967ed7b4abbfde5c9a04e74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIEffectType: 2
+  PlayOnAwake: 0
+  Time: 0.5
+  FromScale: {x: 0, y: 0, z: 0}
+  LocalScale: {x: 0, y: 0, z: 0}
+  Strength: 3
+  MoveType: 1
+  FromPosition: {x: 0, y: 0, z: 0}
+  DirectionType: 1
+  Offset: 200
+  LocalPostion: {x: 0, y: 0, z: 0}
 --- !u!1 &2646351314242081864
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +916,7 @@ GameObject:
   - component: {fileID: 5907823700991422491}
   - component: {fileID: 820436696794643094}
   - component: {fileID: 6130240291547291260}
+  - component: {fileID: 5513561723334349175}
   m_Layer: 5
   m_Name: BtnLose
   m_TagString: Untagged
@@ -956,6 +1029,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02447ce1639b4144db27f56d61535a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5513561723334349175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3592698499990389922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe270764967ed7b4abbfde5c9a04e74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIEffectType: 2
+  PlayOnAwake: 0
+  Time: 0.5
+  FromScale: {x: 0, y: 0, z: 0}
+  LocalScale: {x: 0, y: 0, z: 0}
+  Strength: 3
+  MoveType: 1
+  FromPosition: {x: 0, y: 0, z: 0}
+  DirectionType: 2
+  Offset: 375
+  LocalPostion: {x: 0, y: 0, z: 0}
 --- !u!1 &4429355886652026346
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +1065,7 @@ GameObject:
   - component: {fileID: 6411312079665324011}
   - component: {fileID: 5263324622369191846}
   - component: {fileID: 430079224505560711}
+  - component: {fileID: 7041843638920532719}
   m_Layer: 5
   m_Name: BtnSkip
   m_TagString: Untagged
@@ -1081,6 +1178,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02447ce1639b4144db27f56d61535a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7041843638920532719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4429355886652026346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe270764967ed7b4abbfde5c9a04e74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIEffectType: 2
+  PlayOnAwake: 0
+  Time: 0.5
+  FromScale: {x: 0, y: 0, z: 0}
+  LocalScale: {x: 0, y: 0, z: 0}
+  Strength: 3
+  MoveType: 1
+  FromPosition: {x: 0, y: 0, z: 0}
+  DirectionType: 3
+  Offset: 200
+  LocalPostion: {x: 0, y: 0, z: 0}
 --- !u!1 &4957344726548281664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1213,7 @@ GameObject:
   - component: {fileID: 8866243066703971776}
   - component: {fileID: 4609003189904288388}
   - component: {fileID: 4996297015399042473}
+  - component: {fileID: 6799461052049465040}
   m_Layer: 5
   m_Name: LevelTypeText
   m_TagString: Untagged
@@ -1115,9 +1236,9 @@ RectTransform:
   m_Father: {fileID: 5364855900474096421}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1796}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -120}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8866243066703971776
@@ -1230,6 +1351,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02447ce1639b4144db27f56d61535a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6799461052049465040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957344726548281664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe270764967ed7b4abbfde5c9a04e74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIEffectType: 2
+  PlayOnAwake: 0
+  Time: 0.5
+  FromScale: {x: 0, y: 0, z: 0}
+  LocalScale: {x: 0, y: 0, z: 0}
+  Strength: 3
+  MoveType: 1
+  FromPosition: {x: 0, y: 0, z: 0}
+  DirectionType: 0
+  Offset: 200
+  LocalPostion: {x: 0, y: 0, z: 0}
 --- !u!1 &5208550979288179814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,6 +1387,7 @@ GameObject:
   - component: {fileID: 6396744187648853598}
   - component: {fileID: 3221509362805035972}
   - component: {fileID: 2176972101292685037}
+  - component: {fileID: 9009864860809207450}
   m_Layer: 5
   m_Name: BtnLevelA
   m_TagString: Untagged
@@ -1355,6 +1500,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02447ce1639b4144db27f56d61535a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9009864860809207450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5208550979288179814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe270764967ed7b4abbfde5c9a04e74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIEffectType: 2
+  PlayOnAwake: 0
+  Time: 0.5
+  FromScale: {x: 0, y: 0, z: 0}
+  LocalScale: {x: 0, y: 0, z: 0}
+  Strength: 3
+  MoveType: 1
+  FromPosition: {x: 0, y: 0, z: 0}
+  DirectionType: 1
+  Offset: 200
+  LocalPostion: {x: 0, y: 0, z: 0}
 --- !u!1 &6281683904878446207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,6 +1882,7 @@ GameObject:
   - component: {fileID: 2261116278405039430}
   - component: {fileID: 90131745076631226}
   - component: {fileID: 3421561290902501057}
+  - component: {fileID: 4657326729282631673}
   m_Layer: 5
   m_Name: LevelText
   m_TagString: Untagged
@@ -1738,7 +1907,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -51}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &90131745076631226
@@ -1839,6 +2008,29 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4657326729282631673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103074859387387540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe270764967ed7b4abbfde5c9a04e74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIEffectType: 2
+  PlayOnAwake: 0
+  Time: 0.5
+  FromScale: {x: 0, y: 0, z: 0}
+  LocalScale: {x: 0, y: 0, z: 0}
+  Strength: 3
+  MoveType: 1
+  FromPosition: {x: 0, y: 0, z: 0}
+  DirectionType: 0
+  Offset: 200
+  LocalPostion: {x: 0, y: 0, z: 0}
 --- !u!1 &7370416450938019894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1943,8 +2135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4ad34b92746294397a5c815d61ea88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Background: {fileID: 0}
-  Container: {fileID: 0}
+  Background: {fileID: 6631244465714846239}
+  Container: {fileID: 44115311812151522}
   UseShowAnimation: 0
   ShowAnimationType: 0
   UseHideAnimation: 0
@@ -2099,6 +2291,7 @@ GameObject:
   - component: {fileID: 9161932885862187896}
   - component: {fileID: 1735350241572243168}
   - component: {fileID: 7453835453197081231}
+  - component: {fileID: 5117205151153870509}
   m_Layer: 5
   m_Name: BtnReplay
   m_TagString: Untagged
@@ -2198,6 +2391,29 @@ MonoBehaviour:
   HavePressEffect: 1
   IsMoveEnter: 0
   LocalScale: {x: 0, y: 0, z: 0}
+--- !u!114 &5117205151153870509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8785879184831882045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe270764967ed7b4abbfde5c9a04e74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIEffectType: 2
+  PlayOnAwake: 0
+  Time: 0.5
+  FromScale: {x: 0, y: 0, z: 0}
+  LocalScale: {x: 0, y: 0, z: 0}
+  Strength: 3
+  MoveType: 1
+  FromPosition: {x: 0, y: 0, z: 0}
+  DirectionType: 3
+  Offset: 200
+  LocalPostion: {x: 0, y: 0, z: 0}
 --- !u!1 &9054173132683076706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,6 +2427,7 @@ GameObject:
   - component: {fileID: 640313825970560007}
   - component: {fileID: 4543784481764796442}
   - component: {fileID: 5345833655013627450}
+  - component: {fileID: 586999487551448420}
   m_Layer: 5
   m_Name: BtnPrevious
   m_TagString: Untagged
@@ -2323,3 +2540,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02447ce1639b4144db27f56d61535a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &586999487551448420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9054173132683076706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe270764967ed7b4abbfde5c9a04e74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIEffectType: 2
+  PlayOnAwake: 0
+  Time: 0.5
+  FromScale: {x: 0, y: 0, z: 0}
+  LocalScale: {x: 0, y: 0, z: 0}
+  Strength: 3
+  MoveType: 1
+  FromPosition: {x: 0, y: 0, z: 0}
+  DirectionType: 2
+  Offset: 200
+  LocalPostion: {x: 0, y: 0, z: 0}
