@@ -37,11 +37,20 @@ extern "C"
     static NSNumber *_creativeDebuggerEnabledToSet;
     static NSNumber *_exceptionHandlerEnabledToSet;
     static NSNumber *_locationCollectionEnabledToSet;
+    static NSNumber *_targetingYearOfBirth;
+    static NSString *_targetingGender;
+    static NSNumber *_targetingMaximumAdContentRating;
+    static NSString *_targetingEmail;
+    static NSString *_targetingPhoneNumber;
+    static NSArray<NSString *> *_targetingKeywords;
+    static NSArray<NSString *> *_targetingInterests;
     static NSMutableDictionary<NSString *, NSString *> *_extraParametersToSet = [NSMutableDictionary dictionary];
     static NSObject *_extraParametersToSetLock = [[NSObject alloc] init];
     
     // Helper method to create C string copy
     static const char * cStringCopy(NSString *string);
+    // Helper method to log errors
+    void logUninitializedAccessError(char *callingMethod);
     
     bool isPluginInitialized()
     {
@@ -65,6 +74,42 @@ extern "C"
         }
         
         return array;
+    }
+
+    ALGender getAppLovinGender(NSString *genderString)
+    {
+        if ( [@"F" al_isEqualToStringIgnoringCase: genderString] )
+        {
+            return ALGenderFemale;
+        }
+        else if ( [@"M" al_isEqualToStringIgnoringCase: genderString] )
+        {
+            return ALGenderMale;
+        }
+        else if ( [@"O" al_isEqualToStringIgnoringCase: genderString] )
+        {
+            return ALGenderOther;
+        }
+        
+        return ALGenderUnknown;
+    }
+
+    ALAdContentRating getAppLovinAdContentRating(int maximumAdContentRating)
+    {
+        if ( maximumAdContentRating == 1 )
+        {
+            return ALAdContentRatingAllAudiences;
+        }
+        else if ( maximumAdContentRating == 2 )
+        {
+            return ALAdContentRatingEveryoneOverTwelve;
+        }
+        else if ( maximumAdContentRating == 3 )
+        {
+            return ALAdContentRatingMatureAudiences;
+        }
+        
+        return ALAdContentRatingNone;
     }
     
     void setPendingExtraParametersIfNeeded(ALSdkSettings *settings)
@@ -129,7 +174,7 @@ extern "C"
         
         if ( _verboseLoggingToSet )
         {
-            _sdk.settings.isVerboseLogging = _verboseLoggingToSet.boolValue;
+            _sdk.settings.verboseLoggingEnabled = _verboseLoggingToSet.boolValue;
             _verboseLoggingToSet = nil;
         }
 
@@ -149,6 +194,48 @@ extern "C"
         {
             _sdk.settings.locationCollectionEnabled = _locationCollectionEnabledToSet.boolValue;
             _locationCollectionEnabledToSet = nil;
+        }
+        
+        if ( _targetingYearOfBirth )
+        {
+            _sdk.targetingData.yearOfBirth = _targetingYearOfBirth.intValue <= 0 ? nil : _targetingYearOfBirth;
+            _targetingYearOfBirth = nil;
+        }
+        
+        if ( _targetingGender )
+        {
+            _sdk.targetingData.gender = getAppLovinGender(_targetingGender);
+            _targetingGender = nil;
+        }
+        
+        if ( _targetingMaximumAdContentRating )
+        {
+            _sdk.targetingData.maximumAdContentRating = getAppLovinAdContentRating(_targetingMaximumAdContentRating.intValue);
+            _targetingMaximumAdContentRating = nil;
+        }
+        
+        if ( _targetingEmail )
+        {
+            _sdk.targetingData.email = _targetingEmail;
+            _targetingEmail = nil;
+        }
+        
+        if ( _targetingPhoneNumber )
+        {
+            _sdk.targetingData.phoneNumber = _targetingPhoneNumber;
+            _targetingPhoneNumber = nil;
+        }
+        
+        if ( _targetingKeywords )
+        {
+            _sdk.targetingData.keywords = _targetingKeywords;
+            _targetingKeywords = nil;
+        }
+        
+        if ( _targetingInterests )
+        {
+            _sdk.targetingData.interests = _targetingInterests;
+            _targetingInterests = nil;
         }
         
         setPendingExtraParametersIfNeeded( _sdk.settings );
@@ -236,82 +323,92 @@ extern "C"
 
     void _MaxSetTargetingDataYearOfBirth(const int yearOfBirth)
     {
-        if ( !isPluginInitialized() ) return;
+        if ( !_sdk )
+        {
+            _targetingYearOfBirth = @(yearOfBirth);
+            return;
+        }
+        
         _sdk.targetingData.yearOfBirth = yearOfBirth <= 0 ? nil : @(yearOfBirth);
     }
 
-    void _MaxSetTargetingDataGender(const char *gender)
+    void _MaxSetTargetingDataGender(char *gender)
     {
-        if ( !isPluginInitialized() ) return;
+        if ( !_sdk )
+        {
+            _targetingGender = NSSTRING(gender);
+            return;
+        }
         
         NSString *genderString = NSSTRING(gender);
-        ALGender alGender = ALGenderUnknown;
-        
-        if ( [genderString isEqualToString: @"F"] )
-        {
-            alGender = ALGenderFemale;
-        }
-        else if ( [genderString isEqualToString: @"M"] )
-        {
-            alGender = ALGenderMale;
-        }
-        else if ( [genderString isEqualToString: @"O"] )
-        {
-            alGender = ALGenderOther;
-        }
-        
-        _sdk.targetingData.gender = alGender;
+        _sdk.targetingData.gender = getAppLovinGender(genderString);
     }
 
     void _MaxSetTargetingDataMaximumAdContentRating(const int maximumAdContentRating)
     {
-        if ( !isPluginInitialized() ) return;
-        
-        ALAdContentRating rating = ALAdContentRatingNone;
-        
-        if ( maximumAdContentRating == 1 )
+        if ( !_sdk )
         {
-            rating = ALAdContentRatingAllAudiences;
-        }
-        else if ( maximumAdContentRating == 2 )
-        {
-            rating = ALAdContentRatingEveryoneOverTwelve;
-        }
-        else if ( maximumAdContentRating == 3 )
-        {
-            rating = ALAdContentRatingMatureAudiences;
+            _targetingMaximumAdContentRating = @(maximumAdContentRating);
+            return;
         }
         
-        _sdk.targetingData.maximumAdContentRating = rating;
+        _sdk.targetingData.maximumAdContentRating = getAppLovinAdContentRating(maximumAdContentRating);
     }
 
-    void _MaxSetTargetingDataEmail(const char *email)
+    void _MaxSetTargetingDataEmail(char *email)
     {
-        if ( !isPluginInitialized() ) return;
+        if ( !_sdk )
+        {
+            _targetingEmail = NSSTRING(email);
+            return;
+        }
+        
         _sdk.targetingData.email = NSSTRING(email);
     }
 
-    void _MaxSetTargetingDataPhoneNumber(const char *phoneNumber)
+    void _MaxSetTargetingDataPhoneNumber(char *phoneNumber)
     {
-        if ( !isPluginInitialized() ) return;
+        if ( !_sdk )
+        {
+            _targetingPhoneNumber = NSSTRING(phoneNumber);
+            return;
+        }
+        
         _sdk.targetingData.phoneNumber = NSSTRING(phoneNumber);
     }
 
     void _MaxSetTargetingDataKeywords(char **keywords, int size)
     {
-        if ( !isPluginInitialized() ) return;
-        _sdk.targetingData.keywords = toStringArray(keywords, size);
+        NSArray<NSString *> *keywordsArray = keywords ? toStringArray(keywords, size) : nil;
+        if ( !_sdk )
+        {
+            _targetingKeywords = keywordsArray;
+            return;
+        }
+        
+        _sdk.targetingData.keywords = keywordsArray;
     }
 
     void _MaxSetTargetingDataInterests(char **interests, int size)
     {
-        if ( !isPluginInitialized() ) return;
-        _sdk.targetingData.interests = toStringArray(interests, size);
+        NSArray<NSString *> *interestsArray = interests ? toStringArray(interests, size) : nil;
+        if ( !_sdk )
+        {
+            _targetingInterests = interestsArray;
+            return;
+        }
+        
+        _sdk.targetingData.interests = interestsArray;
     }
 
     void _MaxClearAllTargetingData()
     {
-        if ( !isPluginInitialized() ) return;
+        if ( !_sdk )
+        {
+            logUninitializedAccessError("_MaxClearAllTargetingData");
+            return;
+        }
+        
         [_sdk.targetingData clearAll];
     }
 
@@ -319,7 +416,7 @@ extern "C"
     {
         if ( !_sdk )
         {
-            NSLog(@"[%@] Failed to get SDK configuration - please ensure the AppLovin MAX Unity Plugin has been initialized by calling 'MaxSdk.InitializeSdk();'!", TAG);
+            logUninitializedAccessError("_MaxGetSdkConfiguration");
             return cStringCopy(@"");
         }
         
@@ -390,6 +487,13 @@ extern "C"
         
         [_adManager createBannerWithAdUnitIdentifier: NSSTRING(adUnitIdentifier) x: x y: y];
     }
+    
+   void _MaxLoadBanner(const char *adUnitIdentifier)
+   {
+       if (!isPluginInitialized()) return;
+
+       [_adManager loadBannerWithAdUnitIdentifier: NSSTRING(adUnitIdentifier)];
+   }
     
     void _MaxSetBannerBackgroundColor(const char *adUnitIdentifier, const char *hexColorCode)
     {
@@ -492,6 +596,13 @@ extern "C"
         
         [_adManager createMRecWithAdUnitIdentifier: NSSTRING(adUnitIdentifier) x: x y: y];
     }
+    
+   void _MaxLoadMRec(const char *adUnitIdentifier)
+   {
+       if (!isPluginInitialized()) return;
+
+       [_adManager loadMRecWithAdUnitIdentifier: NSSTRING(adUnitIdentifier)];
+   }
     
     void _MaxSetMRecPlacement(const char *adUnitIdentifier, const char *placement)
     {
@@ -649,6 +760,41 @@ extern "C"
         [_adManager showInterstitialWithAdUnitIdentifier: NSSTRING(adUnitIdentifier) placement: NSSTRING(placement) customData: NSSTRING(customData)];
     }
     
+    void _MaxLoadAppOpenAd(const char *adUnitIdentifier)
+    {
+        if (!isPluginInitialized()) return;
+        
+        [_adManager loadAppOpenAdWithAdUnitIdentifier: NSSTRING(adUnitIdentifier)];
+    }
+    
+    void _MaxSetAppOpenAdExtraParameter(const char *adUnitIdentifier, const char *key, const char *value)
+    {
+        [_adManager setAppOpenAdExtraParameterForAdUnitIdentifier: NSSTRING(adUnitIdentifier)
+                                                              key: NSSTRING(key)
+                                                            value: NSSTRING(value)];
+    }
+    
+    void _MaxSetAppOpenAdLocalExtraParameter(const char *adUnitIdentifier, const char *key, MAUnityRef value)
+    {
+        [_adManager setAppOpenAdLocalExtraParameterForAdUnitIdentifier: NSSTRING(adUnitIdentifier)
+                                                                   key: NSSTRING(key)
+                                                                 value: (__bridge id)value];
+    }
+    
+    bool _MaxIsAppOpenAdReady(const char *adUnitIdentifier)
+    {
+        if (!isPluginInitialized()) return false;
+        
+        return [_adManager isAppOpenAdReadyWithAdUnitIdentifier: NSSTRING(adUnitIdentifier)];
+    }
+    
+    void _MaxShowAppOpenAd(const char *adUnitIdentifier, const char *placement, const char *customData)
+    {
+        if (!isPluginInitialized()) return;
+        
+        [_adManager showAppOpenAdWithAdUnitIdentifier: NSSTRING(adUnitIdentifier) placement: NSSTRING(placement) customData: NSSTRING(customData)];
+    }
+    
     void _MaxLoadRewardedAd(const char *adUnitIdentifier)
     {
         if (!isPluginInitialized()) return;
@@ -744,6 +890,11 @@ extern "C"
     {
         return [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad;
     }
+
+    bool _MaxIsPhysicalDevice()
+    {
+        return !ALUtils.simulator;
+    }
     
     static const char * cStringCopy(NSString *string)
     {
@@ -784,7 +935,7 @@ extern "C"
     {
         if ( _sdk )
         {
-            _sdk.settings.isVerboseLogging = enabled;
+            _sdk.settings.verboseLoggingEnabled = enabled;
             _verboseLoggingToSet = nil;
         }
         else
@@ -797,7 +948,7 @@ extern "C"
     {
         if ( _sdk )
         {
-            return _sdk.settings.isVerboseLogging;
+            return [_sdk.settings isVerboseLoggingEnabled];
         }
         else if ( _verboseLoggingToSet )
         {
@@ -888,6 +1039,11 @@ extern "C"
     float _MaxGetAdaptiveBannerHeight(const float width)
     {
         return [MAUnityAdManager adaptiveBannerHeightForWidth: width];
+    }
+
+    void logUninitializedAccessError(char *callingMethod)
+    {
+        NSLog(@"[%@] Failed to execute: %s - please ensure the AppLovin MAX Unity Plugin has been initialized by calling 'MaxSdk.InitializeSdk();'!", TAG, callingMethod);
     }
 
     [[deprecated("This API has been deprecated. Please use our SDK's initialization callback to retrieve variables instead.")]]

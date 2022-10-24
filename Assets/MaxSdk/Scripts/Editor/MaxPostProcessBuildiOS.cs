@@ -53,37 +53,27 @@ namespace AppLovinMax.Scripts.Editor
             "Smaato"
         };
 
-        private static List<string> DynamicLibraryPathsToEmbed
+        private static List<string> DynamicLibrariesToEmbed
         {
             get
             {
-                var dynamicLibraryPathsToEmbed = new List<string>(2);
-                dynamicLibraryPathsToEmbed.Add(Path.Combine("Pods/", "HyprMX/HyprMX.xcframework"));
-                dynamicLibraryPathsToEmbed.Add(Path.Combine("Pods/", "smaato-ios-sdk/vendor/OMSDK_Smaato.xcframework"));
-                dynamicLibraryPathsToEmbed.Add(Path.Combine("Pods/", "FBSDKCoreKit_Basics/XCFrameworks/FBSDKCoreKit_Basics.xcframework"));
-                dynamicLibraryPathsToEmbed.Add(Path.Combine("Pods/", "OguryAds/OguryAds/OMSDK_Ogury.xcframework"));
+                var dynamicLibrariesToEmbed = new List<string>()
+                {
+                    "FBSDKCoreKit_Basics.xcframework",
+                    "HyprMX.xcframework",
+                    "OMSDK_Appodeal.xcframework",
+                    "OMSDK_Ogury.xcframework",
+                    "OMSDK_Pubnativenet.xcframework",
+                    "OMSDK_Smaato.xcframework"
+                };
 
                 if (ShouldEmbedSnapSdk())
                 {
-                    dynamicLibraryPathsToEmbed.Add(Path.Combine("Pods/", "SAKSDK/SAKSDK.framework"));
-                    dynamicLibraryPathsToEmbed.Add(Path.Combine("Pods/", "SAKSDK/SAKSDK.xcframework"));
+                    dynamicLibrariesToEmbed.Add("SAKSDK.framework");
+                    dynamicLibrariesToEmbed.Add("SAKSDK.xcframework");
                 }
 
-                return dynamicLibraryPathsToEmbed;
-            }
-        }
-
-        /// <summary>
-        /// Some library paths might contain versions and can't be hardcoded. So, we'll instead search for these libraries in the Pods/ directory.
-        /// </summary>
-        private static List<string> DynamicLibrariesToSearchToEmbed
-        {
-            get
-            {
-                return new List<string>()
-                {
-                    "OMSDK_Pubnativenet.xcframework"
-                };
+                return dynamicLibrariesToEmbed;
             }
         }
 
@@ -91,10 +81,15 @@ namespace AppLovinMax.Scripts.Editor
         {
             get
             {
-                var swiftLanguageNetworks = new List<string>(1);
-                if (ShouldAddSwiftSupportForFacebook())
+                var swiftLanguageNetworks = new List<string>();
+                if (IsAdapterInstalled("Facebook", "6.9.0.0"))
                 {
                     swiftLanguageNetworks.Add("Facebook");
+                }
+
+                if (IsAdapterInstalled("UnityAds", "4.4.0.0"))
+                {
+                    swiftLanguageNetworks.Add("UnityAds");
                 }
 
                 return swiftLanguageNetworks;
@@ -104,6 +99,7 @@ namespace AppLovinMax.Scripts.Editor
         private static readonly List<string> EmbedSwiftStandardLibrariesNetworks = new List<string>
         {
             "Facebook",
+            "UnityAds"
         };
 
         private static string PluginMediationDirectory
@@ -148,21 +144,21 @@ namespace AppLovinMax.Scripts.Editor
 
         private static void EmbedDynamicLibrariesIfNeeded(string buildPath, PBXProject project, string targetGuid)
         {
-            var dynamicLibraryPathsPresentInProject = DynamicLibraryPathsToEmbed.Where(dynamicLibraryPath => Directory.Exists(Path.Combine(buildPath, dynamicLibraryPath))).ToList();
-            var podsDirectory = Path.Combine(buildPath, "Pods");
             // Check that the Pods directory exists (it might not if a publisher is building with Generate Podfile setting disabled in EDM).
-            if (Directory.Exists(podsDirectory))
-            {
-                foreach (var dynamicLibraryToSearch in DynamicLibrariesToSearchToEmbed)
-                {
-                    // both .framework and .xcframework are directories, not files
-                    var directories = Directory.GetDirectories(podsDirectory, dynamicLibraryToSearch, SearchOption.AllDirectories);
-                    if (directories.Length <= 0) continue;
+            var podsDirectory = Path.Combine(buildPath, "Pods");
+            if (!Directory.Exists(podsDirectory)) return;
 
-                    var index = directories[0].LastIndexOf("Pods");
-                    var relativePath = directories[0].Substring(index);
-                    dynamicLibraryPathsPresentInProject.Add(relativePath);
-                }
+            var dynamicLibraryPathsPresentInProject = new List<string>();
+            foreach (var dynamicLibraryToSearch in DynamicLibrariesToEmbed)
+            {
+                // both .framework and .xcframework are directories, not files
+                var directories = Directory.GetDirectories(podsDirectory, dynamicLibraryToSearch, SearchOption.AllDirectories);
+                if (directories.Length <= 0) continue;
+
+                var dynamicLibraryAbsolutePath = directories[0];
+                var index = dynamicLibraryAbsolutePath.LastIndexOf("Pods");
+                var relativePath = dynamicLibraryAbsolutePath.Substring(index);
+                dynamicLibraryPathsPresentInProject.Add(relativePath);
             }
 
             if (dynamicLibraryPathsPresentInProject.Count <= 0) return;
@@ -588,13 +584,22 @@ namespace AppLovinMax.Scripts.Editor
             plist.root.SetInteger("SCAppStoreAppID", AppLovinSettings.Instance.SnapAppStoreAppId);
         }
 
-        private static bool ShouldAddSwiftSupportForFacebook()
+        /// <summary>
+        /// Checks whether or not an adapter with the given version or newer exists.
+        /// </summary>
+        /// <param name="adapterName">The name of the network (the root adapter folder name in "MaxSdk/Mediation/" folder.</param>
+        /// <param name="version">The min adapter version to check for. Can be <c>null</c> if we want to check for any version.</param>
+        /// <returns><c>true</c> if an adapter with the min version is installed.</returns>
+        private static bool IsAdapterInstalled(string adapterName, string version = null)
         {
-            var facebookDependencyPath = Path.Combine(PluginMediationDirectory, "Facebook/Editor/Dependencies.xml");
-            if (!File.Exists(facebookDependencyPath)) return false;
+            var dependencyFilePath = Path.Combine(PluginMediationDirectory, adapterName + "/Editor/Dependencies.xml");
+            if (!File.Exists(dependencyFilePath)) return false;
 
-            var currentVersion = AppLovinIntegrationManager.GetCurrentVersions(facebookDependencyPath);
-            var iosVersionComparison = MaxSdkUtils.CompareVersions(currentVersion.Ios, "6.9.0.0");
+            // If version is null, we just need the adapter installed. We don't have to check for a specific version.
+            if (version == null) return true;
+
+            var currentVersion = AppLovinIntegrationManager.GetCurrentVersions(dependencyFilePath);
+            var iosVersionComparison = MaxSdkUtils.CompareVersions(currentVersion.Ios, version);
             return iosVersionComparison != MaxSdkUtils.VersionComparisonResult.Lesser;
         }
 

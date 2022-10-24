@@ -322,6 +322,21 @@ public class MaxSdkiOS : MaxSdkBase
     }
 
     [DllImport("__Internal")]
+    private static extern void _MaxLoadBanner(string adUnitIdentifier);
+
+    /// <summary>
+    /// Load a new banner ad.
+    /// NOTE: The <see cref="CreateBanner()"/> method loads the first banner ad and initiates an automated banner refresh process.
+    /// You only need to call this method if you pause banner refresh.
+    /// </summary>
+    /// <param name="adUnitIdentifier">Ad unit identifier of the banner to load</param>
+    public static void LoadBanner(string adUnitIdentifier)
+    {
+        ValidateAdUnitIdentifier(adUnitIdentifier, "load banner");
+        _MaxLoadBanner(adUnitIdentifier);
+    }
+
+    [DllImport("__Internal")]
     private static extern void _MaxSetBannerPlacement(string adUnitIdentifier, string placement);
 
     /// <summary>
@@ -562,6 +577,21 @@ public class MaxSdkiOS : MaxSdkBase
     {
         ValidateAdUnitIdentifier(adUnitIdentifier, "create MREC");
         _MaxCreateMRecXY(adUnitIdentifier, x, y);
+    }
+
+    [DllImport("__Internal")]
+    private static extern void _MaxLoadMRec(string adUnitIdentifier);
+
+    /// <summary>
+    /// Load a new MREC ad.
+    /// NOTE: The <see cref="CreateMRec()"/> method loads the first MREC ad and initiates an automated MREC refresh process.
+    /// You only need to call this method if you pause MREC refresh.
+    /// </summary>
+    /// <param name="adUnitIdentifier">Ad unit identifier of the MREC to load</param>
+    public static void LoadMRec(string adUnitIdentifier)
+    {
+        ValidateAdUnitIdentifier(adUnitIdentifier, "load MREC");
+        _MaxLoadMRec(adUnitIdentifier);
     }
 
     [DllImport("__Internal")]
@@ -948,6 +978,98 @@ public class MaxSdkiOS : MaxSdkBase
 
         var intPtrValue = value == null ? IntPtr.Zero : (IntPtr) value;
         _MaxSetInterstitialLocalExtraParameter(adUnitIdentifier, key, intPtrValue);
+    }
+
+    #endregion
+
+    #region App Open Ads
+
+    [DllImport("__Internal")]
+    private static extern void _MaxLoadAppOpenAd(string adUnitIdentifier);
+
+    /// <summary>
+    /// Start loading an app open ad.
+    /// </summary>
+    /// <param name="adUnitIdentifier">Ad unit identifier of the app open ad to load</param>
+    public static void LoadAppOpenAd(string adUnitIdentifier)
+    {
+        ValidateAdUnitIdentifier(adUnitIdentifier, "load app open ad");
+        _MaxLoadAppOpenAd(adUnitIdentifier);
+    }
+
+    [DllImport("__Internal")]
+    private static extern bool _MaxIsAppOpenAdReady(string adUnitIdentifier);
+
+    /// <summary>
+    /// Check if app open ad ad is loaded and ready to be displayed.
+    /// </summary>
+    /// <param name="adUnitIdentifier">Ad unit identifier of the app open ad ad to check if it's ready to be displayed.</param>
+    /// <returns>True if the ad is ready to be displayed</returns>
+    public static bool IsAppOpenAdReady(string adUnitIdentifier)
+    {
+        ValidateAdUnitIdentifier(adUnitIdentifier, "check app open ad loaded");
+        return _MaxIsAppOpenAdReady(adUnitIdentifier);
+    }
+
+    [DllImport("__Internal")]
+    private static extern void _MaxShowAppOpenAd(string adUnitIdentifier, string placement, string customData);
+
+    /// <summary>
+    /// Present loaded app open ad for a given placement to tie ad events to. Note: if the app open ad is not ready to be displayed nothing will happen.
+    /// </summary>
+    /// <param name="adUnitIdentifier">Ad unit identifier of the app open ad to load</param>
+    /// <param name="placement">The placement to tie the showing ad's events to</param>
+    /// <param name="customData">The custom data to tie the showing ad's events to. Maximum size is 8KB.</param>
+    public static void ShowAppOpenAd(string adUnitIdentifier, string placement = null, string customData = null)
+    {
+        ValidateAdUnitIdentifier(adUnitIdentifier, "show app open ad");
+
+        if (IsAppOpenAdReady(adUnitIdentifier))
+        {
+            _MaxShowAppOpenAd(adUnitIdentifier, placement, customData);
+        }
+        else
+        {
+            MaxSdkLogger.UserWarning("Not showing MAX Ads app open ad: ad not ready");
+        }
+    }
+
+    [DllImport("__Internal")]
+    private static extern void _MaxSetAppOpenAdExtraParameter(string adUnitIdentifier, string key, string value);
+
+    /// <summary>
+    /// Set an extra parameter for the ad.
+    /// </summary>
+    /// <param name="adUnitIdentifier">Ad unit identifier of the app open ad to set the extra parameter for.</param>
+    /// <param name="key">The key for the extra parameter.</param>
+    /// <param name="value">The value for the extra parameter.</param>
+    public static void SetAppOpenAdExtraParameter(string adUnitIdentifier, string key, string value)
+    {
+        ValidateAdUnitIdentifier(adUnitIdentifier, "set app open ad extra parameter");
+        _MaxSetAppOpenAdExtraParameter(adUnitIdentifier, key, value);
+    }
+
+    [DllImport("__Internal")]
+    private static extern void _MaxSetAppOpenAdLocalExtraParameter(string adUnitIdentifier, string key, IntPtr value);
+
+    /// <summary>
+    /// Set a local extra parameter for the ad.
+    /// </summary>
+    /// <param name="adUnitIdentifier">Ad unit identifier of the app open ad to set the local extra parameter for.</param>
+    /// <param name="key">The key for the local extra parameter.</param>
+    /// <param name="value">The value for the local extra parameter. Needs to be of type <see cref="IntPtr"/> or <c>null</c></param>
+    public static void SetAppOpenAdLocalExtraParameter(string adUnitIdentifier, string key, object value)
+    {
+        if (value != null && value.GetType() != typeof(IntPtr))
+        {
+            MaxSdkLogger.E("Failed to set local extra parameter. iOS local extra parameters need to be of type IntPtr");
+            return;
+        }
+
+        ValidateAdUnitIdentifier(adUnitIdentifier, "set app open ad local extra parameter");
+
+        var intPtrValue = value == null ? IntPtr.Zero : (IntPtr) value;
+        _MaxSetAppOpenAdLocalExtraParameter(adUnitIdentifier, key, intPtrValue);
     }
 
     #endregion
