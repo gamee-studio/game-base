@@ -31,6 +31,18 @@
         {
             "key": "PLAYFAB_FEATURE",
             "state": true
+        },
+        {
+            "key": "LEVEL_EDITOR_DROP_AREA",
+            "state": true
+        },
+        {
+            "key": "LEVEL_EDITOR_CONFIG",
+            "state": true
+        },
+        {
+            "key": "LEVEL_EDITOR_PICKUP_AREA",
+            "state": true
         }
     ]
 }

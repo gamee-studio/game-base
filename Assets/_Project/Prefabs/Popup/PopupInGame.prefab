@@ -204,13 +204,13 @@ MonoBehaviour:
   PlayOnAwake: 0
   Time: 0.5
   FromScale: {x: 0, y: 0, z: 0}
-  LocalScale: {x: 0, y: 0, z: 0}
+  SaveLocalScale: {x: 0, y: 0, z: 0}
   Strength: 3
   MoveType: 1
   FromPosition: {x: 0, y: 0, z: 0}
   DirectionType: 3
   Offset: 375
-  LocalPostion: {x: 0, y: 0, z: 0}
+  SaveArchorPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &500080215166614254
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,13 +475,13 @@ MonoBehaviour:
   PlayOnAwake: 0
   Time: 0.5
   FromScale: {x: 0, y: 0, z: 0}
-  LocalScale: {x: 0, y: 0, z: 0}
+  SaveLocalScale: {x: 0, y: 0, z: 0}
   Strength: 3
   MoveType: 1
   FromPosition: {x: 0, y: 0, z: 0}
   DirectionType: 2
   Offset: 200
-  LocalPostion: {x: 0, y: 0, z: 0}
+  SaveArchorPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1680069359137271434
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,13 +624,13 @@ MonoBehaviour:
   PlayOnAwake: 0
   Time: 0.5
   FromScale: {x: 0, y: 0, z: 0}
-  LocalScale: {x: 0, y: 0, z: 0}
+  SaveLocalScale: {x: 0, y: 0, z: 0}
   Strength: 3
   MoveType: 1
   FromPosition: {x: 0, y: 0, z: 0}
   DirectionType: 1
   Offset: 200
-  LocalPostion: {x: 0, y: 0, z: 0}
+  SaveArchorPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2646351314242081864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,13 +1045,13 @@ MonoBehaviour:
   PlayOnAwake: 0
   Time: 0.5
   FromScale: {x: 0, y: 0, z: 0}
-  LocalScale: {x: 0, y: 0, z: 0}
+  SaveLocalScale: {x: 0, y: 0, z: 0}
   Strength: 3
   MoveType: 1
   FromPosition: {x: 0, y: 0, z: 0}
   DirectionType: 2
   Offset: 375
-  LocalPostion: {x: 0, y: 0, z: 0}
+  SaveArchorPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &4429355886652026346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,13 +1194,13 @@ MonoBehaviour:
   PlayOnAwake: 0
   Time: 0.5
   FromScale: {x: 0, y: 0, z: 0}
-  LocalScale: {x: 0, y: 0, z: 0}
+  SaveLocalScale: {x: 0, y: 0, z: 0}
   Strength: 3
   MoveType: 1
   FromPosition: {x: 0, y: 0, z: 0}
   DirectionType: 3
   Offset: 200
-  LocalPostion: {x: 0, y: 0, z: 0}
+  SaveArchorPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &4957344726548281664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,13 +1367,13 @@ MonoBehaviour:
   PlayOnAwake: 0
   Time: 0.5
   FromScale: {x: 0, y: 0, z: 0}
-  LocalScale: {x: 0, y: 0, z: 0}
+  SaveLocalScale: {x: 0, y: 0, z: 0}
   Strength: 3
   MoveType: 1
   FromPosition: {x: 0, y: 0, z: 0}
   DirectionType: 0
-  Offset: 200
-  LocalPostion: {x: 0, y: 0, z: 0}
+  Offset: 300
+  SaveArchorPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &5208550979288179814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,13 +1516,13 @@ MonoBehaviour:
   PlayOnAwake: 0
   Time: 0.5
   FromScale: {x: 0, y: 0, z: 0}
-  LocalScale: {x: 0, y: 0, z: 0}
+  SaveLocalScale: {x: 0, y: 0, z: 0}
   Strength: 3
   MoveType: 1
   FromPosition: {x: 0, y: 0, z: 0}
   DirectionType: 1
   Offset: 200
-  LocalPostion: {x: 0, y: 0, z: 0}
+  SaveArchorPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &6281683904878446207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,13 +2024,13 @@ MonoBehaviour:
   PlayOnAwake: 0
   Time: 0.5
   FromScale: {x: 0, y: 0, z: 0}
-  LocalScale: {x: 0, y: 0, z: 0}
+  SaveLocalScale: {x: 0, y: 0, z: 0}
   Strength: 3
   MoveType: 1
   FromPosition: {x: 0, y: 0, z: 0}
   DirectionType: 0
-  Offset: 200
-  LocalPostion: {x: 0, y: 0, z: 0}
+  Offset: 300
+  SaveArchorPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &7370416450938019894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2407,13 +2407,13 @@ MonoBehaviour:
   PlayOnAwake: 0
   Time: 0.5
   FromScale: {x: 0, y: 0, z: 0}
-  LocalScale: {x: 0, y: 0, z: 0}
+  SaveLocalScale: {x: 0, y: 0, z: 0}
   Strength: 3
   MoveType: 1
   FromPosition: {x: 0, y: 0, z: 0}
   DirectionType: 3
   Offset: 200
-  LocalPostion: {x: 0, y: 0, z: 0}
+  SaveArchorPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &9054173132683076706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,10 +2556,10 @@ MonoBehaviour:
   PlayOnAwake: 0
   Time: 0.5
   FromScale: {x: 0, y: 0, z: 0}
-  LocalScale: {x: 0, y: 0, z: 0}
+  SaveLocalScale: {x: 0, y: 0, z: 0}
   Strength: 3
   MoveType: 1
   FromPosition: {x: 0, y: 0, z: 0}
   DirectionType: 2
   Offset: 200
-  LocalPostion: {x: 0, y: 0, z: 0}
+  SaveArchorPosition: {x: 0, y: 0, z: 0}
