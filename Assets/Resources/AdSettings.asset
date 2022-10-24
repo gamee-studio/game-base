@@ -22,7 +22,6 @@ MonoBehaviour:
     enableGDPR: 0
     enableMultipleDex: 1
     currentNetwork: 2
-    useAppOpenAdOfAdmob: 0
   admobSettings:
     enable: 0
     devicesTest: []
@@ -272,9 +271,8 @@ MonoBehaviour:
       androidId: 57b5ef39847bd3fb
       iOSId: 
     appOpenAdUnit:
-      androidId: 
+      androidId: 647628eaeafefde6
       iOSId: 
-      orientation: 1
     rewardedInterstitialAdUnit:
       androidId: 
       iOSId: 
@@ -294,13 +292,13 @@ MonoBehaviour:
         Ios: 4.9.0.0.2
     - Name: CHARTBOOST_NETWORK
       DisplayName: Chartboost
-      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/chartboost-adapter/AppLovin-Chartboost-Adapters-Android-9.1.0.0-iOS-9.1.0.0.unitypackage
+      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/chartboost-adapter/AppLovin-Chartboost-Adapters-Android-9.1.1.0-iOS-9.1.0.0.unitypackage
       DependenciesFilePath: MaxSdk/Mediation/Chartboost/Editor/Dependencies.xml
       PluginFilePaths:
       - MaxSdk/Mediation/Chartboost
       LatestVersions:
-        Unity: android_9.1.0.0_ios_9.1.0.0
-        Android: 9.1.0.0
+        Unity: android_9.1.1.0_ios_9.1.0.0
+        Android: 9.1.1.0
         Ios: 9.1.0.0
     - Name: FACEBOOK_MEDIATE
       DisplayName: Facebook
@@ -314,56 +312,56 @@ MonoBehaviour:
         Ios: 6.12.0.0
     - Name: ADMOB_NETWORK
       DisplayName: Google AdMob
-      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/google-adapter/AppLovin-Google-Adapters-Android-21.3.0.0-iOS-9.11.0.3.unitypackage
+      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/google-adapter/AppLovin-Google-Adapters-Android-21.3.0.1-iOS-9.11.0.4.unitypackage
       DependenciesFilePath: MaxSdk/Mediation/Google/Editor/Dependencies.xml
       PluginFilePaths:
       - MaxSdk/Mediation/Google
       - Plugins/Android/MaxMediationGoogle
       - Plugins/Android/MaxMediationGoogle.androidlib
       LatestVersions:
-        Unity: android_21.3.0.0_ios_9.11.0.3
-        Android: 21.3.0.0
-        Ios: 9.11.0.3
+        Unity: android_21.3.0.1_ios_9.11.0.4
+        Android: 21.3.0.1
+        Ios: 9.11.0.4
     - Name: INMOBI_NETWORK
       DisplayName: InMobi
-      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/inmobi-adapter/AppLovin-InMobi-Adapters-Android-10.0.9.1-iOS-10.1.0.1.unitypackage
+      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/inmobi-adapter/AppLovin-InMobi-Adapters-Android-10.0.9.2-iOS-10.1.0.2.unitypackage
       DependenciesFilePath: MaxSdk/Mediation/InMobi/Editor/Dependencies.xml
       PluginFilePaths:
       - MaxSdk/Mediation/InMobi
       - MaxSdk/Mediation/InMobi
       LatestVersions:
-        Unity: android_10.0.9.1_ios_10.1.0.1
-        Android: 10.0.9.1
-        Ios: 10.1.0.1
+        Unity: android_10.0.9.2_ios_10.1.0.2
+        Android: 10.0.9.2
+        Ios: 10.1.0.2
     - Name: IRONSOURCE_NETWORK
       DisplayName: IronSource
-      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/ironsource-adapter/AppLovin-IronSource-Adapters-Android-7.2.4.1.0-iOS-7.2.5.0.0.unitypackage
+      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/ironsource-adapter/AppLovin-IronSource-Adapters-Android-7.2.5.0.0-iOS-7.2.5.1.0.unitypackage
       DependenciesFilePath: MaxSdk/Mediation/IronSource/Editor/Dependencies.xml
       PluginFilePaths:
       - MaxSdk/Mediation/IronSource
       LatestVersions:
-        Unity: android_7.2.4.1.0_ios_7.2.5.0.0
-        Android: 7.2.4.1.0
-        Ios: 7.2.5.0.0
+        Unity: android_7.2.5.0.0_ios_7.2.5.1.0
+        Android: 7.2.5.0.0
+        Ios: 7.2.5.1.0
     - Name: MINTEGRAL_NETWORK
       DisplayName: Mintegral
-      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/mintegral-adapter/AppLovin-Mintegral-Adapters-Android-16.2.51.0-iOS-7.2.3.0.1.unitypackage
+      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/mintegral-adapter/AppLovin-Mintegral-Adapters-Android-16.2.51.0-iOS-7.2.4.0.0.unitypackage
       DependenciesFilePath: MaxSdk/Mediation/Mintegral/Editor/Dependencies.xml
       PluginFilePaths:
       - MaxSdk/Mediation/Mintegral
       LatestVersions:
-        Unity: android_16.2.51.0_ios_7.2.3.0.1
+        Unity: android_16.2.51.0_ios_7.2.4.0.0
         Android: 16.2.51.0
-        Ios: 7.2.3.0.1
+        Ios: 7.2.4.0.0
     - Name: TIKTOK_NETWORK
       DisplayName: Pangle
-      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/bytedance-adapter/AppLovin-ByteDance-Adapters-Android-4.7.0.7.0-iOS-4.7.0.4.0.unitypackage
+      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/bytedance-adapter/AppLovin-ByteDance-Adapters-Android-4.7.0.8.0-iOS-4.7.0.4.0.unitypackage
       DependenciesFilePath: MaxSdk/Mediation/ByteDance/Editor/Dependencies.xml
       PluginFilePaths:
       - MaxSdk/Mediation/ByteDance
       LatestVersions:
-        Unity: android_4.7.0.7.0_ios_4.7.0.4.0
-        Android: 4.7.0.7.0
+        Unity: android_4.7.0.8.0_ios_4.7.0.4.0
+        Android: 4.7.0.8.0
         Ios: 4.7.0.4.0
     - Name: UNITY_NETWORK
       DisplayName: Unity Ads
@@ -426,6 +424,19 @@ MonoBehaviour:
         Unity: 
         Android: 
         Ios: 
+    editorImportingSdk:
+      name: APPLOVIN_MAX_SDK
+      displayName: AppLovin
+      versions:
+      - 5.5.5
+      path: https://github.com/gamee-studio/ads/releases/download/1.0.21/MaxSdk-v{0}.unitypackage
+      dependenciesFilePath: MaxSdk_version-
+      pluginFilePath:
+      - MaxSdk
+      lastVersion:
+        android: 5.5.5
+        ios: 5.5.5
+        unity: 5.5.5
     editorImportingListNetwork: []
     editorInstallAllFlag: 0
   ironSourceSettings:

@@ -5,7 +5,7 @@
 
 #import "MAUnityAdManager.h"
 
-#define VERSION @"5.3.1"
+#define VERSION @"5.5.5"
 
 #define KEY_WINDOW [UIApplication sharedApplication].keyWindow
 #define DEVICE_SPECIFIC_ADVIEW_AD_FORMAT ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) ? MAAdFormat.leader : MAAdFormat.banner
@@ -49,6 +49,7 @@ extern "C" {
 
 // Fullscreen Ad Fields
 @property (nonatomic, strong) NSMutableDictionary<NSString *, MAInterstitialAd *> *interstitials;
+@property (nonatomic, strong) NSMutableDictionary<NSString *, MAAppOpenAd *> *appOpenAds;
 @property (nonatomic, strong) NSMutableDictionary<NSString *, MARewardedAd *> *rewardedAds;
 @property (nonatomic, strong) NSMutableDictionary<NSString *, MARewardedInterstitialAd *> *rewardedInterstitialAds;
 
@@ -67,6 +68,7 @@ extern "C" {
 @property (nonatomic, strong) NSMutableDictionary<NSString *, NSString *> *adViewCustomDataToSetAfterCreate;
 @property (nonatomic, strong) NSMutableArray<NSString *> *adUnitIdentifiersToShowAfterCreate;
 @property (nonatomic, strong) NSMutableSet<NSString *> *disabledAdaptiveBannerAdUnitIdentifiers;
+@property (nonatomic, strong) NSMutableSet<NSString *> *disabledAutoRefreshAdViewAdUnitIdentifiers;
 @property (nonatomic, strong) UIView *safeAreaBackground;
 @property (nonatomic, strong, nullable) UIColor *publisherBannerBackgroundColor;
 
@@ -107,6 +109,7 @@ static ALUnityBackgroundCallback backgroundCallback;
     if ( self )
     {
         self.interstitials = [NSMutableDictionary dictionaryWithCapacity: 2];
+        self.appOpenAds = [NSMutableDictionary dictionaryWithCapacity: 2];
         self.rewardedAds = [NSMutableDictionary dictionaryWithCapacity: 2];
         self.rewardedInterstitialAds = [NSMutableDictionary dictionaryWithCapacity: 2];
         self.adViews = [NSMutableDictionary dictionaryWithCapacity: 2];
@@ -123,6 +126,7 @@ static ALUnityBackgroundCallback backgroundCallback;
         self.adViewCustomDataToSetAfterCreate = [NSMutableDictionary dictionaryWithCapacity: 1];
         self.adUnitIdentifiersToShowAfterCreate = [NSMutableArray arrayWithCapacity: 2];
         self.disabledAdaptiveBannerAdUnitIdentifiers = [NSMutableSet setWithCapacity: 2];
+        self.disabledAutoRefreshAdViewAdUnitIdentifiers = [NSMutableSet setWithCapacity: 2];
         self.adInfoDict = [NSMutableDictionary dictionary];
         self.adInfoDictLock = [[NSObject alloc] init];
         
@@ -203,6 +207,11 @@ static ALUnityBackgroundCallback backgroundCallback;
 - (void)createBannerWithAdUnitIdentifier:(NSString *)adUnitIdentifier x:(CGFloat)xOffset y:(CGFloat)yOffset
 {
     [self createAdViewWithAdUnitIdentifier: adUnitIdentifier adFormat: [self adViewAdFormatForAdUnitIdentifier: adUnitIdentifier] atPosition: DEFAULT_AD_VIEW_POSITION withOffset: CGPointMake(xOffset, yOffset)];
+}
+
+- (void)loadBannerWithAdUnitIdentifier:(NSString *)adUnitIdentifier 
+{
+    [self loadAdViewWithAdUnitIdentifier: adUnitIdentifier adFormat: [self adViewAdFormatForAdUnitIdentifier: adUnitIdentifier]];
 }
 
 - (void)setBannerBackgroundColorForAdUnitIdentifier:(NSString *)adUnitIdentifier hexColorCode:(NSString *)hexColorCode
@@ -292,6 +301,11 @@ static ALUnityBackgroundCallback backgroundCallback;
     [self createAdViewWithAdUnitIdentifier: adUnitIdentifier adFormat: MAAdFormat.mrec atPosition: DEFAULT_AD_VIEW_POSITION withOffset: CGPointMake(xOffset, yOffset)];
 }
 
+- (void)loadMRecWithAdUnitIdentifier:(NSString *)adUnitIdentifier
+{
+    [self loadAdViewWithAdUnitIdentifier: adUnitIdentifier adFormat: MAAdFormat.mrec];
+}
+
 - (void)setMRecPlacement:(nullable NSString *)placement forAdUnitIdentifier:(NSString *)adUnitIdentifier
 {
     [self setAdViewPlacement: placement forAdUnitIdentifier: adUnitIdentifier adFormat: MAAdFormat.mrec];
@@ -302,9 +316,9 @@ static ALUnityBackgroundCallback backgroundCallback;
     [self startAdViewAutoRefreshForAdUnitIdentifier: adUnitIdentifier adFormat: MAAdFormat.mrec];
 }
 
-- (void)stopMRecAutoRefreshForAdUnitIdentifier:(NSString *)adUnitIdentifer
+- (void)stopMRecAutoRefreshForAdUnitIdentifier:(NSString *)adUnitIdentifier
 {
-    [self stopAdViewAutoRefreshForAdUnitIdentifier: adUnitIdentifer adFormat: MAAdFormat.mrec];
+    [self stopAdViewAutoRefreshForAdUnitIdentifier: adUnitIdentifier adFormat: MAAdFormat.mrec];
 }
 
 - (void)updateMRecPosition:(NSString *)mrecPosition forAdUnitIdentifier:(NSString *)adUnitIdentifier
@@ -427,6 +441,38 @@ static ALUnityBackgroundCallback backgroundCallback;
     [interstitial setLocalExtraParameterForKey: key value: value];
 }
 
+#pragma mark - App Open Ads
+
+- (void)loadAppOpenAdWithAdUnitIdentifier:(NSString *)adUnitIdentifier
+{
+    MAAppOpenAd *appOpenAd = [self retrieveAppOpenAdForAdUnitIdentifier: adUnitIdentifier];
+    [appOpenAd loadAd];
+}
+
+- (BOOL)isAppOpenAdReadyWithAdUnitIdentifier:(NSString *)adUnitIdentifier
+{
+    MAAppOpenAd *appOpenAd = [self retrieveAppOpenAdForAdUnitIdentifier: adUnitIdentifier];
+    return [appOpenAd isReady];
+}
+
+- (void)showAppOpenAdWithAdUnitIdentifier:(NSString *)adUnitIdentifier placement:(nullable NSString *)placement customData:(nullable NSString *)customData
+{
+    MAAppOpenAd *appOpenAd = [self retrieveAppOpenAdForAdUnitIdentifier: adUnitIdentifier];
+    [appOpenAd showAdForPlacement: placement customData: customData];
+}
+
+- (void)setAppOpenAdExtraParameterForAdUnitIdentifier:(NSString *)adUnitIdentifier key:(NSString *)key value:(nullable NSString *)value
+{
+    MAAppOpenAd *appOpenAd = [self retrieveAppOpenAdForAdUnitIdentifier: adUnitIdentifier];
+    [appOpenAd setExtraParameterForKey: key value: value];
+}
+
+- (void)setAppOpenAdLocalExtraParameterForAdUnitIdentifier:(NSString *)adUnitIdentifier key:(NSString *)key value:(nullable id)value
+{
+    MAAppOpenAd *appOpenAd = [self retrieveAppOpenAdForAdUnitIdentifier: adUnitIdentifier];
+    [appOpenAd setLocalExtraParameterForKey: key value: value];
+}
+
 #pragma mark - Rewarded
 
 - (void)loadRewardedAdWithAdUnitIdentifier:(NSString *)adUnitIdentifier
@@ -521,7 +567,8 @@ static ALUnityBackgroundCallback backgroundCallback;
              @"placement" : ad.placement ?: @"",
              @"revenue" : [@(ad.revenue) stringValue],
              @"revenuePrecision" : ad.revenuePrecision,
-             @"waterfallInfo" : [self createAdWaterfallInfo: ad.waterfall]};
+             @"waterfallInfo" : [self createAdWaterfallInfo: ad.waterfall],
+             @"dspName" : ad.DSPName ?: @""};
 }
 
 #pragma mark - Waterfall Information
@@ -635,6 +682,10 @@ static ALUnityBackgroundCallback backgroundCallback;
     {
         name = @"OnInterstitialLoadedEvent";
     }
+    else if ( MAAdFormat.appOpen == adFormat )
+    {
+        name = @"OnAppOpenAdLoadedEvent";
+    }
     else if ( MAAdFormat.rewarded == adFormat )
     {
         name = @"OnRewardedAdLoadedEvent";
@@ -687,6 +738,10 @@ static ALUnityBackgroundCallback backgroundCallback;
     {
         name = @"OnInterstitialLoadFailedEvent";
     }
+    else if ( self.appOpenAds[adUnitIdentifier] )
+    {
+        name = @"OnAppOpenAdLoadFailedEvent";
+    }
     else if ( self.rewardedAds[adUnitIdentifier] )
     {
         name = @"OnRewardedAdLoadFailedEvent";
@@ -734,6 +789,10 @@ static ALUnityBackgroundCallback backgroundCallback;
     {
         name = @"OnInterstitialClickedEvent";
     }
+    else if ( MAAdFormat.appOpen == adFormat )
+    {
+        name = @"OnAppOpenAdClickedEvent";
+    }
     else if ( MAAdFormat.rewarded == adFormat )
     {
         name = @"OnRewardedAdClickedEvent";
@@ -767,6 +826,10 @@ static ALUnityBackgroundCallback backgroundCallback;
     {
         name = @"OnInterstitialDisplayedEvent";
     }
+    else if ( MAAdFormat.appOpen == adFormat )
+    {
+        name = @"OnAppOpenAdDisplayedEvent";
+    }
     else if ( MAAdFormat.rewarded == adFormat )
     {
         name = @"OnRewardedAdDisplayedEvent";
@@ -791,6 +854,10 @@ static ALUnityBackgroundCallback backgroundCallback;
     {
         name = @"OnInterstitialAdFailedToDisplayEvent";
     }
+    else if ( MAAdFormat.appOpen == adFormat )
+    {
+        name = @"OnAppOpenAdFailedToDisplayEvent";
+    }
     else if ( MAAdFormat.rewarded == adFormat )
     {
         name = @"OnRewardedAdFailedToDisplayEvent";
@@ -803,6 +870,8 @@ static ALUnityBackgroundCallback backgroundCallback;
     NSMutableDictionary<NSString *, id> *args = [self defaultAdEventParametersForName: name withAd: ad];
     args[@"errorCode"] = [@(error.code) stringValue];
     args[@"errorMessage"] = error.message;
+    args[@"mediatedNetworkErrorCode"] = [@(error.mediatedNetworkErrorCode) stringValue];
+    args[@"mediatedNetworkErrorMessage"] = error.mediatedNetworkErrorMessage;
     args[@"waterfallInfo"] = [self createAdWaterfallInfo: error.waterfall];
     [MAUnityAdManager forwardUnityEventWithArgs: args];
 }
@@ -821,6 +890,10 @@ static ALUnityBackgroundCallback backgroundCallback;
     if ( MAAdFormat.interstitial == adFormat )
     {
         name = @"OnInterstitialHiddenEvent";
+    }
+    else if ( MAAdFormat.appOpen == adFormat )
+    {
+        name = @"OnAppOpenAdHiddenEvent";
     }
     else if ( MAAdFormat.rewarded == adFormat )
     {
@@ -949,6 +1022,10 @@ static ALUnityBackgroundCallback backgroundCallback;
     {
         name = @"OnInterstitialAdRevenuePaidEvent";
     }
+    else if ( MAAdFormat.appOpen == adFormat )
+    {
+        name = @"OnAppOpenAdRevenuePaidEvent";
+    }
     else if ( MAAdFormat.rewarded == adFormat )
     {
         name = @"OnRewardedAdRevenuePaidEvent";
@@ -1037,12 +1114,44 @@ static ALUnityBackgroundCallback backgroundCallback;
         
         [adView loadAd];
         
+        // Disable auto-refresh if publisher sets it before creating the ad view.
+        if ( [self.disabledAutoRefreshAdViewAdUnitIdentifiers containsObject: adUnitIdentifier] )
+        {
+            [adView stopAutoRefresh];
+        }
+        
         // The publisher may have requested to show the banner before it was created. Now that the banner is created, show it.
         if ( [self.adUnitIdentifiersToShowAfterCreate containsObject: adUnitIdentifier] )
         {
             [self showAdViewWithAdUnitIdentifier: adUnitIdentifier adFormat: adFormat];
             [self.adUnitIdentifiersToShowAfterCreate removeObject: adUnitIdentifier];
         }
+    });
+}
+
+- (void)loadAdViewWithAdUnitIdentifier:(NSString *)adUnitIdentifier adFormat:(MAAdFormat *)adFormat
+{
+    max_unity_dispatch_on_main_thread(^{
+        MAAdView *adView = [self retrieveAdViewForAdUnitIdentifier: adUnitIdentifier adFormat: adFormat];
+        if ( !adView )
+        {
+            [self log: @"%@ does not exist for ad unit identifier %@.", adFormat.label, adUnitIdentifier];
+            return;
+        }
+        
+        if ( ![self.disabledAutoRefreshAdViewAdUnitIdentifiers containsObject: adUnitIdentifier] )
+        {
+            if ( [adView isHidden] )
+            {
+                [self log: @"Auto-refresh will resume when the %@ ad is shown. You should only call LoadBanner() or LoadMRec() if you explicitly pause auto-refresh and want to manually load an ad.", adFormat.label];
+                return;
+            }
+            
+            [self log: @"You must stop auto-refresh if you want to manually load %@ ads.", adFormat.label];
+            return;
+        }
+        
+        [adView loadAd];
     });
 }
 
@@ -1079,6 +1188,8 @@ static ALUnityBackgroundCallback backgroundCallback;
     max_unity_dispatch_on_main_thread(^{
         [self log: @"Starting %@ auto refresh for ad unit identifier \"%@\"", adFormat.label, adUnitIdentifier];
         
+        [self.disabledAutoRefreshAdViewAdUnitIdentifiers removeObject: adUnitIdentifier];
+        
         MAAdView *adView = [self retrieveAdViewForAdUnitIdentifier: adUnitIdentifier adFormat: adFormat];
         if ( !adView )
         {
@@ -1094,6 +1205,8 @@ static ALUnityBackgroundCallback backgroundCallback;
 {
     max_unity_dispatch_on_main_thread(^{
         [self log: @"Stopping %@ auto refresh for ad unit identifier \"%@\"", adFormat.label, adUnitIdentifier];
+        
+        [self.disabledAutoRefreshAdViewAdUnitIdentifiers addObject: adUnitIdentifier];
         
         MAAdView *adView = [self retrieveAdViewForAdUnitIdentifier: adUnitIdentifier adFormat: adFormat];
         if ( !adView )
@@ -1269,7 +1382,10 @@ static ALUnityBackgroundCallback backgroundCallback;
         self.safeAreaBackground.hidden = NO;
         view.hidden = NO;
         
-        [view startAutoRefresh];
+        if ( ![self.disabledAutoRefreshAdViewAdUnitIdentifiers containsObject: adUnitIdentifier] )
+        {
+            [view startAutoRefresh];
+        }
     });
 }
 
@@ -1359,6 +1475,21 @@ static ALUnityBackgroundCallback backgroundCallback;
     return result;
 }
 
+- (MAAppOpenAd *)retrieveAppOpenAdForAdUnitIdentifier:(NSString *)adUnitIdentifier
+{
+    MAAppOpenAd *result = self.appOpenAds[adUnitIdentifier];
+    if ( !result )
+    {
+        result = [[MAAppOpenAd alloc] initWithAdUnitIdentifier: adUnitIdentifier sdk: self.sdk];
+        result.delegate = self;
+        result.revenueDelegate = self;
+        
+        self.appOpenAds[adUnitIdentifier] = result;
+    }
+    
+    return result;
+}
+
 - (MARewardedAd *)retrieveRewardedAdForAdUnitIdentifier:(NSString *)adUnitIdentifier
 {
     MARewardedAd *result = self.rewardedAds[adUnitIdentifier];
@@ -1412,6 +1543,9 @@ static ALUnityBackgroundCallback backgroundCallback;
         
         UIViewController *rootViewController = [self unityViewController];
         [rootViewController.view addSubview: result];
+        
+        // Allow pubs to pause auto-refresh immediately, by default.
+        [result setExtraParameterForKey: @"allow_pause_auto_refresh_immediately" value: @"true"];
     }
     
     return result;

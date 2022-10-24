@@ -42,9 +42,11 @@ public class MaxSdkUnityEditor : MaxSdkBase
         get { return MaxUserServiceUnityEditor.Instance; }
     }
 
-    static MaxSdkUnityEditor()
+    [RuntimeInitializeOnLoadMethod]
+    public static void InitializeMaxSdkUnityEditorOnLoad()
     {
-        InitCallbacks();
+        // Unity destroys the stub banners each time the editor exits play mode, but the StubBanners stays in memory if Enter Play Mode settings is enabled.
+        StubBanners.Clear();
     }
 
     /// <summary>
@@ -337,6 +339,23 @@ public class MaxSdkUnityEditor : MaxSdkBase
         StubBanners.Add(adUnitIdentifier, stubBanner);
 #endif
     }
+    
+    /// <summary>
+    /// Load a new banner ad.
+    /// NOTE: The <see cref="CreateBanner()"/> method loads the first banner ad and initiates an automated banner refresh process.
+    /// You only need to call this method if you pause banner refresh. 
+    /// </summary>
+    /// <param name="adUnitIdentifier">Ad unit identifier of the banner to load</param>
+    public static void LoadBanner(string adUnitIdentifier)
+    {
+        ValidateAdUnitIdentifier(adUnitIdentifier, "load banner");
+
+        ExecuteWithDelay(1f, () =>
+        {
+            var eventProps = Json.Serialize(CreateBaseEventPropsDictionary("OnBannerAdLoadedEvent", adUnitIdentifier));
+            MaxSdkCallbacks.Instance.ForwardEvent(eventProps);
+        });
+    }
 
     /// <summary>
     /// Set the banner placement for an ad unit identifier to tie the future ad events to.
@@ -544,6 +563,23 @@ public class MaxSdkUnityEditor : MaxSdkBase
     {
         ValidateAdUnitIdentifier(adUnitIdentifier, "create MREC");
         RequestAdUnit(adUnitIdentifier);
+    }
+    
+    /// <summary>
+    /// Load a new MREC ad.
+    /// NOTE: The <see cref="CreateMRec()"/> method loads the first MREC ad and initiates an automated MREC refresh process.
+    /// You only need to call this method if you pause MREC refresh. 
+    /// </summary>
+    /// <param name="adUnitIdentifier">Ad unit identifier of the MREC to load</param>
+    public static void LoadMRec(string adUnitIdentifier)
+    {
+        ValidateAdUnitIdentifier(adUnitIdentifier, "load MREC");
+
+        ExecuteWithDelay(1f, () =>
+        {
+            var eventProps = Json.Serialize(CreateBaseEventPropsDictionary("OnMRecAdLoadedEvent", adUnitIdentifier));
+            MaxSdkCallbacks.Instance.ForwardEvent(eventProps);
+        });
     }
 
     /// <summary>
@@ -882,6 +918,123 @@ public class MaxSdkUnityEditor : MaxSdkBase
     public static void SetInterstitialLocalExtraParameter(string adUnitIdentifier, string key, object value)
     {
         ValidateAdUnitIdentifier(adUnitIdentifier, "set interstitial local extra parameter");
+    }
+
+    #endregion
+
+    #region App Open Ads
+
+    /// <summary>
+    /// Start loading an app open ad.
+    /// </summary>
+    /// <param name="adUnitIdentifier">Ad unit identifier of the app open ad to load</param>
+    public static void LoadAppOpenAd(string adUnitIdentifier)
+    {
+        ValidateAdUnitIdentifier(adUnitIdentifier, "load app open ad");
+        RequestAdUnit(adUnitIdentifier);
+
+        ExecuteWithDelay(1f, () =>
+        {
+            AddReadyAdUnit(adUnitIdentifier);
+
+            var eventProps = Json.Serialize(CreateBaseEventPropsDictionary("OnAppOpenAdLoadedEvent", adUnitIdentifier));
+            MaxSdkCallbacks.Instance.ForwardEvent(eventProps);
+        });
+    }
+
+    /// <summary>
+    /// Check if app open ad ad is loaded and ready to be displayed.
+    /// </summary>
+    /// <param name="adUnitIdentifier">Ad unit identifier of the app open ad to load</param>
+    /// <returns>True if the ad is ready to be displayed</returns>
+    public static bool IsAppOpenAdReady(string adUnitIdentifier)
+    {
+        ValidateAdUnitIdentifier(adUnitIdentifier, "check app open ad loaded");
+
+        if (!IsAdUnitRequested(adUnitIdentifier))
+        {
+            MaxSdkLogger.UserWarning("App Open Ad '" + adUnitIdentifier +
+                                     "' was not requested, can not check if it is loaded");
+            return false;
+        }
+
+        return IsAdUnitReady(adUnitIdentifier);
+    }
+
+    /// <summary>
+    /// Present loaded app open ad for a given placement to tie ad events to. Note: if the app open ad is not ready to be displayed nothing will happen.
+    /// </summary>
+    /// <param name="adUnitIdentifier">Ad unit identifier of the app open ad to load</param>
+    /// <param name="placement">The placement to tie the showing ad's events to</param>
+    /// <param name="customData">The custom data to tie the showing ad's events to. Maximum size is 8KB.</param>
+    public static void ShowAppOpenAd(string adUnitIdentifier, string placement = null, string customData = null)
+    {
+        ValidateAdUnitIdentifier(adUnitIdentifier, "show app open ad");
+
+        if (!IsAdUnitRequested(adUnitIdentifier))
+        {
+            MaxSdkLogger.UserWarning(
+                "App Open Ad '" + adUnitIdentifier + "' was not requested, can not show it");
+            return;
+        }
+
+        if (!IsAppOpenAdReady(adUnitIdentifier))
+        {
+            MaxSdkLogger.UserWarning("App Open Ad '" + adUnitIdentifier + "' is not ready, please check IsAppOpenAdReady() before showing.");
+            return;
+        }
+
+        RemoveReadyAdUnit(adUnitIdentifier);
+
+        if (_showStubAds)
+        {
+            ShowStubAppOpenAd(adUnitIdentifier);
+        }
+    }
+
+    private static void ShowStubAppOpenAd(string adUnitIdentifier)
+    {
+#if UNITY_EDITOR
+        var prefabPath = MaxSdkUtils.GetAssetPathForExportPath("MaxSdk/Prefabs/Interstitial.prefab");
+        var appOpenAdPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+        var stubAppOpenAd = Object.Instantiate(appOpenAdPrefab, Vector3.zero, Quaternion.identity);
+        var appOpenAdText = GameObject.Find("MaxInterstitialTitle").GetComponent<Text>();
+        var closeButton = GameObject.Find("MaxInterstitialCloseButton").GetComponent<Button>();
+        Object.DontDestroyOnLoad(stubAppOpenAd);
+
+        appOpenAdText.text = "MAX App Open Ad:\n" + adUnitIdentifier;
+        closeButton.onClick.AddListener(() =>
+        {
+            var adHiddenEventProps = Json.Serialize(CreateBaseEventPropsDictionary("OnAppOpenAdHiddenEvent", adUnitIdentifier));
+            MaxSdkCallbacks.Instance.ForwardEvent(adHiddenEventProps);
+            Object.Destroy(stubAppOpenAd);
+        });
+
+        var adDisplayedEventProps = Json.Serialize(CreateBaseEventPropsDictionary("OnAppOpenAdDisplayedEvent", adUnitIdentifier));
+        MaxSdkCallbacks.Instance.ForwardEvent(adDisplayedEventProps);
+#endif
+    }
+
+    /// <summary>
+    /// Set an extra parameter for the ad.
+    /// </summary>
+    /// <param name="adUnitIdentifier">Ad unit identifier of the app open ad to set the extra parameter for.</param>
+    /// <param name="key">The key for the extra parameter.</param>
+    /// <param name="value">The value for the extra parameter.</param>
+    public static void SetAppOpenAdExtraParameter(string adUnitIdentifier, string key, string value)
+    {
+        ValidateAdUnitIdentifier(adUnitIdentifier, "set app open ad extra parameter");
+    }
+
+    /// <summary>
+    /// Set a local extra parameter for the ad.
+    /// </summary>
+    /// <param name="adUnitIdentifier">Ad unit identifier of the app open ad to set the local extra parameter for.</param>
+    /// <param name="key">The key for the local extra parameter.</param>
+    /// <param name="value">The value for the local extra parameter.</param>
+    public static void SetAppOpenAdLocalExtraParameter(string adUnitIdentifier, string key, object value)
+    {
+        ValidateAdUnitIdentifier(adUnitIdentifier, "set app open ad local extra parameter");
     }
 
     #endregion

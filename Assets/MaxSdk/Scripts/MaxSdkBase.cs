@@ -204,6 +204,11 @@ public abstract class MaxSdkBase
         AdLoadFailed = -5001,
 
         /// <summary>
+        /// This error code represents an error that was encountered when showing an ad.
+        /// </summary>
+        AdDisplayFailed = -4205,
+
+        /// <summary>
         /// This error code indicates that the ad request failed due to a generic network error. See the message field in the error object for more details.
         /// </summary>
         NetworkError = -1000,
@@ -274,6 +279,7 @@ public abstract class MaxSdkBase
         public double Revenue { get; private set; }
         public string RevenuePrecision { get; private set; }
         public WaterfallInfo WaterfallInfo { get; private set; }
+        public string DspName { get; private set; }
 
         public AdInfo(IDictionary<string, object> adInfoDictionary)
         {
@@ -286,6 +292,7 @@ public abstract class MaxSdkBase
             Revenue = MaxSdkUtils.GetDoubleFromDictionary(adInfoDictionary, "revenue", -1);
             RevenuePrecision = MaxSdkUtils.GetStringFromDictionary(adInfoDictionary, "revenuePrecision");
             WaterfallInfo = new WaterfallInfo(MaxSdkUtils.GetDictionaryFromDictionary(adInfoDictionary, "waterfallInfo", new Dictionary<string, object>()));
+            DspName = MaxSdkUtils.GetStringFromDictionary(adInfoDictionary, "dspName");
         }
 
         public override string ToString()
@@ -297,7 +304,8 @@ public abstract class MaxSdkBase
                    ", creativeIdentifier: " + CreativeIdentifier +
                    ", placement: " + Placement +
                    ", revenue: " + Revenue +
-                   ", revenuePrecision: " + RevenuePrecision + "]";
+                   ", revenuePrecision: " + RevenuePrecision +
+                   ", dspName: " + DspName + "]";
         }
     }
 
@@ -362,17 +370,17 @@ public abstract class MaxSdkBase
 
         public override string ToString()
         {
-            var stringBuilder = new StringBuilder("[NetworkResponseInfo: adLoadState = " + AdLoadState +
-                                                  ", mediatedNetwork = " + MediatedNetwork +
-                                                  ", credentials = " + Credentials);
+            var stringBuilder = new StringBuilder("[NetworkResponseInfo: adLoadState = ").Append(AdLoadState);
+            stringBuilder.Append(", mediatedNetwork = ").Append(MediatedNetwork);
+            stringBuilder.Append(", credentials = ").Append(Credentials);
 
             switch (AdLoadState)
             {
                 case MaxAdLoadState.FailedToLoad:
-                    stringBuilder.Append(", error = " + Error);
+                    stringBuilder.Append(", error = ").Append(Error);
                     break;
                 case MaxAdLoadState.AdLoaded:
-                    stringBuilder.Append(", latency = " + LatencyMillis);
+                    stringBuilder.Append(", latency = ").Append(LatencyMillis);
                     break;
             }
 
@@ -409,22 +417,33 @@ public abstract class MaxSdkBase
     {
         public ErrorCode Code { get; private set; }
         public string Message { get; private set; }
+        public int MediatedNetworkErrorCode { get; private set; }
+        public string MediatedNetworkErrorMessage { get; private set; }
         public string AdLoadFailureInfo { get; private set; }
         public WaterfallInfo WaterfallInfo { get; private set; }
 
         public ErrorInfo(IDictionary<string, object> errorInfoDictionary)
         {
-            Message = MaxSdkUtils.GetStringFromDictionary(errorInfoDictionary, "errorMessage", "");
-            AdLoadFailureInfo = MaxSdkUtils.GetStringFromDictionary(errorInfoDictionary, "adLoadFailureInfo", "");
             Code = (ErrorCode) MaxSdkUtils.GetIntFromDictionary(errorInfoDictionary, "errorCode", -1);
+            Message = MaxSdkUtils.GetStringFromDictionary(errorInfoDictionary, "errorMessage", "");
+            MediatedNetworkErrorCode = MaxSdkUtils.GetIntFromDictionary(errorInfoDictionary, "mediatedNetworkErrorCode", (int) ErrorCode.Unspecified);
+            MediatedNetworkErrorMessage = MaxSdkUtils.GetStringFromDictionary(errorInfoDictionary, "mediatedNetworkErrorMessage", "");
+            AdLoadFailureInfo = MaxSdkUtils.GetStringFromDictionary(errorInfoDictionary, "adLoadFailureInfo", "");
             WaterfallInfo = new WaterfallInfo(MaxSdkUtils.GetDictionaryFromDictionary(errorInfoDictionary, "waterfallInfo", new Dictionary<string, object>()));
         }
 
         public override string ToString()
         {
-            return "[ErrorInfo code: " + Code +
-                   ", message: " + Message +
-                   ", adLoadFailureInfo: " + AdLoadFailureInfo + "]";
+            var stringbuilder = new StringBuilder("[ErrorInfo code: ").Append(Code);
+            stringbuilder.Append(", message: ").Append(Message);
+
+            if (Code == ErrorCode.AdDisplayFailed)
+            {
+                stringbuilder.Append(", mediatedNetworkCode: ").Append(MediatedNetworkErrorCode);
+                stringbuilder.Append(", mediatedNetworkMessage: ").Append(MediatedNetworkErrorMessage);
+            }
+
+            return stringbuilder.Append(", adLoadFailureInfo: ").Append(AdLoadFailureInfo).Append("]").ToString();
         }
     }
 

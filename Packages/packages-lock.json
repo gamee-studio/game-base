@@ -15,15 +15,15 @@
       "hash": "429ff2dd09264fd091ed3005c7a4c247f118c7ae"
     },
     "com.gamee.ads": {
-      "version": "https://github.com/gamee-studio/ads.git?path=Assets/_Root#1.0.19",
+      "version": "https://github.com/gamee-studio/ads.git?path=Assets/_Root",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.0.2",
-        "com.unity.sharp-zip-lib": "1.2.2-preview.2",
+        "com.unity.sharp-zip-lib": "1.3.2-preview",
         "com.unity.ads.ios-support": "1.2.0"
       },
-      "hash": "7a96f88480eb059fa6068b391372a151a0ef19fa"
+      "hash": "6cf2c0ca85bdbb5888d8c5a4381052c4fdce8e53"
     },
     "com.gamee.iap": {
       "version": "https://github.com/gamee-studio/iap.git?path=Assets/_Root",
@@ -42,31 +42,31 @@
       "hash": "8479d378666d8af0e30fc0308df447196857659d"
     },
     "com.google.firebase.analytics": {
-      "version": "https://github.com/snorluxe/firebase-analytics.git?path=Assets/_Root#9.6.0",
+      "version": "https://github.com/snorluxe/firebase-analytics.git?path=Assets/_Root#10.0.1",
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.google.firebase.app": "9.6.0"
+        "com.google.firebase.app": "10.0.1"
       },
-      "hash": "7d56cdfc9c68062d5dc67a58b34e30eee3af7bfc"
+      "hash": "c00d406af7851d3a7592aa5629039e275102e4b2"
     },
     "com.google.firebase.app": {
-      "version": "https://github.com/snorluxe/firebase-app.git?path=Assets/_Root#9.6.0",
+      "version": "https://github.com/snorluxe/firebase-app.git?path=Assets/_Root#10.0.1",
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.google.external-dependency-manager": "1.2.172"
+        "com.google.external-dependency-manager": "1.2.174"
       },
-      "hash": "74a7339eab2092faa8939c748222fc0d9f87b3dd"
+      "hash": "d5da6989c01c5e6a8b5933bceb29a19f66867965"
     },
     "com.google.firebase.remote-config": {
-      "version": "https://github.com/snorluxe/firebase-remote-config.git?path=Assets/_Root#9.6.0",
+      "version": "https://github.com/snorluxe/firebase-remote-config.git?path=Assets/_Root#10.0.1",
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.google.firebase.app": "9.6.0"
+        "com.google.firebase.app": "10.0.1"
       },
-      "hash": "18eaf90b49808a72ebbcf315904ffb806aeb3a40"
+      "hash": "bf914402e69cd5a27df4a9fa6708e097ec53c7aa"
     },
     "com.lupidan.apple-signin-unity": {
       "version": "https://github.com/lupidan/apple-signin-unity.git#v1.4.2",
@@ -239,7 +239,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.sharp-zip-lib": {
-      "version": "1.2.2-preview.2",
+      "version": "1.3.2-preview",
       "depth": 1,
       "source": "registry",
       "dependencies": {},

@@ -1166,13 +1166,12 @@ MonoBehaviour:
   PlayOnAwake: 1
   Time: 0.5
   FromScale: {x: 0, y: 0, z: 0}
-  LocalScale: {x: 0, y: 0, z: 0}
   Strength: 3
   MoveType: 0
   FromPosition: {x: 0, y: 0, z: 0}
   DirectionType: 0
   Offset: 0
-  LocalPostion: {x: 0, y: 0, z: 0}
+  RectTransform: {fileID: 0}
 --- !u!1 &9157407162633601335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,10 +1300,9 @@ MonoBehaviour:
   PlayOnAwake: 1
   Time: 0.5
   FromScale: {x: 0, y: 0, z: 0}
-  LocalScale: {x: 0, y: 0, z: 0}
   Strength: 3
   MoveType: 0
   FromPosition: {x: 0, y: 0, z: 0}
   DirectionType: 0
   Offset: 0
-  LocalPostion: {x: 0, y: 0, z: 0}
+  RectTransform: {fileID: 0}
