@@ -1091,7 +1091,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1850342635382222336}
   - component: {fileID: 2534875439027961027}
-  - component: {fileID: 8275299523240611131}
   m_Layer: 0
   m_Name: Group
   m_TagString: Untagged
@@ -1150,28 +1149,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &8275299523240611131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8454268291407083420}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe270764967ed7b4abbfde5c9a04e74a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UIEffectType: 0
-  PlayOnAwake: 1
-  Time: 0.5
-  FromScale: {x: 0, y: 0, z: 0}
-  Strength: 3
-  MoveType: 0
-  FromPosition: {x: 0, y: 0, z: 0}
-  DirectionType: 0
-  Offset: 0
-  RectTransform: {fileID: 0}
 --- !u!1 &9157407162633601335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,7 +1161,6 @@ GameObject:
   - component: {fileID: 2584431202668035657}
   - component: {fileID: 89262921429321214}
   - component: {fileID: 143543455093505003}
-  - component: {fileID: 7999346775962331969}
   m_Layer: 5
   m_Name: BtnSetting
   m_TagString: Untagged
@@ -1284,25 +1260,3 @@ MonoBehaviour:
   HavePressEffect: 1
   IsMoveEnter: 0
   LocalScale: {x: 0, y: 0, z: 0}
---- !u!114 &7999346775962331969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9157407162633601335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe270764967ed7b4abbfde5c9a04e74a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UIEffectType: 2
-  PlayOnAwake: 1
-  Time: 0.5
-  FromScale: {x: 0, y: 0, z: 0}
-  Strength: 3
-  MoveType: 0
-  FromPosition: {x: 0, y: 0, z: 0}
-  DirectionType: 0
-  Offset: 0
-  RectTransform: {fileID: 0}

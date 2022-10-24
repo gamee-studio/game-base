@@ -1,6 +1,4 @@
-using System;
 using DG.Tweening;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class UIEffect : MonoBehaviour
@@ -9,18 +7,19 @@ public class UIEffect : MonoBehaviour
     public UIEffectType UIEffectType;
     public bool PlayOnAwake = true;
     public float Time = .5f;
-    [ShowIf("UIEffectType",UIEffectType.OutBack)] [Header("Outback Effect")]
-    [ShowIf("UIEffectType",UIEffectType.OutBack)] public Vector3 FromScale = Vector3.zero;
-    [ShowIf("UIEffectType",UIEffectType.OutBack)] [ReadOnly] public Vector3 LocalScale; 
-    [ShowIf("UIEffectType",UIEffectType.Shake)] [Header("Shake Effect")]
-    [ShowIf("UIEffectType",UIEffectType.Shake)] public float Strength = 3f;
-    [ShowIf("UIEffectType", UIEffectType.Move)] [Header("Move Effect")] 
-    [ShowIf("UIEffectType", UIEffectType.Move)] public MoveType MoveType;
-    [ShowIf("IsShowAttributeFromPosition")] public Vector3 FromPosition;
-    [ShowIf("IsShowAttributesMoveDirection")] public DirectionType DirectionType;
-    [ShowIf("IsShowAttributesMoveDirection")] public float Offset;
-    [ShowIf("UIEffectType", UIEffectType.Move)] [ReadOnly] public Vector3 LocalPostion; 
-    
+    [Sirenix.OdinInspector.ShowIf("UIEffectType",UIEffectType.OutBack)] [Header("Outback Effect")]
+    [Sirenix.OdinInspector.ShowIf("UIEffectType",UIEffectType.OutBack)] public Vector3 FromScale = Vector3.zero;
+    [Sirenix.OdinInspector.ShowIf("UIEffectType",UIEffectType.OutBack)] [ReadOnly] public Vector3 SaveLocalScale; 
+    [Sirenix.OdinInspector.ShowIf("UIEffectType",UIEffectType.Shake)] [Header("Shake Effect")]
+    [Sirenix.OdinInspector.ShowIf("UIEffectType",UIEffectType.Shake)] public float Strength = 3f;
+    [Sirenix.OdinInspector.ShowIf("UIEffectType", UIEffectType.Move)] [Header("Move Effect")] 
+    [Sirenix.OdinInspector.ShowIf("UIEffectType", UIEffectType.Move)] public MoveType MoveType;
+    [Sirenix.OdinInspector.ShowIf("IsShowAttributeFromPosition")] public Vector3 FromPosition;
+    [Sirenix.OdinInspector.ShowIf("IsShowAttributesMoveDirection")] public DirectionType DirectionType;
+    [Sirenix.OdinInspector.ShowIf("IsShowAttributesMoveDirection")] public float Offset;
+    [Sirenix.OdinInspector.ShowIf("UIEffectType", UIEffectType.Move)] [ReadOnly] public Vector3 SaveArchorPosition;
+
+    private RectTransform rectTransform;
     private Sequence sequence;
 
     private bool IsShowAttributeFromPosition => UIEffectType == UIEffectType.Move && MoveType == MoveType.Vector3;
@@ -28,8 +27,9 @@ public class UIEffect : MonoBehaviour
 
     public void Awake()
     {
-        LocalPostion = transform.localPosition;
-        LocalScale = transform.localScale;
+        rectTransform = GetComponent<RectTransform>();
+        SaveArchorPosition = rectTransform.anchoredPosition;
+        SaveLocalScale = rectTransform.localScale;
     }
 
     public void OnEnable()
@@ -46,17 +46,17 @@ public class UIEffect : MonoBehaviour
         {
             case UIEffectType.OutBack:
                 sequence = DOTween.Sequence().OnStart(() => transform.localScale = FromScale)
-                    .Append(transform.DOScale(Vector3.one, Time).OnKill(()=>transform.localScale = LocalScale).SetEase(Ease.OutBack));
+                    .Append(transform.DOScale(Vector3.one, Time).OnKill(()=>transform.localScale = SaveLocalScale).SetEase(Ease.OutBack));
                 break;
             case UIEffectType.Shake:
                 sequence = DOTween.Sequence().Append(transform.DOShakeRotation(Time, Strength).SetEase(Ease.Linear));
                 break;
             case UIEffectType.Move:
-                transform.localPosition = LocalPostion;
+                rectTransform.anchoredPosition = SaveArchorPosition;
                 switch (MoveType)
                 {
                     case MoveType.Vector3:
-                        transform.DOLocalMove(LocalPostion, Time).SetEase(Ease.Linear);
+                        transform.DOLocalMove(SaveArchorPosition, Time).SetEase(Ease.Linear);
                         break;
                     case MoveType.Direction:
                         switch (DirectionType)
@@ -90,8 +90,9 @@ public class UIEffect : MonoBehaviour
     public void Reset()
     {
         if (!Application.isPlaying) return;
-        transform.localPosition = LocalPostion;
-        transform.localScale = LocalScale;
+        rectTransform = GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = SaveArchorPosition;
+        rectTransform.localScale = SaveLocalScale;
     }
 }
 
