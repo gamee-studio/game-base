@@ -68,12 +68,12 @@ protected virtual void AfterHidden() { }
 </details>
 
 ## References
-### Asset Store
+### Assets Store
 - DOTWEEN Pro: https://assetstore.unity.com/packages/tools/visual-scripting/dotween-pro-32416
 - OOdin Inspector and Serializer: https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041
 - Rainbow Folders 2: https://assetstore.unity.com/packages/tools/utilities/rainbow-folders-2-143526
 - Toony Colors Pro 2: https://assetstore.unity.com/packages/vfx/shaders/toony-colors-pro-2-8105
-### Package
+### Packages
 - Ads: https://github.com/gamee-studio/ads
 - Notification: https://github.com/pancake-llc/local-notification
 - Firebase Tracking: https://github.com/pancake-llc/firebase-app
