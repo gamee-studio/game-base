@@ -466,14 +466,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095473172}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4ff4051e75dc9443879b116bd65c930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fpsCounter:
     enabled: 1
-    anchor: 0
+    anchor: 4
     color: {r: 0.33333334, g: 0.85490197, b: 0.4, a: 1}
     style: 1
     updateInterval: 0.5
@@ -504,7 +504,7 @@ MonoBehaviour:
     colorRender: {r: 0.654902, g: 0.43137255, b: 0.81960785, a: 1}
   memoryCounter:
     enabled: 1
-    anchor: 0
+    anchor: 4
     color: {r: 0.91764706, g: 0.93333334, b: 0.39607844, a: 1}
     style: 1
     updateInterval: 0.5
@@ -552,7 +552,7 @@ MonoBehaviour:
   outlineColor: {r: 0, g: 0, b: 0, a: 0.5019608}
   outlineDistance: {x: 1, y: -1}
   autoScale: 0
-  scaleFactor: 1
+  scaleFactor: 1.5
   labelsFont: {fileID: 0}
   fontSize: 14
   lineSpacing: 1

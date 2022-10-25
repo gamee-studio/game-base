@@ -35,4 +35,9 @@ public class PopupDebug : Popup
     {
         Data.IsTesting = ToggleTesting.isOn;
     }
+
+    public void OnClickFPSBtn()
+    {
+        GameManager.Instance.ChangeAFPSState();
+    }
 }

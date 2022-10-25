@@ -1,3 +1,4 @@
+using CodeStage.AdvancedFPSCounter;
 using DG.Tweening;
 using Pancake.GameService;
 using UnityEngine;
@@ -7,9 +8,11 @@ public class GameManager : Singleton<GameManager>
     public LevelController LevelController;
     public GameState GameState;
 
+    public AFPSCounter AFPSCounter => GetComponent<AFPSCounter>();
+
     void Awake()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 80;
     }
     
     void Start()
@@ -127,6 +130,14 @@ public class GameManager : Singleton<GameManager>
             PopupController.Instance.Hide<PopupInGame>();
             PopupController.Instance.Show<PopupLose>();
         });
+    }
+
+    public void ChangeAFPSState()
+    {
+        if (Data.IsTesting)
+        {
+            AFPSCounter.enabled = !AFPSCounter.isActiveAndEnabled;
+        }
     }
 }
 
