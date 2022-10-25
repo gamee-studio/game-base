@@ -23,13 +23,15 @@ public class PopupWin : Popup
         base.BeforeShow();
         SoundController.Instance.PlayFX(SoundType.ShowPopupWin);
         PopupController.Instance.Show<PopupUI>();
+        Setup();
         
         sequence = DOTween.Sequence().AppendInterval(2f).AppendCallback(() => { BtnTapToContinue.SetActive(true); });
     }
 
     public void Setup()
     {
-        
+        BtnRewardAds.SetActive(true);
+        BtnTapToContinue.SetActive(false);
     }
 
     protected override void BeforeHide()
