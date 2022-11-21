@@ -265,17 +265,17 @@ MonoBehaviour:
     editorInstallAllFlag: 0
   maxSettings:
     enable: 1
-    sdkKey: 
+    sdkKey: -feJa9bEGOmZW95XxkyfhE2R_yHQ4poWZofsvPWhIw_es2dT16vUIDRoHKX63m6a9JD7wX1Q0PZ0Qng8EukpFT
     bannerAdUnit:
-      androidId: 
+      androidId: b4e98dfe1e55ba33
       iOSId: 
       position: 1
       useAdaptiveBanner: 0
     interstitialAdUnit:
-      androidId: 
+      androidId: c116b8fca59619b3
       iOSId: 
     rewardedAdUnit:
-      androidId: 
+      androidId: b607e7a74c23d32f
       iOSId: 
     appOpenAdUnit:
       androidId: 
@@ -362,14 +362,14 @@ MonoBehaviour:
         Ios: 7.2.6.0.0
     - Name: TIKTOK_NETWORK
       DisplayName: Pangle
-      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/bytedance-adapter/AppLovin-ByteDance-Adapters-Android-4.8.0.8.0-iOS-4.7.0.8.0.unitypackage
+      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/bytedance-adapter/AppLovin-ByteDance-Adapters-Android-4.8.0.8.1-iOS-4.7.0.8.1.unitypackage
       DependenciesFilePath: MaxSdk/Mediation/ByteDance/Editor/Dependencies.xml
       PluginFilePaths:
       - MaxSdk/Mediation/ByteDance
       LatestVersions:
-        Unity: android_4.8.0.8.0_ios_4.7.0.8.0
-        Android: 4.8.0.8.0
-        Ios: 4.7.0.8.0
+        Unity: android_4.8.0.8.1_ios_4.7.0.8.1
+        Android: 4.8.0.8.1
+        Ios: 4.7.0.8.1
     - Name: UNITY_NETWORK
       DisplayName: Unity Ads
       DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/unityads-adapter/AppLovin-UnityAds-Adapters-Android-4.4.1.0-iOS-4.4.1.0.unitypackage
@@ -444,8 +444,18 @@ MonoBehaviour:
         android: 5.5.5
         ios: 5.5.5
         unity: 5.5.5
-    editorImportingListNetwork: []
-    editorInstallAllFlag: 0
+    editorImportingListNetwork:
+    - Name: VUNGLE_NETWORK
+      DisplayName: Vungle
+      DownloadUrl: https://artifacts.applovin.com/unity/com/applovin/mediation/vungle-adapter/AppLovin-Vungle-Adapters-Android-6.12.0.3-iOS-6.12.1.0.unitypackage
+      DependenciesFilePath: MaxSdk/Mediation/Vungle/Editor/Dependencies.xml
+      PluginFilePaths:
+      - MaxSdk/Mediation/Vungle
+      LatestVersions:
+        Unity: android_6.12.0.3_ios_6.12.1.0
+        Android: 6.12.0.3
+        Ios: 6.12.1.0
+    editorInstallAllFlag: 1
   ironSourceSettings:
     enable: 0
     appKey:

@@ -4,6 +4,7 @@ using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using Pancake;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class MoveObject : MonoBehaviour
@@ -20,27 +21,25 @@ public class MoveObject : MonoBehaviour
             isRun = value;
         }
     }
-    public bool IsPlayOnAwake = true;
-    public bool IsLoop = true;
-    public bool IsLookAtTarget = true;
-    [Range(0.1f,1000f)] public float Speed = 5f;
-    [Range(0,100f)] public float MoveDelay;
-    [Range(0,100f)] public float RotateDelay;
-    [Header("Create circle point", order = 0)]
-    [Range(0f,100f)] public float PointNumb = 3f;
-    [Range(0.1f,1000f)] public float Radius = 2f;
-    public CircleSpawnType CircleSpawnType;
     
+    
+    [Range(0f,1000f)]public float Speed = 5f;
+    [Range(0f,10f)]public float DelayStart;
+    [Range(0f,10f)]public float DelayNextMove;
+    [Range(0f,10f)]public float DelayRotate;
+    [FoldoutGroup("Expansion Settings")]public bool IsStartAtFirstPosition = true;
+    [FoldoutGroup("Expansion Settings")]public bool IsPlayOnAwake = true;
+    [FoldoutGroup("Expansion Settings")]public bool IsLoop = true;
+    [FoldoutGroup("Expansion Settings")]public bool IsLookAtTarget = true;
+
     [Header("The path must be at least 2 points.", order=1)]
     public List<Transform> Path;
 
     private Queue<Vector3> PathQueue = new Queue<Vector3>();
-    private List<GameObject> circleListPoint;
-    private Vector3 currentPoint;
     private Vector3 nextPoint;
     private TweenerCore<Vector3,Vector3,VectorOptions> sequence;
     private Sequence nextSequence;
-    // Start is called before the first frame update
+    
     void Start()
     {
         foreach (Transform item in Path)
@@ -50,9 +49,12 @@ public class MoveObject : MonoBehaviour
 
         if (PathQueue.Count < 2) return;
 
-        TargetMoveGO.transform.position = PathQueue.Peek();
-        
-        if (IsPlayOnAwake) StartMove();
+        if (IsStartAtFirstPosition) TargetMoveGO.transform.position = PathQueue.Peek();
+
+        if (IsPlayOnAwake)
+        {
+            nextSequence = DOTween.Sequence().AppendInterval(DelayStart).AppendCallback(()=>StartMove());
+        }
     }
 
     private void OnDestroy()
@@ -64,12 +66,11 @@ public class MoveObject : MonoBehaviour
     public void StartMove()
     {
         Vector3 tempPoint = PathQueue.Peek();
-        currentPoint = tempPoint;
         PathQueue.Dequeue();
         PathQueue.Enqueue(tempPoint);
         nextPoint = PathQueue.Peek();
         
-        if (IsLookAtTarget) TargetMoveGO.transform.DOLookAt(nextPoint, RotateDelay);
+        if (IsLookAtTarget) TargetMoveGO.transform.DOLookAt(nextPoint, DelayRotate);
         sequence = TargetMoveGO.transform.DOMove(nextPoint, Speed).SetSpeedBased(true).SetEase(Ease.Linear).OnComplete(
         () =>
         {
@@ -79,31 +80,15 @@ public class MoveObject : MonoBehaviour
             }
         }).OnStart(() =>
         {
-            nextSequence = DOTween.Sequence().AppendInterval(MoveDelay).AppendCallback(() => StartMove());
+            nextSequence = DOTween.Sequence().AppendInterval(DelayNextMove).AppendCallback(() => StartMove());
             nextSequence.Pause();
         });
-    }
-
-    public void ActivateStartMove()
-    {
-        if (!IsPlayOnAwake)
-        {
-            StartMove();
-        }
     }
 
     public void OnIsRunChanged(bool value)
     {
         if (value) sequence.Play();
         else sequence.Pause();
-    }
-
-    private void ClearCircleList()
-    {
-        if (circleListPoint.IsNullOrEmpty()) return;
-        circleListPoint.ForEach(item=>DestroyImmediate(item));
-        circleListPoint.Clear();
-        circleListPoint = new List<GameObject>();
     }
 
     private void OnDrawGizmos()
@@ -120,35 +105,9 @@ public class MoveObject : MonoBehaviour
             }
             catch (Exception e)
             {
-                circleListPoint = new List<GameObject>();
                 Path = new List<Transform>();
                 throw;
             }
         }
     }
-
-    public void CreateCirclePoint()
-    {
-        ClearCircleList();
-        for (int i = 0; i < PointNumb; i++)
-        {
-            float theta = i * 2 * Mathf.PI / PointNumb;
-            float x = Mathf.Sin(theta)*Radius;
-            float z = Mathf.Cos(theta)*Radius;
-  
-            GameObject obj = new GameObject();
-            obj.name = $"Point {i}";
-            obj.transform.parent = transform;
-            obj.transform.position = new Vector3(x + transform.position.x, 0, z + transform.position.z);
-
-            circleListPoint.Add(obj);
-        }
-    }
-}
-
-public enum CircleSpawnType
-{
-    XY,
-    XZ,
-    YZ
 }

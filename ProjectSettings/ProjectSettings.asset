@@ -158,7 +158,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.HoangVanThu_Base
+    Android: com.gamee.test
     Standalone: com.DefaultCompany.HoangVanThuBase
   buildNumber:
     Standalone: 0
