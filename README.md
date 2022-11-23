@@ -1,3 +1,7 @@
+<div align="center">
+	<img src="gamee-banner.png" alt="ContactCard"> 
+</div>
+
 # Gamee base
 Description: Gamebase for mobile hyper casual, casual game 
 ## Table of contents
