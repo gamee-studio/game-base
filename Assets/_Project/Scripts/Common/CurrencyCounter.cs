@@ -13,7 +13,7 @@ public class CurrencyCounter : MonoBehaviour
 
     private void Start()
     {
-        EventController.CurrentLevelChanged += SaveCurrency;
+        EventController.SaveCurrencyTotal += SaveCurrency;
         EventController.CurrencyTotalChanged += UpdateCurrencyAmountText;
         CurrencyAmountText.text = Data.CurrencyTotal.ToString();
     }
@@ -25,38 +25,36 @@ public class CurrencyCounter : MonoBehaviour
     
     private void UpdateCurrencyAmountText()
     {
-        if (currentCoin >= Data.CurrencyTotal)
+        if ( Data.CurrencyTotal > currentCoin)
         {
-            DecreaseCurrency();
+            IncreaseCurrency();
         }
         else
         {
-            IncreaseCurrency();
+            DecreaseCurrency();
         }
     }
 
     private void IncreaseCurrency()
     {
-        if (Application.isPlaying)
+        bool isPopupUIActive = PopupController.Instance.Get<PopupUI>().isActiveAndEnabled;
+        if (!isPopupUIActive) PopupController.Instance.Show<PopupUI>();
+        bool isFirstMove = false;
+        CurrencyGenerate.GenerateCoin(() =>
         {
-            bool isPopupUIActive = PopupController.Instance.Get<PopupUI>().isActiveAndEnabled;
-            if (!isPopupUIActive) PopupController.Instance.Show<PopupUI>();
-            bool isFirstMove = false;
-            CurrencyGenerate.GenerateCoin(() =>
+            if (!isFirstMove)
             {
-                if (!isFirstMove)
-                {
-                    isFirstMove = true;
-                    int currentCurrencyAmount = int.Parse(CurrencyAmountText.text);
-                    int nextAmount = (Data.CurrencyTotal - currentCurrencyAmount)/StepCount;
-                    int step = StepCount;
-                    CurrencyTextCount(currentCurrencyAmount, nextAmount,step);
-                }
-            }, ()=>
-            {
-                if (!isPopupUIActive) PopupController.Instance.Hide<PopupUI>();
-            });
-        }
+                isFirstMove = true;
+                int currentCurrencyAmount = int.Parse(CurrencyAmountText.text);
+                int nextAmount = (Data.CurrencyTotal - currentCurrencyAmount)/StepCount;
+                int step = StepCount;
+                CurrencyTextCount(currentCurrencyAmount, nextAmount,step);
+            }
+        }, ()=>
+        {
+            SoundController.Instance.PlayFX(SoundType.CoinMove);
+            if (!isPopupUIActive) PopupController.Instance.Hide<PopupUI>();
+        });
     }
 
     private void DecreaseCurrency()
@@ -75,7 +73,7 @@ public class CurrencyCounter : MonoBehaviour
             return;
         }
         int totalValue = (currentCurrencyValue + nextAmountValue);
-        DOTween.Sequence().AppendInterval(DelayTime).AppendCallback(() =>
+        DOTween.Sequence().AppendInterval(DelayTime).SetUpdate(isIndependentUpdate:true).AppendCallback(() =>
         {
             CurrencyAmountText.text = totalValue.ToString();
         }).AppendCallback(()=>

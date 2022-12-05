@@ -70,4 +70,5 @@ public enum SoundType
     LoseGame,
     ShowPopupWin,
     ShowPopupLose,
+    CoinMove,
 }
