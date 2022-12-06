@@ -43,6 +43,6 @@ public class PopupHome : Popup
     
     public void OnClickTestAds()
     {
-        PopupController.Instance.Show<PopupAds>();
+        PopupController.Instance.Show<PopupTest>();
     }
 }

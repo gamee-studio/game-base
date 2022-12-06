@@ -54,7 +54,6 @@ public class AdsManager
     
     public static bool IsSufficientConditionToShowInter()
     {
-        if (Data.IsTesting) return true;
         if (Data.CurrentLevel>Data.LevelTurnOnInterstitial && TotalLevelWinLose >= Data.CounterNumbBetweenTwoInterstitial && TotalTimesPlay>=Data.TimeWinBetweenTwoInterstitial)
         {
             return true;
