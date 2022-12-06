@@ -6,6 +6,7 @@ using DG.Tweening.Plugins.Options;
 using Pancake;
 using UnityEngine;
 
+[DeclareFoldoutGroup("Expansion Settings", Title = "Expansion Settings", Expanded = true)]
 public class MoveObject : MonoBehaviour
 {
     public GameObject TargetMoveGO;
@@ -20,7 +21,6 @@ public class MoveObject : MonoBehaviour
             isRun = value;
         }
     }
-    
     
     [Range(0f,1000f)]public float Speed = 5f;
     [Range(0f,10f)]public float DelayStart;

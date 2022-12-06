@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public static class Utility
@@ -28,5 +30,20 @@ public static class Utility
             }
         }
         return null;
+    }
+
+    public static int GetNumberInAString(string str)
+    {
+        try
+        {
+            var getNumb = Regex.Match(str, @"\d+").Value;
+            return Int32.Parse(getNumb);
+        }
+        catch (Exception e)
+        {
+            return -1;
+        }
+
+        return -1;
     }
 }

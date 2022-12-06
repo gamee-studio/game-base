@@ -34,17 +34,41 @@ public static partial class Data
             EventController.CurrentLevelChanged?.Invoke();
         }
     }
-
-    public static int GetDailyRewardClaimed(DateTime dateTime)
+    
+    public static int CurrencyTotal
     {
-        return PlayerPrefs.GetInt($"Claimed_DailyReward_{dateTime.Day}/{dateTime.Month}/{dateTime.Year}", 0);
+        get => GetInt(Constant.CURRENCY_TOTAL, 0);
+        set
+        {
+            EventController.SaveCurrencyTotal?.Invoke();
+            SetInt(Constant.CURRENCY_TOTAL, value);
+            EventController.CurrencyTotalChanged?.Invoke();
+        }
     }
 
-    public static void SetDailyClaimed(bool isOwned = true)
+    public static int ProgressAmount
     {
-        PlayerPrefs.SetInt($"Claimed_DailyReward_{DateTime.Today.Day}/{DateTime.Today.Month}/{DateTime.Today.Year}", isOwned ? 1 : 0);
+        get => GetInt(Constant.PROGRESS_AMOUNT, 0);
+        set => SetInt(Constant.PROGRESS_AMOUNT, value);
     }
     
+    public static bool IsItemEquipped(string itemIdentity)
+    {
+        return GetBool($"{Constant.EQUIP_ITEM}_{IdItemUnlocked}");
+    }
+
+    public static void SetItemEquipped(string itemIdentity, bool isEquipped = true)
+    {
+        SetBool($"{Constant.EQUIP_ITEM}_{IdItemUnlocked}", isEquipped);
+    }
+
+    public static string IdItemUnlocked = "";
+
+    public static bool IsItemUnlocked
+    {
+        get => GetBool($"{Constant.UNLOCK_ITEM}_{IdItemUnlocked}");
+        set => SetBool($"{Constant.UNLOCK_ITEM}_{IdItemUnlocked}", value);
+    }
     #endregion
     
     #region SETTING_DATA
@@ -115,75 +139,6 @@ public static partial class Data
     {
         get => GetInt(Constant.TOTAL_CLAIM_DAILY_REWARD, 0);
         set => SetInt(Constant.TOTAL_CLAIM_DAILY_REWARD, value);
-    }
-
-    #endregion
-
-    #region PLAYER_DATA
-    
-    public static int CurrencyTotal
-    {
-        get => GetInt(Constant.CURRENCY_TOTAL, 0);
-        set
-        {
-            EventController.SaveCurrencyTotal?.Invoke();
-            SetInt(Constant.CURRENCY_TOTAL, value);
-            EventController.CurrencyTotalChanged?.Invoke();
-        }
-    }
-
-    public static int ProgressAmount
-    {
-        get => GetInt(Constant.PROGRESS_AMOUNT, 0);
-        set => SetInt(Constant.PROGRESS_AMOUNT, value);
-    }
-
-    public static int CurrentEquippedSkin
-    {
-        get => GetInt(Constant.CURRENT_EQUIPED_SKIN, 0);
-
-        set
-        {
-            SetInt(Constant.CURRENT_EQUIPED_SKIN, value);
-        }
-    }
-
-    #endregion
-
-    #region SKIN_DATA
-
-    public static string IdSkinCheckUnlocked = "";
-
-    public static bool IsSkinUnlocked
-    {
-        get => GetBool(IdSkinCheckUnlocked, false);
-        set => SetBool(IdSkinCheckUnlocked, value);
-    }
-
-    #endregion
-    
-    #region IAP_DATA
-
-    public static bool IsIAPPackUnlocked(string name)
-    {
-        return GetBool($"IAP_{name}");
-    }
-
-    public static void SetIAPPack(string name, bool isOwned = true)
-    {
-        SetBool($"IAP_{name}", isOwned);
-    }
-
-    #endregion
-
-    #region IAP_DATA
-
-    public static string IdIAPCheckUnlocked = "";
-
-    public static bool IsIAPUnlocked
-    {
-        get => GetBool(IdIAPCheckUnlocked, false);
-        set => SetBool(IdIAPCheckUnlocked, value);
     }
 
     #endregion
