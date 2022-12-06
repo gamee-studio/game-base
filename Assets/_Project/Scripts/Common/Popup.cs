@@ -1,6 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
-using Sirenix.OdinInspector;
+using Pancake;
 
 public class Popup : MonoBehaviour
 {

@@ -22,7 +22,7 @@ namespace Pancake.Editor
         protected virtual void OnDrawExtraSetting()
         {
             Uniform.SpaceOneLine();
-            Uniform.DrawUppercaseSection("UIPOPUP_NOTIFICATION", "NOTIFICATION SETTING", DrawSetting);
+            Uniform.DrawGroupFoldout("UIPOPUP_NOTIFICATION", "NOTIFICATION SETTING", DrawSetting);
         }
 
         private void DrawSetting()

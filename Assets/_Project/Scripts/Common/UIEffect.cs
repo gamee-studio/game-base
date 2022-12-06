@@ -1,6 +1,7 @@
 using DG.Tweening;
+using Pancake;
 using UnityEngine;
-using Sirenix.OdinInspector;
+
 
 public class UIEffect : MonoBehaviour
 {
@@ -8,13 +9,12 @@ public class UIEffect : MonoBehaviour
     public UIEffectType UIEffectType;
     public bool PlayOnAwake = true;
     public float Time = .5f;
-
-    [ShowIf("UIEffectType",UIEffectType.OutBack)] [Header("Outback Effect")]
-    [ShowIf("UIEffectType",UIEffectType.OutBack)] public Vector3 FromScale = Vector3.zero;
-    [ShowIf("UIEffectType",UIEffectType.OutBack)] [ReadOnly] public Vector3 SaveLocalScale; 
-    [ShowIf("UIEffectType",UIEffectType.Shake)] [Header("Shake Effect")]
-    [ShowIf("UIEffectType",UIEffectType.Shake)] public float Strength = 3f;
-    [ShowIf("UIEffectType", UIEffectType.Move)] [Header("Move Effect")] 
+    
+    public Vector3 FromScale = Vector3.zero;
+    public Vector3 SaveLocalScale; 
+    [Header("Shake Effect")]
+    public float Strength = 3f;
+    [Header("Move Effect")] 
     [ShowIf("UIEffectType", UIEffectType.Move)] public MoveType MoveType;
     [ShowIf("IsShowAttributeFromPosition")] public Vector3 FromPosition;
     [ShowIf("IsShowAttributesMoveDirection")] public DirectionType DirectionType;

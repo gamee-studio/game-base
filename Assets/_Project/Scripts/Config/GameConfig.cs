@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GameConfig", menuName = "ScriptableObject/GameConfig")]

@@ -1,12 +1,10 @@
 {
   "dependencies": {
-    "com.pancake.gameservice": "https://github.com/pancake-llc/game-service.git?path=Assets/_Root", 
+   "com.pancake.playfab": "https://github.com/pancake-llc/playfab.git#2.153.221024",
     "com.lupidan.apple-signin-unity": "https://github.com/lupidan/apple-signin-unity.git#v1.4.2",
-    "com.pancake.heart": "https://github.com/pancake-llc/heart.git?path=Assets/_Root",
+    "com.pancake.heart": "https://github.com/pancake-llc/heart.git#1.2.4",
     "com.coffee.ui-effect": "https://github.com/mob-sakai/UIEffect.git",
     "com.coffee.ui-particle": "https://github.com/mob-sakai/ParticleEffectForUGUI.git#3.3.0",
-    "com.gamee.ads": "https://github.com/gamee-studio/ads.git?path=Assets/_Root",
-    "com.gamee.iap": "https://github.com/gamee-studio/iap.git?path=Assets/_Root",
     "com.google.external-dependency-manager": "https://github.com/snorluxe/external-dependency-manager.git?path=Assets/_Root#1.2.169",
     "com.google.firebase.analytics": "https://github.com/snorluxe/firebase-analytics.git?path=Assets/_Root#10.0.1",
     "com.google.firebase.app": "https://github.com/snorluxe/firebase-app.git?path=Assets/_Root#10.0.1",

@@ -45,7 +45,7 @@ namespace Pancake.Editor
         protected virtual void OnDrawExtraSetting()
         {
             Uniform.SpaceOneLine();
-            Uniform.DrawUppercaseSection("UIPOPUP_LOGIN", "LOGIN SETTING", DrawSetting);
+            Uniform.DrawGroupFoldout("UIPOPUP_LOGIN", "LOGIN SETTING", DrawSetting);
         }
 
         public override void OnInspectorGUI()

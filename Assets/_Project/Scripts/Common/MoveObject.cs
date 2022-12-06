@@ -4,7 +4,6 @@ using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using Pancake;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class MoveObject : MonoBehaviour
@@ -27,10 +26,10 @@ public class MoveObject : MonoBehaviour
     [Range(0f,10f)]public float DelayStart;
     [Range(0f,10f)]public float DelayNextMove;
     [Range(0f,10f)]public float DelayRotate;
-    [FoldoutGroup("Expansion Settings")]public bool IsStartAtFirstPosition = true;
-    [FoldoutGroup("Expansion Settings")]public bool IsPlayOnAwake = true;
-    [FoldoutGroup("Expansion Settings")]public bool IsLoop = true;
-    [FoldoutGroup("Expansion Settings")]public bool IsLookAtTarget = true;
+    [Group("Expansion Settings")]public bool IsStartAtFirstPosition = true;
+    [Group("Expansion Settings")]public bool IsPlayOnAwake = true;
+    [Group("Expansion Settings")]public bool IsLoop = true;
+    [Group("Expansion Settings")]public bool IsLookAtTarget = true;
 
     [Header("The path must be at least 2 points.", order=1)]
     public List<Transform> Path;

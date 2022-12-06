@@ -1,5 +1,5 @@
 using DG.Tweening;
-using Sirenix.OdinInspector;
+using Pancake;
 using UnityEngine;
 
 public class ShowObject : MonoBehaviour

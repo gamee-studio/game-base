@@ -28,7 +28,7 @@ namespace Pancake.Editor
         protected virtual void OnDrawExtraSetting()
         {
             Uniform.SpaceOneLine();
-            Uniform.DrawUppercaseSection("UIPOPUP_NOINTERNET", "NO INTERNET SETTING", DrawSetting);
+            Uniform.DrawGroupFoldout("UIPOPUP_NOINTERNET", "NO INTERNET SETTING", DrawSetting);
         }
 
         private void DrawSetting()

@@ -14,26 +14,6 @@
       "dependencies": {},
       "hash": "429ff2dd09264fd091ed3005c7a4c247f118c7ae"
     },
-    "com.gamee.ads": {
-      "version": "https://github.com/gamee-studio/ads.git?path=Assets/_Root",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "3.0.2",
-        "com.unity.sharp-zip-lib": "1.3.2-preview",
-        "com.unity.ads.ios-support": "1.2.0"
-      },
-      "hash": "6cf2c0ca85bdbb5888d8c5a4381052c4fdce8e53"
-    },
-    "com.gamee.iap": {
-      "version": "https://github.com/gamee-studio/iap.git?path=Assets/_Root",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.purchasing": "4.4.1"
-      },
-      "hash": "fa31d34dae747fdccd352e29532d423fd9fcf282"
-    },
     "com.google.external-dependency-manager": {
       "version": "https://github.com/snorluxe/external-dependency-manager.git?path=Assets/_Root#1.2.169",
       "depth": 0,
@@ -75,25 +55,27 @@
       "dependencies": {},
       "hash": "e39981bca07f08f068231f651e1e8d0f69397222"
     },
-    "com.pancake.gameservice": {
-      "version": "https://github.com/pancake-llc/game-service.git?path=Assets/_Root",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "288ac4f36fa879af78ec289914656e775e15bce4"
-    },
     "com.pancake.heart": {
-      "version": "https://github.com/pancake-llc/heart.git?path=Assets/_Root",
+      "version": "https://github.com/pancake-llc/heart.git#1.2.4",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.addressables": "1.19.19",
-        "com.unity.inputsystem": "1.4.3",
         "com.unity.nuget.newtonsoft-json": "3.0.2",
         "com.unity.mobile.notifications": "2.1.0",
-        "com.unity.2d.sprite": "1.0.0"
+        "com.unity.2d.sprite": "1.0.0",
+        "com.unity.purchasing": "4.5.1",
+        "com.unity.sharp-zip-lib": "1.3.2-preview",
+        "com.unity.ads.ios-support": "1.2.0"
       },
-      "hash": "667a81cfa568ea74fe5158d3cd1b6f9a4e24b7b2"
+      "hash": "8fed0bcb5cfce6254ccc44a09591253c92b36d6d"
+    },
+    "com.pancake.playfab": {
+      "version": "https://github.com/pancake-llc/playfab.git#2.153.221024",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "4ccac33a0c4893b1f67d3eafda1767acb7d06eb9"
     },
     "com.sabresaurus.playerprefseditor": {
       "version": "https://github.com/sabresaurus/PlayerPrefsEditor.git",
@@ -170,15 +152,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.inputsystem": {
-      "version": "1.4.3",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.uielements": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.mobile.notifications": {
       "version": "2.1.0",
       "depth": 1,
@@ -196,7 +169,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.purchasing": {
-      "version": "4.4.1",
+      "version": "4.5.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {
