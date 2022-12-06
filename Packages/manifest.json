@@ -1,6 +1,6 @@
 {
   "dependencies": {
-   "com.pancake.playfab": "https://github.com/pancake-llc/playfab.git#2.153.221024",
+    "com.pancake.playfab": "https://github.com/pancake-llc/playfab.git#2.153.221024",
     "com.lupidan.apple-signin-unity": "https://github.com/lupidan/apple-signin-unity.git#v1.4.2",
     "com.pancake.heart": "https://github.com/pancake-llc/heart.git#1.2.4",
     "com.coffee.ui-effect": "https://github.com/mob-sakai/UIEffect.git",
