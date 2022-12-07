@@ -2829,15 +2829,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetMoveGO: {fileID: 4405685256339215952}
+  Speed: 8
+  DelayStart: 0
+  DelayNextMove: 0
+  DelayRotate: 0
+  IsStartAtFirstPosition: 1
   IsPlayOnAwake: 1
   IsLoop: 1
   IsLookAtTarget: 0
-  Speed: 8
-  MoveDelay: 0
-  RotateDelay: 0
-  PointNumb: 3
-  Radius: 2
-  CircleSpawnType: 0
   Path:
   - {fileID: 5647264209562423215}
   - {fileID: 8954405792263532985}

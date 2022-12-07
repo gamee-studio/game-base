@@ -1,6 +1,7 @@
 using System;
 using Pancake.Tween;
 using Pancake.UI;
+using TMPro;
 #if PANCAKE_TMP
 using TMPro;
 #endif
@@ -13,9 +14,7 @@ namespace Pancake.GameService
     public class CountryView : EnhancedScrollerCellView
     {
         [SerializeField] private Image countryIcon;
-#if PANCAKE_TMP
         [SerializeField] private TextMeshProUGUI countryName;
-#endif
         [SerializeField] private GameObject selectedHightLight;
         [SerializeField] private Button btnSelect;
 
@@ -23,9 +22,7 @@ namespace Pancake.GameService
         private ITween _tweenSelect;
 
         public Image CountryIcon => countryIcon;
-#if PANCAKE_TMP
         public TextMeshProUGUI CountryName => countryName;
-#endif
         public CountryCodeData Data => _data;
         private Func<string, bool> _isSelected;
 
@@ -45,9 +42,7 @@ namespace Pancake.GameService
             }
 
             countryIcon.sprite = Data.icon;
-#if PANCAKE_TMP
             countryName.text = Data.name;
-#endif
 
             btnSelect.onClick.RemoveAllListeners();
             btnSelect.onClick.AddListener(() => { _onClicked?.Invoke(this); });

@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 using DG.Tweening;
+using Pancake;
 
 public class PopupDailyReward : Popup
 {

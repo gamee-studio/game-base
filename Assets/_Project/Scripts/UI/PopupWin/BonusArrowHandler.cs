@@ -1,3 +1,4 @@
+using Pancake;
 using UnityEngine;
 
 public class BonusArrowHandler : MonoBehaviour

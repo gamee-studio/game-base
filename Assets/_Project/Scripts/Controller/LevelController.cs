@@ -1,9 +1,8 @@
 using UnityEngine;
-
+using Pancake;
 public class LevelController : Singleton<LevelController>
 {
-    public Level CurrentLevel;
-
+    [ReadOnly] public Level CurrentLevel;
     private GameConfig Game => ConfigController.Game;
     public void PrepareLevel()
     {
@@ -29,7 +28,7 @@ public class LevelController : Singleton<LevelController>
             }
             else if (Game.LevelLoopType == LevelLoopType.RandomLoop)
             {
-                indexLevel = Random.Range(Game.StartLoopLevel, Game.MaxLevel);
+                indexLevel = UnityEngine.Random.Range(Game.StartLoopLevel, Game.MaxLevel);
             }
         }
 
