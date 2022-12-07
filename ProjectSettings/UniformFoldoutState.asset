@@ -1,16 +1,16 @@
 {
-    "uppercaseSectionsFoldoutStates": [
+    "uniformFoldouts": [
         {
             "key": "AUTO_INITIALIZE_FOLDOUT_KEY",
             "state": true
         },
         {
             "key": "AUTO_AD_LOADING_CONFIG_FOLDOUT_KEY",
-            "state": true
+            "state": false
         },
         {
             "key": "ADMOB_MODULE",
-            "state": false
+            "state": true
         },
         {
             "key": "MAX_MODULE",
@@ -18,18 +18,10 @@
         },
         {
             "key": "IRONSOURCE_MODULE",
-            "state": true
+            "state": false
         },
         {
             "key": "APPLOVIN_MODULE_MEDIATION",
-            "state": true
-        },
-        {
-            "key": "PLAYFAB_SETTING",
-            "state": true
-        },
-        {
-            "key": "PLAYFAB_FEATURE",
             "state": true
         },
         {
@@ -42,6 +34,10 @@
         },
         {
             "key": "LEVEL_EDITOR_PICKUP_AREA",
+            "state": true
+        },
+        {
+            "key": "LEVEL_EDITOR_PICKUP_AREA_CHILD__GAMEPLAY",
             "state": true
         }
     ]

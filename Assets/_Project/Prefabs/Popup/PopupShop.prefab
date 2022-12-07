@@ -294,9 +294,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e68ffdfbf9a6ad4383b39fac3fc0c74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseShowAnimation: 0
   Background: {fileID: 8722397669771440195}
   Container: {fileID: 7064240004806998928}
-  UseShowAnimation: 0
   ShowAnimationType: 0
   UseHideAnimation: 0
   HideAnimationType: 0

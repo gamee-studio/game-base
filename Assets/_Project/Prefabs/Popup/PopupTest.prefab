@@ -2140,7 +2140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2276,6 +2276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9217f26a9d3809f459e9ceb68c289c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseAnimation: 0
   Background: {fileID: 0}
   Container: {fileID: 0}
   UseShowAnimation: 0
@@ -2802,7 +2803,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 370544381629523237}
         m_TargetAssemblyTypeName: PopupTest, Assembly-CSharp
-        m_MethodName: OnClickLightVibration
+        m_MethodName: OnClickInAppReview
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

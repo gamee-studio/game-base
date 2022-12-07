@@ -4,11 +4,12 @@ using Pancake;
 
 public class Popup : MonoBehaviour
 {
-    public GameObject Background;
-    public GameObject Container;
-    public bool UseShowAnimation;
+    public bool UseAnimation;
+    [ShowIf("UseAnimation")] public GameObject Background;
+    [ShowIf("UseAnimation")] public GameObject Container;
+    [ShowIf("UseAnimation")] public bool UseShowAnimation;
     [ShowIf("UseShowAnimation")] public ShowAnimationType ShowAnimationType;
-    public bool UseHideAnimation;
+    [ShowIf("UseAnimation")] public bool UseHideAnimation;
     [ShowIf("UseHideAnimation")] public HideAnimationType HideAnimationType;
     public CanvasGroup CanvasGroup => GetComponent<CanvasGroup>();
     public Canvas Canvas => GetComponent<Canvas>();

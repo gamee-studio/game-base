@@ -9,6 +9,7 @@ public class Level : MonoBehaviour
     private bool _isFingerDown;
     private bool _isFingerDrag;
     
+    #if UNITY_EDITOR
     [Button]
     private void StartLevel()
     {
@@ -16,6 +17,7 @@ public class Level : MonoBehaviour
         
         EditorApplication.isPlaying = true;
     }
+    #endif
     
     void OnEnable()
     {

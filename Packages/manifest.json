@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "com.google.play.review": "https://github.com/google-unity/in-app-review.git#1.8.1",
+    "com.google.play.core": "https://github.com/google-unity/google-play-core.git#1.8.1",
+    "com.google.play.common": "https://github.com/google-unity/google-play-common.git#1.8.1",
+    "com.google.android.appbundle": "https://github.com/google-unity/android-app-bundle.git#1.8.0",
     "com.coffee.ui-effect": "https://github.com/mob-sakai/UIEffect.git",
     "com.coffee.ui-particle": "https://github.com/mob-sakai/ParticleEffectForUGUI.git#3.3.0",
     "com.google.external-dependency-manager": "https://github.com/snorluxe/external-dependency-manager.git?path=Assets/_Root#1.2.169",

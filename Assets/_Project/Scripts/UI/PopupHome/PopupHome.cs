@@ -41,7 +41,7 @@ public class PopupHome : Popup
         PopupController.Instance.Show<PopupShop>();
     }
     
-    public void OnClickTestAds()
+    public void OnClickTest()
     {
         PopupController.Instance.Show<PopupTest>();
     }
