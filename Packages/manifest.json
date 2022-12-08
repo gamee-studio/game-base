@@ -11,7 +11,7 @@
     "com.google.firebase.app": "https://github.com/snorluxe/firebase-app.git?path=Assets/_Root#10.0.1",
     "com.google.firebase.remote-config": "https://github.com/snorluxe/firebase-remote-config.git?path=Assets/_Root#10.0.1",
     "com.lupidan.apple-signin-unity": "https://github.com/lupidan/apple-signin-unity.git#v1.4.2",
-    "com.pancake.heart": "https://github.com/pancake-llc/heart.git#1.2.4",
+    "com.pancake.heart": "https://github.com/pancake-llc/heart.git#1.2.6",
     "com.pancake.playfab": "https://github.com/pancake-llc/playfab.git#2.153.221024",
     "com.sabresaurus.playerprefseditor": "https://github.com/sabresaurus/PlayerPrefsEditor.git",
     "com.unity.2d.sprite": "1.0.0",

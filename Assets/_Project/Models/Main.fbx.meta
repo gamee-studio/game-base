@@ -1,9 +1,74 @@
 fileFormatVersion: 2
-guid: b6089bb1d1be25b48a3cbf83a3d28ee9
+guid: 135916f84f2c8c94c9cd03177f2e9f97
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AWM
+    second: {fileID: 2100000, guid: 88bc260de82d67543a7ab3601b15d8a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gun_Thompson
+    second: {fileID: 2100000, guid: c1cf4fecaca935e4cb46a7e4059ace93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: K98k_mat
+    second: {fileID: 2100000, guid: 9dae8051274c123429d6d7333017babb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M24_mat
+    second: {fileID: 2100000, guid: 69830dcbe1dcde44eb327ff958a2a045, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main
+    second: {fileID: 2100000, guid: b5ca3fdee01bc664291a8b87dc707bac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #4
+    second: {fileID: 2100000, guid: b5ca3fdee01bc664291a8b87dc707bac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ReaverOperator_mat
+    second: {fileID: 2100000, guid: 0fd86d219bdf59b49a5780796ee5b9ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SVD_mat
+    second: {fileID: 2100000, guid: 13b2483d55cabd540b3148c5c4cdfce6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Scifi
+    second: {fileID: 2100000, guid: 1848329e99b09ef428a90b67f553ce7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Widowmaker_mat
+    second: {fileID: 2100000, guid: c50e200969773d7478ff384ff9760f8c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Winchester_mat
+    second: {fileID: 2100000, guid: 651855dc8996c4149b66bfef3ea16a95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mechanicalGun
+    second: {fileID: 2100000, guid: 23ad1688be8e4bd46966c08402697f89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: surfaceShader1
+    second: {fileID: 2100000, guid: dbd7c501829ac7e4094bb3d6eeda33ed, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -66,7 +131,7 @@ ModelImporter:
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
