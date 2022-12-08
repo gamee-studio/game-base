@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class PopupTest : Popup
 {
+    private bool isShowBanner;
+    
     #region SetupInAppReview
 #if UNITY_ANDROID
     private ReviewManager _reviewManager = null;
@@ -99,16 +101,17 @@ public class PopupTest : Popup
 #endif
     #endregion
 
-    protected override void BeforeShow()
+    public void OnClickBtnShowBannerAds()
     {
-        base.BeforeShow();
-        AdsManager.ShowBanner();
-    }
-    
-    protected override void BeforeHide()
-    {
-        base.BeforeHide();
-        AdsManager.HideBanner();
+        if (!isShowBanner)
+        {
+            Advertising.ShowBannerAd();
+        }
+        else
+        {
+            Advertising.HideBannerAd();
+        }
+        
     }
 
     public void OnClickBtnShowInterstitialAds()

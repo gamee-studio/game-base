@@ -1228,9 +1228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40abf828c1698154e82f752543017b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseShowAnimation: 0
+  UseAnimation: 0
   Background: {fileID: 6631244465714846239}
   Container: {fileID: 7181232592666992498}
+  UseShowAnimation: 0
   ShowAnimationType: 0
   UseHideAnimation: 0
   HideAnimationType: 0

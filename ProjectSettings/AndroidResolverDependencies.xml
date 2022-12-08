@@ -7,6 +7,7 @@
     <package>com.applovin.mediation:bytedance-adapter:4.8.0.8.1</package>
     <package>com.applovin.mediation:chartboost-adapter:9.1.1.1</package>
     <package>com.applovin.mediation:facebook-adapter:[6.12.0.0]</package>
+    <package>com.applovin.mediation:google-adapter:[21.3.0.2]</package>
     <package>com.applovin.mediation:inmobi-adapter:10.1.1.0</package>
     <package>com.applovin.mediation:ironsource-adapter:7.2.5.0.1</package>
     <package>com.applovin.mediation:mintegral-adapter:16.2.61.1</package>

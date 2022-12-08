@@ -267,18 +267,18 @@ MonoBehaviour:
     enable: 1
     sdkKey: -feJa9bEGOmZW95XxkyfhE2R_yHQ4poWZofsvPWhIw_es2dT16vUIDRoHKX63m6a9JD7wX1Q0PZ0Qng8EukpFT
     bannerAdUnit:
-      androidId: bea5f00e74620d33
+      androidId: db897f39d8c671e5
       iOSId: 
       position: 1
       useAdaptiveBanner: 0
     interstitialAdUnit:
-      androidId: 6e8f72e6c883034b
+      androidId: e843fb991a5dddb5
       iOSId: 
     rewardedAdUnit:
-      androidId: b7aa7f15eea43404
+      androidId: af525f5627af2f2a
       iOSId: 
     appOpenAdUnit:
-      androidId: 
+      androidId: d3f45f455a2370fa
       iOSId: 
     rewardedInterstitialAdUnit:
       androidId: 
