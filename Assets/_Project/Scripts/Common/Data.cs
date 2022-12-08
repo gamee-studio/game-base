@@ -35,6 +35,17 @@ public static partial class Data
         }
     }
     
+    public static int GetNumberShowGameObject(string gameObjectID)
+    {
+        return GetInt($"{Constant.GAMEOBJECT_SHOW}_{gameObjectID}",0);
+    }
+
+    public static void IncreaseNumberShowGameObject(string gameObjectID)
+    {
+        int value = GetNumberShowGameObject(gameObjectID);
+        SetInt($"{Constant.GAMEOBJECT_SHOW}_{gameObjectID}", ++value);
+    }
+    
     public static int CurrencyTotal
     {
         get => GetInt(Constant.CURRENCY_TOTAL, 0);

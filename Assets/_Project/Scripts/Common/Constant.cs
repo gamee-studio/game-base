@@ -38,6 +38,7 @@ public class Constant
     public const string PROGRESS_AMOUNT = "PROGRESS_AMOUNT";
     public const string UNLOCK_ITEM = "UNLOCK_ITEM";
     public const string EQUIP_ITEM = "EQUIP_ITEM";
+    public const string GAMEOBJECT_SHOW = "GAMEOBJECT_SHOW";
 
     
     
