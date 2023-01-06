@@ -1,8 +1,10 @@
 using UnityEngine;
 using Pancake;
-public class LevelController : Singleton<LevelController>
+using Debug = System.Diagnostics.Debug;
+
+public class LevelController : SingletonDontDestroy<LevelController>
 {
-    [ReadOnly] public Level CurrentLevel;
+    [ReadOnly] public Level currentLevel;
     private GameConfig Game => ConfigController.Game;
     public void PrepareLevel()
     {
@@ -11,9 +13,9 @@ public class LevelController : Singleton<LevelController>
     
     public void GenerateLevel(int indexLevel)
     {
-        if (CurrentLevel != null)
+        if (currentLevel != null)
         {
-            Destroy(CurrentLevel.gameObject);
+            Destroy(currentLevel.gameObject);
         }
 
         if (indexLevel > ConfigController.Game.MaxLevel)
@@ -33,24 +35,25 @@ public class LevelController : Singleton<LevelController>
         }
 
         Level level = GetLevelByIndex(indexLevel);
-        CurrentLevel = Instantiate(level);
-        CurrentLevel.gameObject.SetActive(false);
+        currentLevel = Instantiate(level);
+        currentLevel.gameObject.SetActive(false);
     }
 
     public Level GetLevelByIndex(int indexLevel)
     {
-        GameObject levelGO;
-        levelGO = Resources.Load($"Levels/Level {indexLevel}") as GameObject;
-        return levelGO.GetComponent<Level>();
+        var levelGo = Resources.Load($"Levels/Level {indexLevel}") as GameObject;
+        Debug.Assert(levelGo != null, nameof(levelGo) + " != null");
+        return levelGo.GetComponent<Level>();
     }
     
     public void OnLoseGame()
     {
-        CurrentLevel.OnLoseGame();
+        currentLevel.OnLoseGame();
     }
 
     public void OnWinGame()
     {
-        CurrentLevel.OnWinGame();
+        currentLevel.OnWinGame();
     }
 }
+

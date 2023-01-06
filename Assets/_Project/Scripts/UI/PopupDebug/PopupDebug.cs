@@ -38,6 +38,6 @@ public class PopupDebug : Popup
 
     public void OnClickFPSBtn()
     {
-        GameManager.Instance.ChangeAFPSState();
+        GameManager.Instance.ChangeAFpsState();
     }
 }

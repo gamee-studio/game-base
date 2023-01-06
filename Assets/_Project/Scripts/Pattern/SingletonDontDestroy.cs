@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public abstract class SingletonDontDestroy<T> : MonoBehaviour where T : MonoBehaviour
 {
     static T _instance;
 
@@ -8,6 +8,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
+        DontDestroyOnLoad(this);
         if (_instance == null)
         {
             _instance = this as T;
@@ -16,10 +17,5 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    protected virtual void OnDestroy()
-    {
-        if (_instance == this) _instance = null;
     }
 }

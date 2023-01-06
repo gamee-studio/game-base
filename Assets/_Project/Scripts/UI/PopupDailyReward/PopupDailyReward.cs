@@ -40,7 +40,7 @@ public class PopupDailyReward : Popup
         //PopupController.Instance.Show<PopupHome>();
         if (!PopupController.Instance.Get<PopupHome>().isActiveAndEnabled)
         {
-            GameManager.Instance.GameState = GameState.PlayingGame;
+            GameManager.Instance.gameState = GameState.PlayingGame;
             PopupController.Instance.Hide<PopupUI>();
         }
         sequence?.Kill();

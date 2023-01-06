@@ -3,21 +3,21 @@ using DG.Tweening;
 using Pancake.GameService;
 using UnityEngine;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : SingletonDontDestroy<GameManager>
 {
-    public LevelController LevelController;
-    public GameState GameState;
+    public LevelController levelController;
+    public GameState gameState;
 
-    public AFPSCounter AFPSCounter => GetComponent<AFPSCounter>();
+    public AFPSCounter AFpsCounter => GetComponent<AFPSCounter>();
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         Application.targetFrameRate = 80;
     }
     
     void Start()
     {
-        DontDestroyOnLoad(this);
         ReturnHome();
         EventController.CurrentLevelChanged += UpdateScore;
     }
@@ -37,7 +37,7 @@ public class GameManager : Singleton<GameManager>
     }
     private void FixedUpdate()
     {
-        if (GameState == GameState.PlayingGame)
+        if (gameState == GameState.PlayingGame)
         {
             AdsManager.TotalTimesPlay += Time.deltaTime;
         }
@@ -45,8 +45,8 @@ public class GameManager : Singleton<GameManager>
 
     public void PrepareLevel()
     {
-        GameState = GameState.PrepareGame;
-        LevelController.PrepareLevel();
+        gameState = GameState.PrepareGame;
+        levelController.PrepareLevel();
     }
 
     public void ReturnHome()
@@ -82,49 +82,49 @@ public class GameManager : Singleton<GameManager>
     
     public void StartGame()
     {
-        FirebaseManager.OnStartLevel(Data.CurrentLevel,LevelController.Instance.CurrentLevel.gameObject.name);
+        FirebaseManager.OnStartLevel(Data.CurrentLevel,levelController.currentLevel.gameObject.name);
         
-        GameState = GameState.PlayingGame;
+        gameState = GameState.PlayingGame;
         
         PopupController.Instance.HideAll();
         PopupController.Instance.Show<PopupInGame>();
-        LevelController.Instance.CurrentLevel.gameObject.SetActive(true);
+        levelController.currentLevel.gameObject.SetActive(true);
     }
 
     public void OnWinGame(float delayPopupShowTime = 2.5f)
     {
-        if (GameState == GameState.LoseGame || GameState == GameState.WinGame) return;
-        GameState = GameState.WinGame;
+        if (gameState == GameState.LoseGame || gameState == GameState.WinGame) return;
+        gameState = GameState.WinGame;
         EventController.OnWinLevel?.Invoke();
         // Data setup
-        FirebaseManager.OnWinGame(Data.CurrentLevel,LevelController.Instance.CurrentLevel.gameObject.name);
+        FirebaseManager.OnWinGame(Data.CurrentLevel,levelController.currentLevel.gameObject.name);
         AdsManager.TotalLevelWinLose++;
         Data.CurrentLevel++;
         // Effect and sounds
         SoundController.Instance.PlayFX(SoundType.WinGame);
         // Event invoke
-        LevelController.OnWinGame();
+        levelController.OnWinGame();
         DOTween.Sequence().AppendInterval(delayPopupShowTime).AppendCallback(() =>
         {
             PopupController.Instance.HideAll();
             PopupWin popupWin = PopupController.Instance.Get<PopupWin>() as PopupWin;
-            popupWin.SetupMoneyWin(LevelController.CurrentLevel.BonusMoney);
+            popupWin.SetupMoneyWin(levelController.currentLevel.BonusMoney);
             popupWin.Show();
         });
     }
     
     public void OnLoseGame(float delayPopupShowTime = 2.5f)
     {
-        if (GameState == GameState.LoseGame || GameState == GameState.WinGame) return;
-        GameState = GameState.LoseGame;
+        if (gameState == GameState.LoseGame || gameState == GameState.WinGame) return;
+        gameState = GameState.LoseGame;
         EventController.OnLoseLevel?.Invoke();
         // Data setup
-        FirebaseManager.OnLoseGame(Data.CurrentLevel,LevelController.Instance.CurrentLevel.gameObject.name);
+        FirebaseManager.OnLoseGame(Data.CurrentLevel,levelController.currentLevel.gameObject.name);
         AdsManager.TotalLevelWinLose++;
         // Effect and sounds
         SoundController.Instance.PlayFX(SoundType.LoseGame);
         // Event invoke
-        LevelController.OnLoseGame();
+        levelController.OnLoseGame();
         DOTween.Sequence().AppendInterval(delayPopupShowTime).AppendCallback(() =>
         {
             PopupController.Instance.Hide<PopupInGame>();
@@ -132,11 +132,11 @@ public class GameManager : Singleton<GameManager>
         });
     }
 
-    public void ChangeAFPSState()
+    public void ChangeAFpsState()
     {
         if (Data.IsTesting)
         {
-            AFPSCounter.enabled = !AFPSCounter.isActiveAndEnabled;
+            AFpsCounter.enabled = !AFpsCounter.isActiveAndEnabled;
         }
     }
 }
@@ -145,6 +145,7 @@ public enum GameState
 {
     PrepareGame,
     PlayingGame,
+    WaitingResult,
     LoseGame,
     WinGame,
 }
