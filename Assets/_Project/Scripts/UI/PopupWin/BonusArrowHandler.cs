@@ -4,7 +4,7 @@ using UnityEngine;
 public class BonusArrowHandler : MonoBehaviour
 {
     [ReadOnly] public AreaItem CurrentAreaItem;
-    public MoveObject MoveObject => GetComponent<MoveObject>();
+    public GoMove MoveObject => GetComponent<GoMove>();
 
     private void OnTriggerEnter2D(Collider2D other)
     {

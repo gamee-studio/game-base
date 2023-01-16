@@ -36,7 +36,7 @@ public class LoadingController : MonoBehaviour
     private async void WaitProcess()
     {
         await UniTask.WaitUntil(() => AdsManager.IsInitialized && FirebaseManager.IsInitialized && flagDoneProgress);
-
+        ConfigController.Instance.Initialize();
         _operation.allowSceneActivation = true;
     }
 }

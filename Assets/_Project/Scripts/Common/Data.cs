@@ -20,7 +20,7 @@ public static partial class Data
         set
         {
             PlayerPrefs.SetInt(Constant.IS_TESTING, value ? 1 : 0);
-            EventController.OnDebugChanged?.Invoke();
+            Observer.DebugChanged?.Invoke();
         }
     }
 
@@ -31,7 +31,7 @@ public static partial class Data
         set
         {
             SetInt(Constant.INDEX_LEVEL_CURRENT, value>=1?value:1);
-            EventController.CurrentLevelChanged?.Invoke();
+            Observer.CurrentLevelChanged?.Invoke();
         }
     }
     
@@ -51,9 +51,9 @@ public static partial class Data
         get => GetInt(Constant.CURRENCY_TOTAL, 0);
         set
         {
-            EventController.SaveCurrencyTotal?.Invoke();
+            Observer.SaveCurrencyTotal?.Invoke();
             SetInt(Constant.CURRENCY_TOTAL, value);
-            EventController.CurrencyTotalChanged?.Invoke();
+            Observer.CurrencyTotalChanged?.Invoke();
         }
     }
 
@@ -90,7 +90,7 @@ public static partial class Data
         set
         {
             SetBool(Constant.BACKGROUND_SOUND_STATE, value);
-            EventController.OnSoundChanged?.Invoke();
+            Observer.MusicChanged?.Invoke();
         }
     }
 
@@ -100,7 +100,7 @@ public static partial class Data
         set
         {
             SetBool(Constant.FX_SOUND_STATE, value);
-            EventController.OnSoundChanged?.Invoke();
+            Observer.SoundChanged?.Invoke();
         }
     }
 

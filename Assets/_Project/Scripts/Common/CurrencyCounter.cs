@@ -13,8 +13,8 @@ public class CurrencyCounter : MonoBehaviour
 
     private void Start()
     {
-        EventController.SaveCurrencyTotal += SaveCurrency;
-        EventController.CurrencyTotalChanged += UpdateCurrencyAmountText;
+        Observer.SaveCurrencyTotal += SaveCurrency;
+        Observer.CurrencyTotalChanged += UpdateCurrencyAmountText;
         CurrencyAmountText.text = Data.CurrencyTotal.ToString();
     }
 

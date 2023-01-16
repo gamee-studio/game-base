@@ -19,7 +19,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
     void Start()
     {
         ReturnHome();
-        EventController.CurrentLevelChanged += UpdateScore;
+        Observer.CurrentLevelChanged += UpdateScore;
     }
 
     public void PlayCurrentLevel()
@@ -95,7 +95,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
     {
         if (gameState == GameState.LoseGame || gameState == GameState.WinGame) return;
         gameState = GameState.WinGame;
-        EventController.OnWinLevel?.Invoke();
+        Observer.OnWinLevel?.Invoke();
         // Data setup
         FirebaseManager.OnWinGame(Data.CurrentLevel,levelController.currentLevel.gameObject.name);
         AdsManager.TotalLevelWinLose++;
@@ -117,7 +117,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
     {
         if (gameState == GameState.LoseGame || gameState == GameState.WinGame) return;
         gameState = GameState.LoseGame;
-        EventController.OnLoseLevel?.Invoke();
+        Observer.OnLoseLevel?.Invoke();
         // Data setup
         FirebaseManager.OnLoseGame(Data.CurrentLevel,levelController.currentLevel.gameObject.name);
         AdsManager.TotalLevelWinLose++;

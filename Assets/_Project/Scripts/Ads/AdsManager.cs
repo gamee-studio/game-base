@@ -106,7 +106,7 @@ public class AdsManager
         }
     }
 
-    private static void Reset()
+    public static void Reset()
     {
         TotalTimesPlay = 0;
         TotalLevelWinLose = 0;

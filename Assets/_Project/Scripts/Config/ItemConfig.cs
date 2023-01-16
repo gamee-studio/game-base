@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 [CreateAssetMenu(fileName = "ItemConfig", menuName = "ScriptableObject/ItemConfig")]
 public class ItemConfig : ScriptableObject
 {
-    public List<ItemData> ItemDatas;
+    public List<ItemData> itemDatas;
 
     public void Initialize()
     {
@@ -17,7 +17,7 @@ public class ItemConfig : ScriptableObject
 
     public void UnlockDefaultSkins()
     {
-        foreach (ItemData item in ItemDatas)
+        foreach (ItemData item in itemDatas)
         {
             if (item.BuyType == BuyType.Default)
             {
@@ -28,25 +28,25 @@ public class ItemConfig : ScriptableObject
 
     public void UnlockAllSkins()
     {
-        foreach (ItemData itemData in ItemDatas)
+        foreach (ItemData itemData in itemDatas)
         {
             itemData.IsUnlocked = true;
         }
     }
     public ItemData GetItemData(string itemIdentity)
     {
-        return ItemDatas.Find(item => item.Identity == itemIdentity);
+        return itemDatas.Find(item => item.Identity == itemIdentity);
     }
 
     public List<ItemData> GetListItemDataByType(ItemType itemType)
     {
-        return ItemDatas.FindAll(item => item.Type == itemType);
+        return itemDatas.FindAll(item => item.Type == itemType);
     }
 
     public ItemData GetGiftItemData()
     {
         List<ItemData> tempList =
-            ItemDatas.FindAll(item => !item.IsUnlocked && (item.BuyType == BuyType.BuyCoin || item.BuyType == BuyType.WatchAds));
+            itemDatas.FindAll(item => !item.IsUnlocked && (item.BuyType == BuyType.BuyCoin || item.BuyType == BuyType.WatchAds));
         return tempList.Count > 0?tempList[Random.Range(0, tempList.Count)]:null;
     }
 }

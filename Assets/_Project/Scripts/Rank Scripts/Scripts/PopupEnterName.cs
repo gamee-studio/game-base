@@ -120,7 +120,7 @@ namespace Pancake.GameService
                 _actionShowPopupLeaderboard?.Invoke();
             }
 
-          //  EventController.OnNotifying?.Invoke();
+          //  Observer.OnNotifying?.Invoke();
         }
 
         protected virtual void AuthServiceOnUpdatePlayerStatisticsSuccess(UpdatePlayerStatisticsResult success)

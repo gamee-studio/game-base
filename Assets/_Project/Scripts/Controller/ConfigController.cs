@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ConfigController : MonoBehaviour
+public class ConfigController : SingletonDontDestroy<ConfigController>
 {
     [SerializeField] private GameConfig gameConfig;
     [SerializeField] private SoundConfig soundConfig;
@@ -14,16 +14,18 @@ public class ConfigController : MonoBehaviour
     public static CountryConfig CountryConfig;
     public static ItemConfig ItemConfig;
     
-    private void Awake()
+    protected override void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-
+        base.Awake();
         Game = gameConfig;
         Sound = soundConfig;
         DailyRewardConfig = dailyRewardConfig;
         CountryConfig = countryConfig;
         ItemConfig = itemConfig;
-        
+    }
+
+    public void Initialize()
+    {
         ItemConfig.Initialize();
     }
 }

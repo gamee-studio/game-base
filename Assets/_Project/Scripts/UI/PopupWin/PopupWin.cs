@@ -50,7 +50,7 @@ public class PopupWin : Popup
         }
         else
         {
-            if (Advertising.IsRewardedAdReady()) BonusArrowHandler.MoveObject.IsRun = false;
+            if (Advertising.IsRewardedAdReady()) BonusArrowHandler.MoveObject.StopMoving();
             AdsManager.ShowRewardAds(() =>
             {
                 //FirebaseManager.OnWatchAdsRewardWin();
@@ -58,7 +58,7 @@ public class PopupWin : Popup
                 SoundController.Instance.PlayFX(SoundType.ClaimReward);
             }, (() =>
             {
-                BonusArrowHandler.MoveObject.IsRun = true;
+                BonusArrowHandler.MoveObject.ResumeMoving();
                 BtnRewardAds.SetActive(true);
                 BtnTapToContinue.SetActive(true);
             }));
@@ -68,7 +68,7 @@ public class PopupWin : Popup
     public void GetRewardAds()
     {
         Data.CurrencyTotal += TotalMoney * BonusArrowHandler.CurrentAreaItem.MultiBonus;
-        BonusArrowHandler.MoveObject.IsRun = false;
+        BonusArrowHandler.MoveObject.StopMoving();
         BtnRewardAds.SetActive(false);
         BtnTapToContinue.SetActive(false);
         sequence?.Kill();

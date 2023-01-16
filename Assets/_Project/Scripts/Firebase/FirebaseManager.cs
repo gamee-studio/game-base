@@ -9,7 +9,7 @@ using Firebase.RemoteConfig;
 
 public class FirebaseManager
 {
-    static DependencyStatus dependencyStatus = DependencyStatus.UnavailableOther;
+    static DependencyStatus DependencyStatus = DependencyStatus.UnavailableOther;
     public static bool IsInitialized = false;
 
     // Start is called before the first frame update
@@ -17,8 +17,8 @@ public class FirebaseManager
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
-            dependencyStatus = task.Result;
-            if (dependencyStatus == DependencyStatus.Available)
+            DependencyStatus = task.Result;
+            if (DependencyStatus == DependencyStatus.Available)
             {
                 InitializeFirebase();
 
@@ -26,7 +26,7 @@ public class FirebaseManager
             }
             else
             {
-                Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
+                Debug.LogError("Could not resolve all Firebase dependencies: " + DependencyStatus);
             }
         });
     }
@@ -251,7 +251,7 @@ public class FirebaseManager
     #endregion
 
     #region BaseLogFunction
-    public static bool isMobile()
+    public static bool IsMobile()
     {
         return (Application.platform == RuntimePlatform.Android ||
                 Application.platform == RuntimePlatform.IPhonePlayer);
@@ -259,7 +259,7 @@ public class FirebaseManager
     
     public static void LogEvent(string paramName, Parameter[] parameters)
     {
-        if (!isMobile()) return;
+        if (!IsMobile()) return;
         try
         {
             FirebaseAnalytics.LogEvent(paramName, parameters);
@@ -273,7 +273,7 @@ public class FirebaseManager
     
     public static void LogEvent(string paramName)
     {
-        if (!isMobile()) return;
+        if (!IsMobile()) return;
         try
         {
             FirebaseAnalytics.LogEvent(paramName);

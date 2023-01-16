@@ -94,7 +94,7 @@ public class PopupDailyReward : Popup
         AdsManager.ShowRewardAds(() =>
         {
             SoundController.Instance.PlayFX(SoundType.ClaimReward);
-            //EventController.OnNotifying?.Invoke();
+            //Observer.OnNotifying?.Invoke();
             CurrentItem.OnClaim(true);
         });
     }
@@ -102,7 +102,7 @@ public class PopupDailyReward : Popup
     public void OnClickBtnClaim()
     {
         SoundController.Instance.PlayFX(SoundType.ClaimReward);
-        //EventController.OnNotifying?.Invoke();
+        //Observer.OnNotifying?.Invoke();
         CurrentItem.OnClaim();
     }
 
@@ -111,6 +111,6 @@ public class PopupDailyReward : Popup
         Data.LastDailyRewardClaimed = DateTime.Now.AddDays(-1).ToString();
         ResetDailyReward();
         Setup();
-        //EventController.OnNotifying?.Invoke();
+        //Observer.OnNotifying?.Invoke();
     }
 }

@@ -14,14 +14,14 @@ public class PopupInGame : Popup
 
    public void Start()
    {
-      EventController.OnWinLevel += HideUI;
-      EventController.OnLoseLevel += HideUI;
+      Observer.OnWinLevel += HideUI;
+      Observer.OnLoseLevel += HideUI;
    }
 
    public void OnDestroy()
    {
-      EventController.OnWinLevel -= HideUI;
-      EventController.OnLoseLevel -= HideUI;
+      Observer.OnWinLevel -= HideUI;
+      Observer.OnLoseLevel -= HideUI;
    }
 
    protected override void BeforeShow()

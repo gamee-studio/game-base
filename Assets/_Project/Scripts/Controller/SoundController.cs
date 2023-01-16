@@ -1,28 +1,35 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class SoundController : Singleton<SoundController>
+public class SoundController : SingletonDontDestroy<SoundController>
 {
-    public AudioSource BackgroundAudio;
-    public AudioSource FxAudio;
+    public AudioSource backgroundAudio;
+    public AudioSource fxAudio;
     public SoundConfig SoundConfig => ConfigController.Sound;
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
 
     public void Start()
     {
         Setup();
 
-        EventController.OnSoundChanged += Setup;
+        Observer.MusicChanged += OnMusicChanged;
+        Observer.SoundChanged += OnSoundChanged;
     }
 
+    private void OnMusicChanged()
+    {
+        backgroundAudio.mute = !Data.BgSoundState;
+    }
+    
+    private void OnSoundChanged()
+    {
+        fxAudio.mute = !Data.FxSoundState;
+    }
+    
     public void Setup()
     {
-        BackgroundAudio.mute = !Data.BgSoundState;
-        FxAudio.mute = !Data.FxSoundState;
+        OnMusicChanged();
+        OnSoundChanged();
     }
 
     public void PlayFX(SoundType soundType)
@@ -31,7 +38,7 @@ public class SoundController : Singleton<SoundController>
 
         if (soundData != null)
         {
-            FxAudio.PlayOneShot(soundData.GetRandomAudioClip());
+            fxAudio.PlayOneShot(soundData.GetRandomAudioClip());
         }
         else
         {
@@ -45,8 +52,8 @@ public class SoundController : Singleton<SoundController>
 
         if (soundData != null)
         {
-            BackgroundAudio.clip = soundData.GetRandomAudioClip();
-            BackgroundAudio.Play();
+            backgroundAudio.clip = soundData.GetRandomAudioClip();
+            backgroundAudio.Play();
         }
         else
         {
@@ -56,9 +63,9 @@ public class SoundController : Singleton<SoundController>
 
     public void PauseBackground()
     {
-        if (BackgroundAudio)
+        if (backgroundAudio)
         {
-            BackgroundAudio.Pause();
+            backgroundAudio.Pause();
         }
     }
 }

@@ -7,7 +7,7 @@ public class CoinTotal : MonoBehaviour
 
     private void Awake()
     {
-        EventController.CurrencyTotalChanged += UpdateCurrencyText;
+        Observer.CurrencyTotalChanged += UpdateCurrencyText;
         UpdateCurrencyText();
     }
 

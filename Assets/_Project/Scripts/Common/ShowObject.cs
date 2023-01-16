@@ -52,14 +52,14 @@ public class ShowObject : MonoBehaviour
     {
         Setup();
         
-        if (IsShowByLevel) EventController.CurrentLevelChanged += Setup;
-        if (IsShowByTesting) EventController.OnDebugChanged += Setup;
+        if (IsShowByLevel) Observer.CurrentLevelChanged += Setup;
+        if (IsShowByTesting) Observer.DebugChanged += Setup;
     }
 
     private void OnDestroy()
     {
-        if (IsShowByLevel) EventController.CurrentLevelChanged -= Setup;
-        if (IsShowByTesting) EventController.OnDebugChanged -= Setup;
+        if (IsShowByLevel) Observer.CurrentLevelChanged -= Setup;
+        if (IsShowByTesting) Observer.DebugChanged -= Setup;
     }
 
     public void Setup()

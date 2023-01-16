@@ -1228,13 +1228,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40abf828c1698154e82f752543017b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useAnimation: 0
-  background: {fileID: 0}
-  container: {fileID: 0}
-  useShowAnimation: 0
-  showAnimationType: 0
-  useHideAnimation: 0
-  hideAnimationType: 0
+  UseAnimation: 0
+  Background: {fileID: 0}
+  Container: {fileID: 0}
+  UseShowAnimation: 0
+  ShowAnimationType: 0
+  UseHideAnimation: 0
+  HideAnimationType: 0
 --- !u!1 &7415493060406177231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,7 +1323,7 @@ GameObject:
   - component: {fileID: 7415493060764968817}
   - component: {fileID: 7415493060764968814}
   - component: {fileID: 7415493060764968815}
-  - component: {fileID: 7415493060764968816}
+  - component: {fileID: 5530626518254803615}
   m_Layer: 5
   m_Name: Fetch
   m_TagString: Untagged
@@ -1348,7 +1348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -540, y: -960}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 204, y: 204}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7415493060764968814
@@ -1389,26 +1389,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &7415493060764968816
-Animator:
-  serializedVersion: 4
+--- !u!114 &5530626518254803615
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7415493060764968818}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e288d9921efde0a4abad8657a4ad5e6e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac89d05838d9de644b56ace2293ffcdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreTimeScale: 0
+  speed: 2
+  rotateX: 0
+  rotateY: 0
+  rotateZ: 1
 --- !u!1 &8454268291407083420
 GameObject:
   m_ObjectHideFlags: 0
