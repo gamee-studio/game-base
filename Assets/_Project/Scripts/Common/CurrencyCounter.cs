@@ -52,7 +52,7 @@ public class CurrencyCounter : MonoBehaviour
             }
         }, ()=>
         {
-            SoundController.Instance.PlayFX(SoundType.CoinMove);
+            Observer.CoinMove?.Invoke();
             if (!isPopupUIActive) PopupController.Instance.Hide<PopupUI>();
         });
     }

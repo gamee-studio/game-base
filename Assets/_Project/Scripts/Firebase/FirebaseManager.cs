@@ -4,7 +4,6 @@ using Firebase.Analytics;
 using Firebase.Extensions;
 using System.Threading.Tasks;
 using System;
-using System.Reflection;
 using Firebase.RemoteConfig;
 
 public class FirebaseManager
@@ -31,7 +30,7 @@ public class FirebaseManager
         });
     }
 
-    async static void InitializeFirebase()
+    static async void InitializeFirebase()
     {
         FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
 
@@ -119,172 +118,4 @@ public class FirebaseManager
             IsInitialized = true;
         });
     }
-
-    #region EventHasParams
-
-    public static void OnStartLevel(int levelIndex,string levelName)
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        Parameter[] _parameters =
-        {
-            new Parameter(FirebaseAnalytics.ParameterLevel, levelIndex),
-            new Parameter("level_name", levelName)
-        };
-        LogEvent(function.Name,_parameters);
-    }
-
-    public static void OnLoseGame(int levelIndex,string levelName)
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        Parameter[] _parameters =
-        {
-            new Parameter(FirebaseAnalytics.ParameterLevel, levelIndex),
-            new Parameter("level_name", levelName)
-        };
-        LogEvent(function.Name,_parameters);
-    }
-    
-    public static void OnWinGame(int levelIndex,string levelName)
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        Parameter[] _parameters =
-        {
-            new Parameter(FirebaseAnalytics.ParameterLevel, levelIndex),
-            new Parameter("level_name", levelName)
-        };
-        LogEvent(function.Name,_parameters);
-    }
-    
-    public static void OnReplayGame(int levelIndex)
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        string contentValue = $"level-{levelIndex}_clone-level-{(levelIndex-1) % ConfigController.Game.MaxLevel + ConfigController.Game.StartLoopLevel}";
-        Parameter[] _parameters =
-        {
-            new Parameter("replay_game", contentValue),
-        };
-        LogEvent(function.Name,_parameters);
-    }
-    
-
-    #endregion
-    
-    #region EventNoParams
-    public static void OnClickButtonDailyReward()
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
-    }
-    
-    public static void OnClickButtonSetting()
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
-    }
-    
-    public static void OnClickButtonStart()
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
-    }
-    
-    public static void OnClickButtonShop()
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
-    }
-    
-    public static void OnClickButtonIAP()
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
-    }
-    
-    public static void OnClickButtonSpinReward()
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
-    }
-    
-    public static void OnClickButtonReplay()
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
-    }
-    
-    public static void OnClickButtonSkipLevel()
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
-    }
-    
-    public static void OnRequestInterstitial()
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
-    }
-    
-    public static void OnShowInterstitial()
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
-    }
-    
-    public static void OnRequestReward()
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
-    }
-    
-    public static void OnShowReward()
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
-    }
-    
-    public static void OnShowBanner()
-    {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
-    }
-
-    #endregion
-
-    #region BaseLogFunction
-    public static bool IsMobile()
-    {
-        return (Application.platform == RuntimePlatform.Android ||
-                Application.platform == RuntimePlatform.IPhonePlayer);
-    }
-    
-    public static void LogEvent(string paramName, Parameter[] parameters)
-    {
-        if (!IsMobile()) return;
-        try
-        {
-            FirebaseAnalytics.LogEvent(paramName, parameters);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Event log error: " + e.ToString());
-            throw;
-        }
-    }
-    
-    public static void LogEvent(string paramName)
-    {
-        if (!IsMobile()) return;
-        try
-        {
-            FirebaseAnalytics.LogEvent(paramName);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Event log error: " + e.ToString());
-            throw;
-        }
-    }
-    
-
-    #endregion
 }

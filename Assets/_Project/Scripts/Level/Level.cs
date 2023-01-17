@@ -36,7 +36,6 @@ public class Level : MonoBehaviour
     
     void HandleFingerDown(Lean.Touch.LeanFinger finger)
     {
-        Debug.Log("OnFingerDown");
         if (!finger.IsOverGui)
         {
             _isFingerDown = true;
@@ -52,7 +51,6 @@ public class Level : MonoBehaviour
     
     void HandleFingerUp(Lean.Touch.LeanFinger finger)
     {
-        Debug.Log("OnFingerUp");
         _isFingerDown = false;
     }
     
@@ -61,28 +59,28 @@ public class Level : MonoBehaviour
         if (_isFingerDown)
         {
             _isFingerDrag = true;
-            Debug.Log("OnFingerDrag");
         }
     }
     
     private void Start()
     {
-        
+        Observer.WinLevel += OnWin;
+        Observer.LoseLevel += OnLose;
     }
 
     private void OnDestroy()
     {
-        
+        Observer.WinLevel -= OnWin;
+        Observer.LoseLevel -= OnLose;
     }
 
-    public void OnWinGame()
+    public void OnWin(Level level)
     {
         
     }
 
-    public void OnLoseGame()
+    public void OnLose(Level level)
     {
-        
+         
     }
-    
 }

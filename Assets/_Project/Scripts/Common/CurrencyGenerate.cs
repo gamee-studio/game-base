@@ -57,7 +57,7 @@ public class CurrencyGenerate : MonoBehaviour
 
     private void MoveCoin(GameObject coin)
     {
-        //SoundController.Instance.PlayOnce(SoundType.CoinMove);
+        //Observer.PlayOnce(SoundType.CoinMove);
         MoveToNear(coin).OnComplete(() =>
         {
             MoveToTarget(coin).OnComplete(() =>

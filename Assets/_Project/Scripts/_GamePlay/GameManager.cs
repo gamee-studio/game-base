@@ -13,13 +13,14 @@ public class GameManager : SingletonDontDestroy<GameManager>
     protected override void Awake()
     {
         base.Awake();
-        Application.targetFrameRate = 80;
+        Application.targetFrameRate = 60;
     }
     
     void Start()
     {
         ReturnHome();
-        Observer.CurrentLevelChanged += UpdateScore;
+        
+        Observer.StartLevel += UpdateScore;
     }
 
     public void PlayCurrentLevel()
@@ -28,7 +29,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
         StartGame();
     }
     
-    public void UpdateScore()
+    public void UpdateScore(Level level)
     {
         if (AuthService.Instance.isLoggedIn && AuthService.Instance.IsCompleteSetupName)
         {
@@ -60,6 +61,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
 
     public void ReplayGame()
     {
+        Observer.ReplayLevel?.Invoke(levelController.currentLevel);
         PrepareLevel();
         StartGame();
     }
@@ -74,6 +76,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
 
     public void NextLevel()
     {
+        Observer.SkipLevel?.Invoke(levelController.currentLevel);
         Data.CurrentLevel++;
 
         PrepareLevel();
@@ -82,9 +85,8 @@ public class GameManager : SingletonDontDestroy<GameManager>
     
     public void StartGame()
     {
-        FirebaseManager.OnStartLevel(Data.CurrentLevel,levelController.currentLevel.gameObject.name);
-        
         gameState = GameState.PlayingGame;
+        Observer.StartLevel?.Invoke(levelController.currentLevel);
         
         PopupController.Instance.HideAll();
         PopupController.Instance.Show<PopupInGame>();
@@ -93,17 +95,11 @@ public class GameManager : SingletonDontDestroy<GameManager>
 
     public void OnWinGame(float delayPopupShowTime = 2.5f)
     {
-        if (gameState == GameState.LoseGame || gameState == GameState.WinGame) return;
+        if (gameState == GameState.WaitingResult || gameState == GameState.LoseGame || gameState == GameState.WinGame) return;
         gameState = GameState.WinGame;
-        Observer.OnWinLevel?.Invoke();
-        // Data setup
-        FirebaseManager.OnWinGame(Data.CurrentLevel,levelController.currentLevel.gameObject.name);
+        Observer.WinLevel?.Invoke(levelController.currentLevel);
         AdsManager.TotalLevelWinLose++;
         Data.CurrentLevel++;
-        // Effect and sounds
-        SoundController.Instance.PlayFX(SoundType.WinGame);
-        // Event invoke
-        levelController.OnWinGame();
         DOTween.Sequence().AppendInterval(delayPopupShowTime).AppendCallback(() =>
         {
             PopupController.Instance.HideAll();
@@ -115,16 +111,11 @@ public class GameManager : SingletonDontDestroy<GameManager>
     
     public void OnLoseGame(float delayPopupShowTime = 2.5f)
     {
-        if (gameState == GameState.LoseGame || gameState == GameState.WinGame) return;
+        if (gameState == GameState.WaitingResult || gameState == GameState.LoseGame || gameState == GameState.WinGame) return;
         gameState = GameState.LoseGame;
-        Observer.OnLoseLevel?.Invoke();
-        // Data setup
-        FirebaseManager.OnLoseGame(Data.CurrentLevel,levelController.currentLevel.gameObject.name);
+        Observer.LoseLevel?.Invoke(levelController.currentLevel);
+        
         AdsManager.TotalLevelWinLose++;
-        // Effect and sounds
-        SoundController.Instance.PlayFX(SoundType.LoseGame);
-        // Event invoke
-        levelController.OnLoseGame();
         DOTween.Sequence().AppendInterval(delayPopupShowTime).AppendCallback(() =>
         {
             PopupController.Instance.Hide<PopupInGame>();

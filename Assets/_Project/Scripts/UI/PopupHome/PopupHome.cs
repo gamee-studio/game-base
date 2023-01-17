@@ -1,9 +1,10 @@
+using System.Reflection;
+
 public class PopupHome : Popup
 {
     protected override void BeforeShow()
     {
         base.BeforeShow();
-        SoundController.Instance.PlayBackground(SoundType.BackgroundHome);
         PopupController.Instance.Show<PopupUI>();
     }
     
@@ -15,34 +16,49 @@ public class PopupHome : Popup
 
     public void OnClickStart()
     {
+        MethodBase function = MethodBase.GetCurrentMethod();
+        Observer.TrackClickButton?.Invoke(function.Name);
+        
         GameManager.Instance.StartGame();
     }
 
     public void OnClickDebug()
     {
+        MethodBase function = MethodBase.GetCurrentMethod();
+        Observer.TrackClickButton?.Invoke(function.Name);
+        
         PopupController.Instance.Show<PopupDebug>();
     }
 
     public void OnClickSetting()
     {
-        FirebaseManager.OnClickButtonSetting();
+        MethodBase function = MethodBase.GetCurrentMethod();
+        Observer.TrackClickButton?.Invoke(function.Name);
+        
         PopupController.Instance.Show<PopupSetting>();
     }
 
     public void OnClickDailyReward()
     {
-        FirebaseManager.OnClickButtonDailyReward();
+        MethodBase function = MethodBase.GetCurrentMethod();
+        Observer.TrackClickButton?.Invoke(function.Name);
+        
         PopupController.Instance.Show<PopupDailyReward>();
     }
 
     public void OnClickShop()
     {
-        FirebaseManager.OnClickButtonShop();
+        MethodBase function = MethodBase.GetCurrentMethod();
+        Observer.TrackClickButton?.Invoke(function.Name);
+        
         PopupController.Instance.Show<PopupShop>();
     }
     
     public void OnClickTest()
     {
+        MethodBase function = MethodBase.GetCurrentMethod();
+        Observer.TrackClickButton?.Invoke(function.Name);
+        
         PopupController.Instance.Show<PopupTest>();
     }
 }

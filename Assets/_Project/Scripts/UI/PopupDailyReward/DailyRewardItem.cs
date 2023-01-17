@@ -115,7 +115,7 @@ public class DailyRewardItem : MonoBehaviour
         // else
         //     FirebaseManager.OnClaimDailyReward(dayIndex);
 
-        SoundController.Instance.PlayFX(SoundType.ClaimReward);
+        Observer.ClaimReward?.Invoke();
 
         // Save datas
         Data.LastDailyRewardClaimed = DateTime.Now.ToString();

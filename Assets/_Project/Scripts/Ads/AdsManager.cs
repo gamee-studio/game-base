@@ -66,10 +66,10 @@ public class AdsManager
     {
         if (IsSufficientConditionToShowInter())
         {
-            FirebaseManager.OnRequestInterstitial();
+            Observer.RequestInterstitial?.Invoke();
             if (Advertising.IsInterstitialAdReady())
             {
-                FirebaseManager.OnShowInterstitial();
+                Observer.ShowInterstitial?.Invoke();
                 
                 _callbackInterstitialCompleted = callBack;
                 Advertising.ShowInterstitialAd();
@@ -95,10 +95,10 @@ public class AdsManager
         }
         else
         {
-            FirebaseManager.OnRequestReward();
+            Observer.RequestReward?.Invoke();
             if (Advertising.IsRewardedAdReady())
             {
-                FirebaseManager.OnShowReward();
+                Observer.ShowReward?.Invoke();
             
                 _callbackRewardCompleted = callBack;
                 Advertising.ShowRewardedAd();
@@ -114,7 +114,7 @@ public class AdsManager
 
     public static void ShowBanner()
     {
-        FirebaseManager.OnShowBanner();
+        Observer.ShowBanner?.Invoke();
         
         Advertising.ShowBannerAd();
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Pancake;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,6 +10,8 @@ public class SoundConfig : ScriptableObject
 {
     public List<SoundData> SoundDatas;
 
+    #if UNITY_EDITOR
+    [Button]
     public void UpdateSoundDatas()
     {
         for (int i = 0; i < Enum.GetNames(typeof(SoundType)).Length; i++)
@@ -21,6 +24,7 @@ public class SoundConfig : ScriptableObject
 
         SoundDatas = SoundDatas.GroupBy(elem => elem.SoundType).Select(group => group.First()).ToList();
     }
+    #endif
 
     private bool IsItemExistedBySoundType(SoundType soundType)
     {
@@ -64,10 +68,12 @@ public enum SoundType
     BackgroundInGame,
     BackgroundHome,
     ClickButton,
-    CompletePurchase,
+    PurchaseFail,
+    PurchaseSucceed,
     ClaimReward,
-    WinGame,
-    LoseGame,
+    StartLevel,
+    WinLevel,
+    LoseLevel,
     ShowPopupWin,
     ShowPopupLose,
     CoinMove,

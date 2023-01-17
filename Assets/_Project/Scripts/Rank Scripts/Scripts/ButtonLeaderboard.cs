@@ -135,7 +135,7 @@ namespace Pancake.GameService
         public void OnButtonClicked()
         {
             _button.interactable = false;
-            // SoundController.Instance.PlayFX(SoundType.ButtonClick);
+            // Observer.PlayFX(SoundType.ButtonClick);
             C.Network.CheckConnection(_ =>
             {
                 _button.interactable = true;

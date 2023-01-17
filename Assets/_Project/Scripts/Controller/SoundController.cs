@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class SoundController : SingletonDontDestroy<SoundController>
 {
@@ -14,6 +12,12 @@ public class SoundController : SingletonDontDestroy<SoundController>
 
         Observer.MusicChanged += OnMusicChanged;
         Observer.SoundChanged += OnSoundChanged;
+
+        Observer.WinLevel += WinLevel;
+        Observer.LoseLevel += LoseLevel;
+        Observer.StartLevel += StartLevel;
+        Observer.ClickButton += ClickButton;
+        Observer.CoinMove += CoinMove;
     }
 
     private void OnMusicChanged()
@@ -32,7 +36,7 @@ public class SoundController : SingletonDontDestroy<SoundController>
         OnSoundChanged();
     }
 
-    public void PlayFX(SoundType soundType)
+    private void PlayFX(SoundType soundType)
     {
         SoundData soundData = SoundConfig.GetSoundDataByType(soundType);
 
@@ -46,7 +50,7 @@ public class SoundController : SingletonDontDestroy<SoundController>
         }
     }
 
-    public void PlayBackground(SoundType soundType)
+    private void PlayBackground(SoundType soundType)
     {
         SoundData soundData = SoundConfig.GetSoundDataByType(soundType);
 
@@ -68,4 +72,33 @@ public class SoundController : SingletonDontDestroy<SoundController>
             backgroundAudio.Pause();
         }
     }
+
+    #region ActionEvent
+
+    private void StartLevel(Level level)
+    {
+        PlayFX(SoundType.StartLevel);
+    }
+
+    private void WinLevel(Level level)
+    {
+        PlayFX(SoundType.WinLevel);
+    }
+
+    private void LoseLevel(Level level)
+    {
+        PlayFX(SoundType.LoseLevel);
+    }
+
+    private void ClickButton()
+    {
+        PlayFX(SoundType.ClickButton);
+    }
+
+    private void CoinMove()
+    {
+        PlayFX(SoundType.CoinMove);
+    }
+    
+    #endregion
 }

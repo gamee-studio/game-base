@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 
@@ -14,14 +15,14 @@ public class PopupInGame : Popup
 
    public void Start()
    {
-      Observer.OnWinLevel += HideUI;
-      Observer.OnLoseLevel += HideUI;
+      Observer.WinLevel += HideUI;
+      Observer.LoseLevel += HideUI;
    }
 
    public void OnDestroy()
    {
-      Observer.OnWinLevel -= HideUI;
-      Observer.OnLoseLevel -= HideUI;
+      Observer.WinLevel -= HideUI;
+      Observer.LoseLevel -= HideUI;
    }
 
    protected override void BeforeShow()
@@ -46,6 +47,9 @@ public class PopupInGame : Popup
 
    public void OnClickHome()
    {
+      MethodBase function = MethodBase.GetCurrentMethod();
+      Observer.TrackClickButton?.Invoke(function.Name);
+      
       GameManager.Instance.ReturnHome();
    }
 
@@ -59,7 +63,9 @@ public class PopupInGame : Popup
       {
          AdsManager.ShowInterstitial(() =>
          {
-            FirebaseManager.OnClickButtonReplay();
+            MethodBase function = MethodBase.GetCurrentMethod();
+            Observer.TrackClickButton?.Invoke(function.Name);
+            
             GameManager.Instance.ReplayGame();
          });
       }
@@ -80,7 +86,9 @@ public class PopupInGame : Popup
       {
          AdsManager.ShowRewardAds(() =>
          {
-            FirebaseManager.OnClickButtonSkipLevel();
+            MethodBase function = MethodBase.GetCurrentMethod();
+            Observer.TrackClickButton?.Invoke(function.Name);
+            
             GameManager.Instance.NextLevel();
          });
       }
@@ -108,7 +116,7 @@ public class PopupInGame : Popup
       GameManager.Instance.OnWinGame(1f);
    }
 
-   private void HideUI()
+   private void HideUI(Level level = null)
    {
       foreach (UIEffect item in UIEffects)
       {

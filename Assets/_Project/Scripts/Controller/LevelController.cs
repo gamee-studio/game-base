@@ -45,15 +45,5 @@ public class LevelController : SingletonDontDestroy<LevelController>
         Debug.Assert(levelGo != null, nameof(levelGo) + " != null");
         return levelGo.GetComponent<Level>();
     }
-    
-    public void OnLoseGame()
-    {
-        currentLevel.OnLoseGame();
-    }
-
-    public void OnWinGame()
-    {
-        currentLevel.OnWinGame();
-    }
 }
 

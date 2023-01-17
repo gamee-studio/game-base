@@ -1,9 +1,10 @@
+using System.Reflection;
+
 public class PopupLose : Popup
 {
     protected override void BeforeShow()
     {
         base.BeforeShow();
-        SoundController.Instance.PlayFX(SoundType.ShowPopupLose);
         PopupController.Instance.Show<PopupUI>();
     }
 
@@ -15,7 +16,8 @@ public class PopupLose : Popup
 
     public void OnClickReplay()
     {
-        FirebaseManager.OnClickButtonReplay();
+        MethodBase function = MethodBase.GetCurrentMethod();
+        Observer.TrackClickButton?.Invoke(function.Name);
         
         GameManager.Instance.ReplayGame();
     }

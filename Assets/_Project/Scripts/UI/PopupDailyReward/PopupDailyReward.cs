@@ -93,7 +93,7 @@ public class PopupDailyReward : Popup
     {
         AdsManager.ShowRewardAds(() =>
         {
-            SoundController.Instance.PlayFX(SoundType.ClaimReward);
+            Observer.ClaimReward?.Invoke();
             //Observer.OnNotifying?.Invoke();
             CurrentItem.OnClaim(true);
         });
@@ -101,7 +101,7 @@ public class PopupDailyReward : Popup
 
     public void OnClickBtnClaim()
     {
-        SoundController.Instance.PlayFX(SoundType.ClaimReward);
+        Observer.ClaimReward?.Invoke();
         //Observer.OnNotifying?.Invoke();
         CurrentItem.OnClaim();
     }

@@ -258,7 +258,7 @@ namespace Pancake.GameService
 
         public void OnClickButtonTMP()
         {
-           // SoundController.Instance.PlayFX(SoundType.ButtonClick);
+           // Observer.PlayFX(SoundType.ButtonClick);
         }
 
         protected virtual void Refresh(Data data)

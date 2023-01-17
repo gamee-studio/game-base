@@ -22,7 +22,6 @@ public class PopupWin : Popup
     protected override void BeforeShow()
     {
         base.BeforeShow();
-        SoundController.Instance.PlayFX(SoundType.ShowPopupWin);
         PopupController.Instance.Show<PopupUI>();
         Setup();
         
@@ -46,7 +45,7 @@ public class PopupWin : Popup
         if (Data.IsTesting)
         {
             GetRewardAds();
-            SoundController.Instance.PlayFX(SoundType.ClaimReward);
+            Observer.ClaimReward?.Invoke();
         }
         else
         {
@@ -55,7 +54,7 @@ public class PopupWin : Popup
             {
                 //FirebaseManager.OnWatchAdsRewardWin();
                 GetRewardAds();
-                SoundController.Instance.PlayFX(SoundType.ClaimReward);
+                Observer.ClaimReward?.Invoke();
             }, (() =>
             {
                 BonusArrowHandler.MoveObject.ResumeMoving();
