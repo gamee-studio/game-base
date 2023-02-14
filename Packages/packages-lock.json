@@ -101,6 +101,13 @@
       },
       "hash": "5181cd4b5219593cdbfd3cb9619e50ca8981db98"
     },
+    "com.pancake.hotreload": {
+      "version": "https://github.com/pancake-llc/hot-reload.git#1.3.4",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "6a26165ca04c9ef3a094c2889d7bff0590d3fc69"
+    },
     "com.pancake.playfab": {
       "version": "https://github.com/pancake-llc/playfab.git#2.153.221024",
       "depth": 0,
