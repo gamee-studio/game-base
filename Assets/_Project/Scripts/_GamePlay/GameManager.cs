@@ -36,13 +36,6 @@ public class GameManager : SingletonDontDestroy<GameManager>
             AuthService.UpdatePlayerStatistics("RANK_LEVEL", Data.CurrentLevel);
         }
     }
-    private void FixedUpdate()
-    {
-        if (gameState == GameState.PlayingGame)
-        {
-            AdsManager.TotalTimesPlay += Time.deltaTime;
-        }
-    }
 
     public void PrepareLevel()
     {
@@ -98,7 +91,6 @@ public class GameManager : SingletonDontDestroy<GameManager>
         if (gameState == GameState.WaitingResult || gameState == GameState.LoseGame || gameState == GameState.WinGame) return;
         gameState = GameState.WinGame;
         Observer.WinLevel?.Invoke(levelController.currentLevel);
-        AdsManager.TotalLevelWinLose++;
         Data.CurrentLevel++;
         DOTween.Sequence().AppendInterval(delayPopupShowTime).AppendCallback(() =>
         {
@@ -115,7 +107,6 @@ public class GameManager : SingletonDontDestroy<GameManager>
         gameState = GameState.LoseGame;
         Observer.LoseLevel?.Invoke(levelController.currentLevel);
         
-        AdsManager.TotalLevelWinLose++;
         DOTween.Sequence().AppendInterval(delayPopupShowTime).AppendCallback(() =>
         {
             PopupController.Instance.Hide<PopupInGame>();
