@@ -463,6 +463,7 @@ MonoBehaviour:
   timeDisableButton: 0.2
   doubleClickInterval: 0.2
   longClickInterval: 0.5
+  delayDetectHold: 0.2
   onDoubleClick:
     m_PersistentCalls:
       m_Calls: []
@@ -470,6 +471,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onHold:
     m_PersistentCalls:
       m_Calls: []
   isMotion: 1
@@ -684,6 +688,7 @@ MonoBehaviour:
   timeDisableButton: 0.2
   doubleClickInterval: 0.2
   longClickInterval: 0.5
+  delayDetectHold: 0.2
   onDoubleClick:
     m_PersistentCalls:
       m_Calls: []
@@ -691,6 +696,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onHold:
     m_PersistentCalls:
       m_Calls: []
   isMotion: 1
@@ -905,6 +913,7 @@ MonoBehaviour:
   timeDisableButton: 0.2
   doubleClickInterval: 0.2
   longClickInterval: 0.5
+  delayDetectHold: 0.2
   onDoubleClick:
     m_PersistentCalls:
       m_Calls: []
@@ -912,6 +921,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onHold:
     m_PersistentCalls:
       m_Calls: []
   isMotion: 1
@@ -1126,6 +1138,7 @@ MonoBehaviour:
   timeDisableButton: 0.2
   doubleClickInterval: 0.2
   longClickInterval: 0.5
+  delayDetectHold: 0.2
   onDoubleClick:
     m_PersistentCalls:
       m_Calls: []
@@ -1133,6 +1146,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onHold:
     m_PersistentCalls:
       m_Calls: []
   isMotion: 1
@@ -1350,6 +1366,7 @@ MonoBehaviour:
   timeDisableButton: 0.2
   doubleClickInterval: 0.2
   longClickInterval: 0.5
+  delayDetectHold: 0.2
   onDoubleClick:
     m_PersistentCalls:
       m_Calls: []
@@ -1357,6 +1374,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onHold:
     m_PersistentCalls:
       m_Calls: []
   isMotion: 1
@@ -1766,8 +1786,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -768, y: -1024}
-  m_SizeDelta: {x: 204, y: 204}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7415493060764968814
 CanvasRenderer:
@@ -1797,7 +1817,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5a20c5491b6b63f4baebb3ecf7130908, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ec5c82605a8742e43b998ce12a828d95, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2053,6 +2073,7 @@ MonoBehaviour:
   timeDisableButton: 0.2
   doubleClickInterval: 0.2
   longClickInterval: 0.5
+  delayDetectHold: 0.2
   onDoubleClick:
     m_PersistentCalls:
       m_Calls: []
@@ -2060,6 +2081,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onHold:
     m_PersistentCalls:
       m_Calls: []
   isMotion: 1

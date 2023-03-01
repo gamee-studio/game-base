@@ -7,7 +7,7 @@ public class AdsController : SingletonDontDestroy<AdsController>
 {
     private int _adsCounter;
     private float _timePlay;
-    public static bool IsInitialized => Advertising.IsInitialized;
+    public bool IsInitialized => Advertising.IsInitialized;
 
     protected override void Awake()
     {
