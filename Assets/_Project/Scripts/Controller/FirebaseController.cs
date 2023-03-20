@@ -5,13 +5,14 @@ using Firebase;
 using Firebase.Analytics;
 using Firebase.Extensions;
 using Firebase.RemoteConfig;
+using Pancake;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 public class FirebaseController : SingletonDontDestroy<FirebaseController>
 {
-    public DependencyStatus dependencyStatus = DependencyStatus.UnavailableOther;
-    public bool isInitialized;
+    [ReadOnly] public DependencyStatus dependencyStatus = DependencyStatus.UnavailableOther;
+    [ReadOnly] public bool isInitialized;
     protected override void Awake()
     {
         Initialize();

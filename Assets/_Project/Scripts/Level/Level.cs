@@ -41,6 +41,7 @@ public class Level : MonoBehaviour
             _isFingerDown = true;
         }
         
+        // Get Object raycast hit
         // var ray = finger.GetRay(Camera);
         // var hit = default(RaycastHit);
         //
