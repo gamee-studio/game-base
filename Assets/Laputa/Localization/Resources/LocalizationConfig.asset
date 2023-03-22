@@ -24,39 +24,5 @@ MonoBehaviour:
     font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
     tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
   localizedDataList:
-  - content: hello
-    preLocalizedDataList:
-    - languageName: 0
-      translatedContent: hello
-    - languageName: 1
-      translatedContent: "\u3053\u3093\u306B\u3061\u306F"
-    - languageName: 2
-      translatedContent: Hallo
-    - languageName: 3
-      translatedContent: "\uC548\uB155\uD558\uC138\uC694"
-    - languageName: 4
-      translatedContent: "\u043F\u0440\u0438\u0432\u0435\u0442"
-    - languageName: 5
-      translatedContent: "ol\xE1"
-    - languageName: 6
-      translatedContent: Bonjour
-    - languageName: 7
-      translatedContent: "Xin ch\xE0o"
-  - content: help
-    preLocalizedDataList:
-    - languageName: 0
-      translatedContent: help
-    - languageName: 1
-      translatedContent: "\u30D8\u30EB\u30D7"
-    - languageName: 2
-      translatedContent: Hilfe
-    - languageName: 3
-      translatedContent: "\uB3D5\uB2E4"
-    - languageName: 4
-      translatedContent: "\u043F\u043E\u043C\u043E\u0449\u044C"
-    - languageName: 5
-      translatedContent: ajuda
-    - languageName: 6
-      translatedContent: aider
-    - languageName: 7
-      translatedContent: "gi\xFAp \u0111\u1EE1"
+  - content: Loading...
+    preLocalizedDataList: []
