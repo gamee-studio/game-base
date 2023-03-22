@@ -182,9 +182,6 @@ namespace Pancake.GameService
 
             if (GUILayout.Button("Setup Fetch")) SetupFetch();
 
-            if (_buttonLeaderboard.Block != null)
-                _buttonLeaderboard.Block.transform.GetChild(0).transform.position = Vector3.zero;
-
             void SetupFetch()
             {
                 if (_buttonLeaderboard.Block == null)

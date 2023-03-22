@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 4200284116012826470}
   - component: {fileID: 3361597604472094748}
   - component: {fileID: 517457241235622597}
-  - component: {fileID: 208575281064994647}
   m_Layer: 5
   m_Name: IAPBtn
   m_TagString: Untagged
@@ -113,28 +112,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &208575281064994647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1976429916093830350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dfcf405286e2c74fa0638d8bb9a6e76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnClick:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPress:
-    m_PersistentCalls:
-      m_Calls: []
-  CanClick: 1
-  HavePressEffect: 1
-  IsMoveEnter: 0
-  LocalScale: {x: 0, y: 0, z: 0}
 --- !u!1 &2440416087888170919
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +313,7 @@ RectTransform:
   m_GameObject: {fileID: 3098736201743759505}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5057599584292240540}
@@ -814,6 +791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42617f2f5cc91dd4e92a75e680e45c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseAnimation: 0
   Background: {fileID: 0}
   Container: {fileID: 0}
   UseShowAnimation: 0

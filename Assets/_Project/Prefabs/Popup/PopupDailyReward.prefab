@@ -58,8 +58,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayIndex: 0
-  textDay: {fileID: 2650185653218095932}
-  textValue: {fileID: 9010266915291655672}
+  textDay: {fileID: 7073085238188580520}
+  rewardValue: {fileID: 9010266915291655672}
   greenTick: {fileID: 5380138503035491784}
   backgroundClaim: {fileID: 4368304898967994357}
   backgroundCanNotClaim: {fileID: 2671668069648912198}
@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 4480383991957934793}
   - component: {fileID: 5764609843639697680}
   - component: {fileID: 2021778471280192540}
+  - component: {fileID: 401314832791535875}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -267,8 +268,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '>'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8d15ab71442963c47b22b47460111e35, type: 2}
-  m_sharedMaterial: {fileID: 3604630249188092411, guid: 8d15ab71442963c47b22b47460111e35,
+  m_fontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+  m_sharedMaterial: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -335,6 +336,38 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &401314832791535875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387181103923313286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentText: '>'
+  isFirstGenerated: 1
+  languageDataList:
+  - save: 0
+    languageData:
+      languageName: 0
+      encode: en
+      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
+      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
+    text: '>'
+  - save: 0
+    languageData:
+      languageName: 1
+      encode: vi
+      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
+      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+    text: '>'
+  localizedDataTextList: []
 --- !u!1 &701888224227572813
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +379,7 @@ GameObject:
   - component: {fileID: 2056147231437223841}
   - component: {fileID: 3617516037192303348}
   - component: {fileID: 381406068525884219}
+  - component: {fileID: 3119602813531377178}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -370,8 +404,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -132, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -138.2561, y: 7.2987}
+  m_SizeDelta: {x: 187.4878, y: 120.9026}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3617516037192303348
 CanvasRenderer:
@@ -401,10 +435,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Claim
+  m_text: "L\u1EA5y"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8d15ab71442963c47b22b47460111e35, type: 2}
-  m_sharedMaterial: {fileID: 3604630249188092411, guid: 8d15ab71442963c47b22b47460111e35,
+  m_fontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+  m_sharedMaterial: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -429,12 +463,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 60
   m_fontSizeBase: 80
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 60
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -471,6 +505,38 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3119602813531377178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701888224227572813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentText: Get
+  isFirstGenerated: 1
+  languageDataList:
+  - save: 0
+    languageData:
+      languageName: 0
+      encode: en
+      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
+      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
+    text: Get
+  - save: 0
+    languageData:
+      languageName: 1
+      encode: vi
+      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
+      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+    text: "L\u1EA5y"
+  localizedDataTextList: []
 --- !u!1 &940255517015165515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,6 +1068,7 @@ GameObject:
   - component: {fileID: 9044227625509702554}
   - component: {fileID: 1119109602891576324}
   - component: {fileID: 5196607961805166314}
+  - component: {fileID: 6114643722200798183}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1057,10 +1124,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Daily Gift
+  m_text: "Qu\xE0 t\u1EB7ng h\xE0ng ng\xE0y"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8d15ab71442963c47b22b47460111e35, type: 2}
-  m_sharedMaterial: {fileID: 3604630249188092411, guid: 8d15ab71442963c47b22b47460111e35,
+  m_fontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+  m_sharedMaterial: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1085,7 +1152,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
+  m_fontSize: 55.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1127,6 +1194,38 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6114643722200798183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2745478461110048965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentText: Daily Gift
+  isFirstGenerated: 1
+  languageDataList:
+  - save: 0
+    languageData:
+      languageName: 0
+      encode: en
+      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
+      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
+    text: Daily Gift
+  - save: 0
+    languageData:
+      languageName: 1
+      encode: vi
+      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
+      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+    text: "Qu\xE0 t\u1EB7ng h\xE0ng ng\xE0y"
+  localizedDataTextList: []
 --- !u!1 &3072432016160652073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,6 +1592,7 @@ GameObject:
   - component: {fileID: 5353515275498109144}
   - component: {fileID: 4062132468102074457}
   - component: {fileID: 3575269723124031949}
+  - component: {fileID: 2266374323818771874}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1517,8 +1617,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0, y: 5.6375}
+  m_SizeDelta: {x: 234.4837, y: 117.649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4062132468102074457
 CanvasRenderer:
@@ -1548,10 +1648,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Claim
+  m_text: "L\u1EA5y"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8d15ab71442963c47b22b47460111e35, type: 2}
-  m_sharedMaterial: {fileID: 3604630249188092411, guid: 8d15ab71442963c47b22b47460111e35,
+  m_fontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+  m_sharedMaterial: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1576,12 +1676,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 60
   m_fontSizeBase: 80
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 60
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1618,6 +1718,38 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2266374323818771874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4747878440953140793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentText: Get
+  isFirstGenerated: 1
+  languageDataList:
+  - save: 0
+    languageData:
+      languageName: 0
+      encode: en
+      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
+      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
+    text: Get
+  - save: 0
+    languageData:
+      languageName: 1
+      encode: vi
+      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
+      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+    text: "L\u1EA5y"
+  localizedDataTextList: []
 --- !u!1 &5576403307768214668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,6 +1989,7 @@ GameObject:
   - component: {fileID: 7359509157074574320}
   - component: {fileID: 2560817749203238827}
   - component: {fileID: 2650185653218095932}
+  - component: {fileID: 1370676519051200106}
   m_Layer: 5
   m_Name: TextDay
   m_TagString: Untagged
@@ -1912,10 +2045,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Day 7
+  m_text: "Ng\xE0y 7"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8d15ab71442963c47b22b47460111e35, type: 2}
-  m_sharedMaterial: {fileID: 3604630249188092411, guid: 8d15ab71442963c47b22b47460111e35,
+  m_fontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+  m_sharedMaterial: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1982,6 +2115,38 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1370676519051200106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7073085238188580520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentText: Day 7
+  isFirstGenerated: 1
+  languageDataList:
+  - save: 0
+    languageData:
+      languageName: 0
+      encode: en
+      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
+      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
+    text: Day 7
+  - save: 0
+    languageData:
+      languageName: 1
+      encode: vi
+      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
+      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+    text: "Ng\xE0y 7"
+  localizedDataTextList: []
 --- !u!1 &7151091472365318068
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,6 +2694,7 @@ GameObject:
   - component: {fileID: 538130894584697783}
   - component: {fileID: 2808596701476901871}
   - component: {fileID: 9010266915291655672}
+  - component: {fileID: 8946544017730036129}
   m_Layer: 5
   m_Name: TextValue
   m_TagString: Untagged
@@ -2586,8 +2752,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 5000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8d15ab71442963c47b22b47460111e35, type: 2}
-  m_sharedMaterial: {fileID: 3604630249188092411, guid: 8d15ab71442963c47b22b47460111e35,
+  m_fontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+  m_sharedMaterial: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2654,6 +2820,38 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8946544017730036129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8141111176282710464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentText: 5000
+  isFirstGenerated: 1
+  languageDataList:
+  - save: 0
+    languageData:
+      languageName: 0
+      encode: en
+      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
+      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
+    text: 5000
+  - save: 0
+    languageData:
+      languageName: 1
+      encode: vi
+      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
+      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+    text: 5000
+  localizedDataTextList: []
 --- !u!1001 &50844445147050151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2771,8 +2969,75 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_text
+      value: "Ng\xE0y 1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 8165368559018800352, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 8165368559018800352, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8551dcbf9583227409ea8f7e57a64e25, type: 3}
+--- !u!1 &2941411054782678325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2910837212489725330, guid: 8551dcbf9583227409ea8f7e57a64e25,
+    type: 3}
+  m_PrefabInstance: {fileID: 50844445147050151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7698716049797960047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2941411054782678325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentText: 500
+  isFirstGenerated: 1
+  languageDataList:
+  - save: 0
+    languageData:
+      languageName: 0
+      encode: en
+      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
+      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
+    text: 500
+  - save: 0
+    languageData:
+      languageName: 1
+      encode: vi
+      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
+      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+    text: 500
+  localizedDataTextList: []
 --- !u!224 &7598077619917613652 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7621614037977160435, guid: 8551dcbf9583227409ea8f7e57a64e25,
@@ -2896,8 +3161,75 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_text
+      value: "Ng\xE0y 1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 8165368559018800352, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 8165368559018800352, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8551dcbf9583227409ea8f7e57a64e25, type: 3}
+--- !u!1 &3165728657008728628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2910837212489725330, guid: 8551dcbf9583227409ea8f7e57a64e25,
+    type: 3}
+  m_PrefabInstance: {fileID: 255494019880562598}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2285574868761252049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3165728657008728628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentText: 500
+  isFirstGenerated: 1
+  languageDataList:
+  - save: 0
+    languageData:
+      languageName: 0
+      encode: en
+      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
+      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
+    text: 500
+  - save: 0
+    languageData:
+      languageName: 1
+      encode: vi
+      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
+      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+    text: 500
+  localizedDataTextList: []
 --- !u!224 &7660301785247380821 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7621614037977160435, guid: 8551dcbf9583227409ea8f7e57a64e25,
@@ -3021,8 +3353,75 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_text
+      value: "Ng\xE0y 1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 8165368559018800352, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 8165368559018800352, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8551dcbf9583227409ea8f7e57a64e25, type: 3}
+--- !u!1 &2518993818801556076 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2910837212489725330, guid: 8551dcbf9583227409ea8f7e57a64e25,
+    type: 3}
+  m_PrefabInstance: {fileID: 761139732974567422}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3616235974212876409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518993818801556076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentText: 500
+  isFirstGenerated: 1
+  languageDataList:
+  - save: 0
+    languageData:
+      languageName: 0
+      encode: en
+      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
+      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
+    text: 500
+  - save: 0
+    languageData:
+      languageName: 1
+      encode: vi
+      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
+      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+    text: 500
+  localizedDataTextList: []
 --- !u!224 &7157755945167103245 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7621614037977160435, guid: 8551dcbf9583227409ea8f7e57a64e25,
@@ -3146,8 +3545,75 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_text
+      value: "Ng\xE0y 1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 8165368559018800352, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 8165368559018800352, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8551dcbf9583227409ea8f7e57a64e25, type: 3}
+--- !u!1 &4410593640841090889 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2910837212489725330, guid: 8551dcbf9583227409ea8f7e57a64e25,
+    type: 3}
+  m_PrefabInstance: {fileID: 1535952364058321627}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7066461890026624666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4410593640841090889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentText: 500
+  isFirstGenerated: 1
+  languageDataList:
+  - save: 0
+    languageData:
+      languageName: 0
+      encode: en
+      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
+      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
+    text: 500
+  - save: 0
+    languageData:
+      languageName: 1
+      encode: vi
+      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
+      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+    text: 500
+  localizedDataTextList: []
 --- !u!224 &8977262987737593896 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7621614037977160435, guid: 8551dcbf9583227409ea8f7e57a64e25,
@@ -3271,8 +3737,75 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_text
+      value: "Ng\xE0y 1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 8165368559018800352, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 8165368559018800352, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8551dcbf9583227409ea8f7e57a64e25, type: 3}
+--- !u!1 &450708064664458994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2910837212489725330, guid: 8551dcbf9583227409ea8f7e57a64e25,
+    type: 3}
+  m_PrefabInstance: {fileID: 3324891951048336224}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7071065969710982276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450708064664458994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentText: 500
+  isFirstGenerated: 1
+  languageDataList:
+  - save: 0
+    languageData:
+      languageName: 0
+      encode: en
+      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
+      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
+    text: 500
+  - save: 0
+    languageData:
+      languageName: 1
+      encode: vi
+      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
+      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+    text: 500
+  localizedDataTextList: []
 --- !u!224 &5179432089586039187 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7621614037977160435, guid: 8551dcbf9583227409ea8f7e57a64e25,
@@ -3396,6 +3929,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_text
+      value: "Ng\xE0y 1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 7702154380198746034, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 8165368559018800352, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
+    - target: {fileID: 8165368559018800352, guid: 8551dcbf9583227409ea8f7e57a64e25,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3841743121012205803, guid: efe3698275e827848b43e5a9c8f2a4f4,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8551dcbf9583227409ea8f7e57a64e25, type: 3}
 --- !u!224 &4178915320317880810 stripped
@@ -3404,3 +3966,41 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5781237369734591257}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8673453238224045707 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2910837212489725330, guid: 8551dcbf9583227409ea8f7e57a64e25,
+    type: 3}
+  m_PrefabInstance: {fileID: 5781237369734591257}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5939537012249382448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673453238224045707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentText: 500
+  isFirstGenerated: 1
+  languageDataList:
+  - save: 0
+    languageData:
+      languageName: 0
+      encode: en
+      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
+      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
+    text: 500
+  - save: 0
+    languageData:
+      languageName: 1
+      encode: vi
+      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
+      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+    text: 500
+  localizedDataTextList: []

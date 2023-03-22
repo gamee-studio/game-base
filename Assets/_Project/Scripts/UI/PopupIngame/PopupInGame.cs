@@ -1,15 +1,14 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Laputa.Localization.Components;
 using TMPro;
 using UnityEngine;
 
 public class PopupInGame : Popup
 {
-   [Header("Components")]
-   public TextMeshProUGUI LevelText;
-   public TextMeshProUGUI LevelTypeText;
+   public GameObject levelText;
+   public TextMeshProUGUI levelTypeText;
 
    private List<UIEffect> UIEffects => GetComponentsInChildren<UIEffect>().ToList();
 
@@ -41,8 +40,8 @@ public class PopupInGame : Popup
 
    public void Setup()
    {
-      LevelText.text = $"Level {Data.CurrentLevel}";
-      LevelTypeText.text = $"Level {(Data.UseLevelABTesting == 0 ? "A" : "B")}";
+      levelText.GetComponent<LocalizedText>()?.SetValue("x",Data.CurrentLevel.ToString());
+      levelTypeText.text = $"Level {(Data.UseLevelABTesting == 0 ? "A" : "B")}";
    }
 
    public void OnClickHome()

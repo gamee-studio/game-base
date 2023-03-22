@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 6262988362844482627}
   - component: {fileID: 641874922752113787}
   - component: {fileID: 7702154380198746034}
+  - component: {fileID: 7464440511024614108}
   m_Layer: 5
   m_Name: TextDay
   m_TagString: Untagged
@@ -144,8 +145,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Day 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8d15ab71442963c47b22b47460111e35, type: 2}
-  m_sharedMaterial: {fileID: 3604630249188092411, guid: 8d15ab71442963c47b22b47460111e35,
+  m_fontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
+  m_sharedMaterial: {fileID: 4336404976236956249, guid: 98d0d209208b35f4fac01695a397a6b5,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -212,6 +213,40 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7464440511024614108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889012484204209903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentText: Day {x}
+  isFirstGenerated: 1
+  languageDataList:
+  - save: 0
+    languageData:
+      languageName: 0
+      encode: en
+      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
+      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
+    text: Day {x}
+  - save: 0
+    languageData:
+      languageName: 1
+      encode: vi
+      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
+      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
+      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
+    text: "Ng\xE0y {x}"
+  localizedDataTextList:
+  - wordReplace: x
+    value: 1
 --- !u!1 &1025374726091736404
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +487,7 @@ GameObject:
   - component: {fileID: 299944930669094881}
   - component: {fileID: 8165368559018800352}
   m_Layer: 5
-  m_Name: TextValue
+  m_Name: RewardValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -709,8 +744,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayIndex: 0
-  textDay: {fileID: 7702154380198746034}
-  textValue: {fileID: 8165368559018800352}
+  textDay: {fileID: 889012484204209903}
+  rewardValue: {fileID: 8165368559018800352}
   greenTick: {fileID: 2136497422556157723}
   backgroundClaim: {fileID: 7545716502336100800}
   backgroundCanNotClaim: {fileID: 667792049671608572}

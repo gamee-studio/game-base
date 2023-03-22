@@ -1,4 +1,5 @@
 using System;
+using Laputa.Localization.Components;
 using Pancake;
 using TMPro;
 using UnityEngine;
@@ -7,23 +8,23 @@ using UnityEngine.UI;
 public class DailyRewardItem : MonoBehaviour
 {
     [ReadOnly] public int dayIndex;
-    public TextMeshProUGUI textDay;
-    public TextMeshProUGUI textValue;
+    public GameObject textDay;
+    public TextMeshProUGUI rewardValue;
     public Image greenTick;
     public Image backgroundClaim;
     public Image backgroundCanNotClaim;
     public Image iconItem;
-    private int coinValue;
-    private DailyRewardItemState dailyRewardItemState;
-    private DailyRewardData dailyRewardData;
-    private PopupDailyReward popupDailyReward;
-    public DailyRewardItemState DailyRewardItemState => dailyRewardItemState;
+    private int _coinValue;
+    private DailyRewardItemState _dailyRewardItemState;
+    private DailyRewardData _dailyRewardData;
+    private PopupDailyReward _popupDailyReward;
+    public DailyRewardItemState DailyRewardItemState => _dailyRewardItemState;
 
-    public DailyRewardData DailyRewardData => dailyRewardData;
+    public DailyRewardData DailyRewardData => _dailyRewardData;
 
     public void SetUp(PopupDailyReward popup, int i)
     {
-        popupDailyReward = popup;
+        _popupDailyReward = popup;
         dayIndex = i + 1;
         SetUpData();
         SetUpUI(i);
@@ -39,43 +40,43 @@ public class DailyRewardItem : MonoBehaviour
     private void SetUpData()
     {
         // Setup data
-        dailyRewardData = Data.IsStartLoopingDailyReward
+        _dailyRewardData = Data.IsStartLoopingDailyReward
             ? ConfigController.DailyRewardConfig.DailyRewardDatasLoop[dayIndex - 1]
             : ConfigController.DailyRewardConfig.DailyRewardDatas[dayIndex - 1];
 
-        coinValue = dailyRewardData.Value;
+        _coinValue = _dailyRewardData.Value;
         // Setup states
-        if (dailyRewardData.DailyRewardType == DailyRewardType.Currency)
+        if (_dailyRewardData.DailyRewardType == DailyRewardType.Currency)
         {
         }
-        else if (dailyRewardData.DailyRewardType == DailyRewardType.Skin)
+        else if (_dailyRewardData.DailyRewardType == DailyRewardType.Skin)
         {
             //shopItemData = ConfigController.ItemConfig.GetShopItemDataById(dailyRewardData.SkinID);
         }
 
         if (Data.DailyRewardDayIndex > dayIndex)
         {
-            dailyRewardItemState = DailyRewardItemState.Claimed;
+            _dailyRewardItemState = DailyRewardItemState.Claimed;
         }
         else if (Data.DailyRewardDayIndex == dayIndex)
         {
             if (!Data.IsClaimedTodayDailyReward())
-                dailyRewardItemState = DailyRewardItemState.ReadyToClaim;
+                _dailyRewardItemState = DailyRewardItemState.ReadyToClaim;
             else
-                dailyRewardItemState = DailyRewardItemState.NotClaim;
+                _dailyRewardItemState = DailyRewardItemState.NotClaim;
         }
         else
         {
-            dailyRewardItemState = DailyRewardItemState.NotClaim;
+            _dailyRewardItemState = DailyRewardItemState.NotClaim;
         }
     }
 
     public void SetUpUI(int i)
     {
         SetDefaultUI();
-        textDay.text = "Day " + (i + 1);
-        textValue.text = coinValue.ToString();
-        switch (dailyRewardItemState)
+        textDay.GetComponent<LocalizedText>()?.SetValue("x",(i+1).ToString());
+        rewardValue.text = _coinValue.ToString();
+        switch (_dailyRewardItemState)
         {
             case DailyRewardItemState.Claimed:
                 backgroundClaim.gameObject.SetActive(false);
@@ -94,11 +95,11 @@ public class DailyRewardItem : MonoBehaviour
                 break;
         }
 
-        switch (dailyRewardData.DailyRewardType)
+        switch (_dailyRewardData.DailyRewardType)
         {
             case DailyRewardType.Currency:
-                textValue.gameObject.SetActive(true);
-                iconItem.sprite = dailyRewardData.Icon;
+                rewardValue.gameObject.SetActive(true);
+                iconItem.sprite = _dailyRewardData.Icon;
                 iconItem.SetNativeSize();
                 break;
             case DailyRewardType.Skin:
@@ -123,10 +124,10 @@ public class DailyRewardItem : MonoBehaviour
         Data.TotalClaimDailyReward++;
 
         // Claim by type
-        switch (dailyRewardData.DailyRewardType)
+        switch (_dailyRewardData.DailyRewardType)
         {
             case DailyRewardType.Currency:
-                Data.CurrencyTotal += coinValue * (isClaimX5 ? 5 : 1);
+                Data.CurrencyTotal += _coinValue * (isClaimX5 ? 5 : 1);
                 break;
             case DailyRewardType.Skin:
                 //shopItemData.IsUnlocked = true;
@@ -135,7 +136,7 @@ public class DailyRewardItem : MonoBehaviour
         }
 
         //Reset Items
-        popupDailyReward.Setup();
+        _popupDailyReward.Setup();
     }
 }
 
