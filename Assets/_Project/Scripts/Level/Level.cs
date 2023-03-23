@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    [ReadOnly] public int BonusMoney;
+    [ReadOnly] public int bonusMoney;
     
     private bool _isFingerDown;
     private bool _isFingerDrag;
+
+    private Camera Camera => GetComponentInChildren<Camera>(true);
     
     #if UNITY_EDITOR
     [Button]
@@ -41,13 +43,13 @@ public class Level : MonoBehaviour
             _isFingerDown = true;
         }
         
-        // Get Object raycast hit
-        // var ray = finger.GetRay(Camera);
-        // var hit = default(RaycastHit);
-        //
-        // if (Physics.Raycast(ray, out hit, float.PositiveInfinity)) { //ADDED LAYER SELECTION
-        //     Debug.Log(hit.collider.gameObject);
-        // }
+        //Get Object raycast hit
+        var ray = finger.GetRay(Camera);
+        var hit = default(RaycastHit);
+        
+        if (Physics.Raycast(ray, out hit, float.PositiveInfinity)) { //ADDED LAYER SELECTION
+            Debug.Log(hit.collider.gameObject);
+        }
     }
     
     void HandleFingerUp(Lean.Touch.LeanFinger finger)

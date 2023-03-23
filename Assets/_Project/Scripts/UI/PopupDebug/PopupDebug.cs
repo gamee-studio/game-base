@@ -1,39 +1,40 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class PopupDebug : Popup
 {
-    public TMP_InputField SetLevel;
-    public TMP_InputField SetCoin;
-    public Toggle ToggleTesting;
+    [SerializeField] private TMP_InputField setLevel;
+    [SerializeField] private TMP_InputField setCoin;
+    [SerializeField] private Toggle toggleTesting;
 
     public void OnEnable()
     {
-        ToggleTesting.isOn = Data.IsTesting;
+        toggleTesting.isOn = Data.IsTesting;
     }
 
     public void OnClickAccept()
     {
-        if (SetLevel.text != null && SetLevel.text != "")
+        if (!string.IsNullOrEmpty(setLevel.text))
         {
-            Data.CurrentLevel = int.Parse(SetLevel.text);
+            Data.CurrentLevel = int.Parse(setLevel.text);
             GameManager.Instance.PrepareLevel();
             GameManager.Instance.StartGame();
         }
-        if (SetCoin.text != null && SetCoin.text != "")
+        if (!string.IsNullOrEmpty(setCoin.text))
         {
-            Data.CurrencyTotal = int.Parse(SetCoin.text);
+            Data.CurrencyTotal = int.Parse(setCoin.text);
         }
 
-        SetCoin.text = string.Empty;
-        SetLevel.text = string.Empty;
+        setCoin.text = string.Empty;
+        setLevel.text = string.Empty;
         gameObject.SetActive(false);
     }
 
     public void ChangeTestingState()
     {
-        Data.IsTesting = ToggleTesting.isOn;
+        Data.IsTesting = toggleTesting.isOn;
     }
 
     public void OnClickFPSBtn()

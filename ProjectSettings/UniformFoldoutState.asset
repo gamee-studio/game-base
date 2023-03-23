@@ -43,6 +43,14 @@
         {
             "key": "UIBUTTON_SETTING",
             "state": true
+        },
+        {
+            "key": "PLAYFAB_SETTING",
+            "state": true
+        },
+        {
+            "key": "PLAYFAB_FEATURE",
+            "state": true
         }
     ]
 }

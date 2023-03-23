@@ -96,7 +96,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
         {
             PopupController.Instance.HideAll();
             PopupWin popupWin = PopupController.Instance.Get<PopupWin>() as PopupWin;
-            popupWin.SetupMoneyWin(levelController.currentLevel.BonusMoney);
+            popupWin.SetupMoneyWin(levelController.currentLevel.bonusMoney);
             popupWin.Show();
         });
     }

@@ -2,53 +2,49 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Pancake;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Switcher : MonoBehaviour
 {
-    [Header("Datas")]
-    public SwitchState SwitchState = SwitchState.Idle;
-    public bool IsOn;
+    [Header("Data")]
+    [ReadOnly] [SerializeField] private SwitchState switchState = SwitchState.Idle;
+    [ReadOnly] [SerializeField] private bool isOn;
+    [FormerlySerializedAs("SettingType")]
     [Header("Components")]
-    public SettingType SettingType;
-    public Sprite On;
-    public Sprite Off;
-    public Image Switch;
-    public Transform OffPos;
-    public Transform OnPos;
-    public TextMeshProUGUI SwitchText;
+    [SerializeField] private SettingType settingType;
+    [SerializeField] private Sprite on;
+    [SerializeField] private Sprite off;
+    [SerializeField] private Image @switch;
+    [SerializeField] private Transform offPos;
+    [SerializeField] private Transform pos;
+    [SerializeField] private TextMeshProUGUI switchText;
     [Header("Config attribute")] 
-    [Range(0.1f,3f)] public float TimeSwitching = .5f;
+    [Range(0.1f,3f)] public float timeSwitching = .5f;
 
     private void SetupData()
     {
-        switch (SettingType)
+        switch (settingType)
         {
             case SettingType.BackgroundSound:
-                IsOn = Data.BgSoundState;
+                isOn = Data.BgSoundState;
                 break;
             case SettingType.FxSound:
-                IsOn = Data.FxSoundState;
+                isOn = Data.FxSoundState;
                 break;
             case SettingType.Vibration:
-                IsOn = Data.VibrateState;
+                isOn = Data.VibrateState;
                 break;
         }
     }
     
     private void SetupUI()
     {
-        if (SwitchText) SwitchText.text = IsOn ? "On" : "Off";
-        if (IsOn)
-        {
-            Switch.sprite = On;
-        }
-        else
-        {
-            Switch.sprite = Off;
-        }
+        if (switchText) switchText.text = isOn ? "On" : "Off";
+        @switch.sprite = isOn ? @on : off;
     }
 
     private void Setup()
@@ -59,40 +55,40 @@ public class Switcher : MonoBehaviour
     
     private void OnEnable()
     {
-        Switch.transform.position = IsOn ? OnPos.position : OffPos.position;
+        @switch.transform.position = isOn ? pos.position : offPos.position;
         Setup();
     }
 
     public void Switching()
     {
-        if (SwitchState == SwitchState.Moving) return;
-        SwitchState = SwitchState.Moving;
-        if (IsOn)
+        if (switchState == SwitchState.Moving) return;
+        switchState = SwitchState.Moving;
+        if (isOn)
         {
-            Switch.transform.DOMove(OffPos.position, TimeSwitching);
+            @switch.transform.DOMove(offPos.position, timeSwitching);
         }
         else
         {
-            Switch.transform.DOMove(OnPos.position, TimeSwitching);
+            @switch.transform.DOMove(pos.position, timeSwitching);
         }
-        DOTween.Sequence().AppendInterval(TimeSwitching / 2f).SetEase(Ease.Linear).AppendCallback(() =>
+        DOTween.Sequence().AppendInterval(timeSwitching / 2f).SetEase(Ease.Linear).AppendCallback(() =>
         {
-            switch (SettingType)
+            switch (settingType)
             {
                 case SettingType.BackgroundSound:
-                    Data.BgSoundState = !IsOn;
+                    Data.BgSoundState = !isOn;
                     break;
                 case SettingType.FxSound:
-                    Data.FxSoundState = !IsOn;
+                    Data.FxSoundState = !isOn;
                     break;
                 case SettingType.Vibration:
-                    Data.VibrateState = !IsOn;
+                    Data.VibrateState = !isOn;
                     break;
             }
             Setup();
         }).OnComplete(() =>
         {
-            SwitchState = SwitchState.Idle;
+            switchState = SwitchState.Idle;
         });
     }
 }

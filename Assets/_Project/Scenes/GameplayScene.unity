@@ -506,7 +506,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1992392321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fc98219a83dff145947365dc914d06e, type: 3}
+  m_Script: {fileID: 11500000, guid: e248fe6d934eba341b7cf2e4a49620ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tapThreshold: 0.2

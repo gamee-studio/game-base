@@ -14,21 +14,23 @@ namespace Laputa.Localization.Editor
             _localizationConfig = (LocalizationConfig) target;
         }
 
-        public override void OnInspectorGUI()
+        public override async void OnInspectorGUI()
         {
             base.OnInspectorGUI();
 
             if(GUILayout.Button("Update Language Data", GUILayout.Height(40)))
             {
                 _localizationConfig.UpdateLanguageData();
+                serializedObject.SetIsDifferentCacheDirty();
+                serializedObject.ApplyModifiedProperties();
             }
             
             if(GUILayout.Button("Translate All Predata", GUILayout.Height(40)))
             {
-                _localizationConfig.TranslateAllPredata();
+                await  _localizationConfig.TranslateAllPredata();
+                serializedObject.SetIsDifferentCacheDirty();
+                serializedObject.ApplyModifiedProperties();
             }
-
-            serializedObject.ApplyModifiedProperties();
         }
     }
 }

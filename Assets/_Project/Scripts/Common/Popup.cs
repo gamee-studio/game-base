@@ -1,39 +1,34 @@
 using UnityEngine;
 using DG.Tweening;
 using Pancake;
+using UnityEngine.Serialization;
 
 public class Popup : MonoBehaviour
 {
-    public bool UseAnimation;
-    [ShowIf("UseAnimation")] public GameObject Background;
-    [ShowIf("UseAnimation")] public GameObject Container;
-    [ShowIf("UseAnimation")] public bool UseShowAnimation;
-    [ShowIf("UseShowAnimation")] public ShowAnimationType ShowAnimationType;
-    [ShowIf("UseAnimation")] public bool UseHideAnimation;
-    [ShowIf("UseHideAnimation")] public HideAnimationType HideAnimationType;
+    [SerializeField] private bool useAnimation;
+    [ShowIf("useAnimation")] [SerializeField] private GameObject background;
+    [ShowIf("useAnimation")] [SerializeField] private GameObject container;
+    [ShowIf("useAnimation")] [SerializeField] private bool useShowAnimation;
+    [ShowIf("useShowAnimation")] [SerializeField] private ShowAnimationType showAnimationType;
+    [ShowIf("useAnimation")] [SerializeField] private bool useHideAnimation;
+    [ShowIf("useHideAnimation")] [SerializeField] private HideAnimationType hideAnimationType;
     public CanvasGroup CanvasGroup => GetComponent<CanvasGroup>();
     public Canvas Canvas => GetComponent<Canvas>();
     public virtual void Show()
     {
         BeforeShow();
         gameObject.SetActive(true);
-        if (UseShowAnimation)
+        if (useShowAnimation)
         {
-            switch (ShowAnimationType)
+            switch (showAnimationType)
             {
                 case ShowAnimationType.OutBack:
-                    DOTween.Sequence().OnStart(() => Container.transform.localScale = Vector3.one*.9f)
-                        .Append(Container.transform.DOScale(Vector3.one, ConfigController.Game.DurationPopup).SetEase(Ease.OutBack).OnComplete(() =>
-                        {
-                            AfterShown();
-                        }));
+                    DOTween.Sequence().OnStart(() => container.transform.localScale = Vector3.one*.9f)
+                        .Append(container.transform.DOScale(Vector3.one, ConfigController.Game.DurationPopup).SetEase(Ease.OutBack).OnComplete(AfterShown));
                     break;
                 case ShowAnimationType.Flip:
-                    DOTween.Sequence().OnStart(() => Container.transform.localEulerAngles = new Vector3(0,180,0))
-                        .Append(Container.transform.DORotate(Vector3.zero, ConfigController.Game.DurationPopup)).SetEase(Ease.Linear).OnComplete(() =>
-                        {
-                            AfterShown();
-                        });
+                    DOTween.Sequence().OnStart(() => container.transform.localEulerAngles = new Vector3(0,180,0))
+                        .Append(container.transform.DORotate(Vector3.zero, ConfigController.Game.DurationPopup)).SetEase(Ease.Linear).OnComplete(AfterShown);
                     break;
             }
         }
@@ -46,12 +41,12 @@ public class Popup : MonoBehaviour
     public virtual void Hide()
     {
         BeforeHide();
-        if (UseHideAnimation)
+        if (useHideAnimation)
         {
-            switch (HideAnimationType)
+            switch (hideAnimationType)
             {
                 case HideAnimationType.InBack:
-                    DOTween.Sequence().Append(Container.transform.DOScale(Vector3.one*.7f, ConfigController.Game.DurationPopup).SetEase(Ease.InBack).OnComplete(() =>
+                    DOTween.Sequence().Append(container.transform.DOScale(Vector3.one*.7f, ConfigController.Game.DurationPopup).SetEase(Ease.InBack).OnComplete(() =>
                         {
                             gameObject.SetActive(false);
                             AfterShown();

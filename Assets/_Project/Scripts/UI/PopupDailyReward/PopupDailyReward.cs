@@ -4,13 +4,14 @@ using System;
 using System.Linq;
 using DG.Tweening;
 using Pancake;
+using UnityEngine.Serialization;
 
 public class PopupDailyReward : Popup
 {
-    public GameObject BtnWatchVideo;
-    public GameObject BtnClaim;
+    [SerializeField] private GameObject btnWatchVideo;
+    [SerializeField] private GameObject btnClaim;
 
-    [ReadOnly] public DailyRewardItem CurrentItem;
+    [ReadOnly] public DailyRewardItem currentItem;
     public List<DailyRewardItem> DailyRewardItems => GetComponentsInChildren<DailyRewardItem>().ToList();
     
     
@@ -65,26 +66,26 @@ public class PopupDailyReward : Popup
         {
             var item = DailyRewardItems[i];
             item.SetUp(this, i + 7 * week);
-            if (IsCurrentItem(item.dayIndex)) CurrentItem = item;
+            if (IsCurrentItem(item.dayIndex)) currentItem = item;
         }
 
-        if (CurrentItem)
+        if (currentItem)
         {
-            if (CurrentItem.DailyRewardItemState == DailyRewardItemState.ReadyToClaim)
+            if (currentItem.DailyRewardItemState == DailyRewardItemState.ReadyToClaim)
             {
-                BtnWatchVideo.SetActive(CurrentItem.DailyRewardData.DailyRewardType == DailyRewardType.Currency);
-                BtnClaim.SetActive(true);
+                btnWatchVideo.SetActive(currentItem.DailyRewardData.DailyRewardType == DailyRewardType.Currency);
+                btnClaim.SetActive(true);
             }
             else
             {
-                BtnWatchVideo.SetActive(false);
-                BtnClaim.SetActive(false);
+                btnWatchVideo.SetActive(false);
+                btnClaim.SetActive(false);
             }
         }
         else
         {
-            BtnWatchVideo.SetActive(false);
-            BtnClaim.SetActive(false);
+            btnWatchVideo.SetActive(false);
+            btnClaim.SetActive(false);
         }
            
     }
@@ -95,7 +96,7 @@ public class PopupDailyReward : Popup
         {
             Observer.ClaimReward?.Invoke();
             //Observer.OnNotifying?.Invoke();
-            CurrentItem.OnClaim(true);
+            currentItem.OnClaim(true);
         });
     }
 
@@ -103,7 +104,7 @@ public class PopupDailyReward : Popup
     {
         Observer.ClaimReward?.Invoke();
         //Observer.OnNotifying?.Invoke();
-        CurrentItem.OnClaim();
+        currentItem.OnClaim();
     }
 
     public void OnClickNextDay()

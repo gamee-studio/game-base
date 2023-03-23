@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -41,11 +42,11 @@ namespace Laputa.Localization
             return false;
         }
 
-        public void TranslateAllPredata()
+        public async Task TranslateAllPredata()
         {
             foreach (var localizedData in localizedDataList)
             {
-                localizedData.Localize(this);
+                await localizedData.Localize(this);
             }
         }
 
@@ -88,7 +89,7 @@ namespace Laputa.Localization
             return preLocalizedDataList.Find(item => item.languageName == languageName);
         }
 
-        public async void Localize(LocalizationConfig localizationConfig)
+        public async Task Localize(LocalizationConfig localizationConfig)
         {
             try
             {
