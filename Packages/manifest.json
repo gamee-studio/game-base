@@ -12,7 +12,6 @@
     "com.google.play.review": "https://github.com/google-unity/in-app-review.git#1.8.1",
     "com.lupidan.apple-signin-unity": "https://github.com/lupidan/apple-signin-unity.git#v1.4.2",
     "com.pancake.heart": "https://github.com/pancake-llc/heart.git#1.3.7",
-    "com.pancake.hotreload": "https://github.com/pancake-llc/hot-reload.git#1.3.4",
     "com.pancake.playfab": "https://github.com/pancake-llc/playfab.git#2.153.221024",
     "com.sabresaurus.playerprefseditor": "https://github.com/sabresaurus/PlayerPrefsEditor.git",
     "com.unity.2d.sprite": "1.0.0",
