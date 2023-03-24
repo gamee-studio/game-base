@@ -23,7 +23,7 @@ namespace Pancake.GameService
         [SerializeField] private TextMeshProUGUI txtCurrentCountryName;
         [SerializeField] private Transform block;
         [SerializeField] private RectTransform selectCountryPopup;
-        [SerializeField] private RectTransform container;
+        [SerializeField] private RectTransform mainContainer;
 
 
         private SmallList<CountryData> _data;
@@ -219,7 +219,7 @@ namespace Pancake.GameService
         private void InternalShowSelectCountry()
         {
             txtWarning.gameObject.SetActive(false);
-            container.SetPivot(new Vector2(0.5f, 1f));
+            mainContainer.SetPivot(new Vector2(0.5f, 1f));
             selectCountryPopup.gameObject.SetActive(true);
             btnOk.interactable = false;
             selectCountryPopup.sizeDelta = selectCountryPopup.sizeDelta.Change(y: 103);
@@ -230,15 +230,15 @@ namespace Pancake.GameService
                 {
                     scroller.ScrollbarVisibility = EnhancedScroller.ScrollbarVisibilityEnum.Always;
                     btnOk.interactable = true;
-                    container.SetPivot(new Vector2(0.5f, 0.5f));
+                    mainContainer.SetPivot(new Vector2(0.5f, 0.5f));
                 })
                 .Play();
-            container.TweenSizeDeltaY(1206f, 0.5f).Play();
+            mainContainer.TweenSizeDeltaY(1206f, 0.5f).Play();
         }
 
         private void InternalHideSelectCountry()
         {
-            container.SetPivot(new Vector2(0.5f, 1f));
+            mainContainer.SetPivot(new Vector2(0.5f, 1f));
             scroller.ScrollbarVisibility = EnhancedScroller.ScrollbarVisibilityEnum.Never;
             btnOk.interactable = false;
             _tween?.Kill();
@@ -248,10 +248,10 @@ namespace Pancake.GameService
                 {
                     selectCountryPopup.gameObject.SetActive(false);
                     btnOk.interactable = true;
-                    container.SetPivot(new Vector2(0.5f, 0.5f));
+                    mainContainer.SetPivot(new Vector2(0.5f, 0.5f));
                 })
                 .Play();
-            container.TweenSizeDeltaY(940f, 0.5f).Play();
+            mainContainer.TweenSizeDeltaY(940f, 0.5f).Play();
             btnCountry.AffectObject.TweenLocalRotationZ(0, 0.3f, RotationMode.Beyond360).Play();
         }
 
