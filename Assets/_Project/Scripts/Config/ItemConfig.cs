@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using Pancake;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "ItemConfig", menuName = "ScriptableObject/ItemConfig")]
 public class ItemConfig : ScriptableObject
 {
-    public List<ItemData> itemDatas;
+    public List<ItemData> itemData;
 
     public void Initialize()
     {
@@ -17,9 +18,9 @@ public class ItemConfig : ScriptableObject
 
     public void UnlockDefaultSkins()
     {
-        foreach (ItemData item in itemDatas)
+        foreach (ItemData item in itemData)
         {
-            if (item.BuyType == BuyType.Default)
+            if (item.buyType == BuyType.Default)
             {
                 item.ClaimItem();
             }
@@ -28,25 +29,25 @@ public class ItemConfig : ScriptableObject
 
     public void UnlockAllSkins()
     {
-        foreach (ItemData itemData in itemDatas)
+        foreach (var data in itemData)
         {
-            itemData.IsUnlocked = true;
+            data.IsUnlocked = true;
         }
     }
     public ItemData GetItemData(string itemIdentity)
     {
-        return itemDatas.Find(item => item.Identity == itemIdentity);
+        return itemData.Find(item => item.Identity == itemIdentity);
     }
 
     public List<ItemData> GetListItemDataByType(ItemType itemType)
     {
-        return itemDatas.FindAll(item => item.Type == itemType);
+        return itemData.FindAll(item => item.Type == itemType);
     }
 
     public ItemData GetGiftItemData()
     {
         List<ItemData> tempList =
-            itemDatas.FindAll(item => !item.IsUnlocked && (item.BuyType == BuyType.BuyCoin || item.BuyType == BuyType.WatchAds));
+            itemData.FindAll(item => !item.IsUnlocked && (item.buyType == BuyType.BuyCoin || item.buyType == BuyType.WatchAds));
         return tempList.Count > 0?tempList[Random.Range(0, tempList.Count)]:null;
     }
 }
@@ -63,8 +64,8 @@ public class ItemIdentity
 [Serializable]
 public class ItemData : ItemIdentity
 {
-    public BuyType BuyType;
-    public Sprite ShopIcon;
+    public BuyType buyType;
+    public Sprite shopIcon;
     [ShowIf("BuyType",BuyType.BuyCoin)] public int CoinValue;
 
     public void ClaimItem()

@@ -14,7 +14,7 @@ public class PopupWin : Popup
     [SerializeField] [ReadOnly] private int totalMoney;
 
     private Sequence sequence;
-    public int MoneyWin => ConfigController.Game.WinLevelMoney;
+    public int MoneyWin => ConfigController.Game.winLevelMoney;
     public void SetupMoneyWin(int bonusMoney)
     {
         totalMoney = MoneyWin + bonusMoney;

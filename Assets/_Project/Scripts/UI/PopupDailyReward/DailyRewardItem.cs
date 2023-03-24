@@ -19,7 +19,6 @@ public class DailyRewardItem : MonoBehaviour
     private DailyRewardData _dailyRewardData;
     private PopupDailyReward _popupDailyReward;
     public DailyRewardItemState DailyRewardItemState => _dailyRewardItemState;
-
     public DailyRewardData DailyRewardData => _dailyRewardData;
 
     public void SetUp(PopupDailyReward popup, int i)
@@ -41,8 +40,8 @@ public class DailyRewardItem : MonoBehaviour
     {
         // Setup data
         _dailyRewardData = Data.IsStartLoopingDailyReward
-            ? ConfigController.DailyRewardConfig.DailyRewardDatasLoop[dayIndex - 1]
-            : ConfigController.DailyRewardConfig.DailyRewardDatas[dayIndex - 1];
+            ? ConfigController.DailyRewardConfig.DailyRewardDataLoop[dayIndex - 1]
+            : ConfigController.DailyRewardConfig.DailyRewardData[dayIndex - 1];
 
         _coinValue = _dailyRewardData.Value;
         // Setup states

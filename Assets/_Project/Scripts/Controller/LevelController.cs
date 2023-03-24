@@ -18,19 +18,19 @@ public class LevelController : SingletonDontDestroy<LevelController>
             Destroy(currentLevel.gameObject);
         }
 
-        if (indexLevel > ConfigController.Game.MaxLevel)
+        if (indexLevel > ConfigController.Game.maxLevel)
         {
-            indexLevel = (indexLevel-Game.StartLoopLevel) % (Game.MaxLevel - Game.StartLoopLevel + 1) + Game.StartLoopLevel;
+            indexLevel = (indexLevel-Game.startLoopLevel) % (Game.maxLevel - Game.startLoopLevel + 1) + Game.startLoopLevel;
         }
         else
         {
-            if (Game.LevelLoopType == LevelLoopType.NormalLoop)
+            if (Game.levelLoopType == LevelLoopType.NormalLoop)
             {
-                indexLevel = (indexLevel-1) % ConfigController.Game.MaxLevel + 1;
+                indexLevel = (indexLevel-1) % ConfigController.Game.maxLevel + 1;
             }
-            else if (Game.LevelLoopType == LevelLoopType.RandomLoop)
+            else if (Game.levelLoopType == LevelLoopType.RandomLoop)
             {
-                indexLevel = UnityEngine.Random.Range(Game.StartLoopLevel, Game.MaxLevel);
+                indexLevel = UnityEngine.Random.Range(Game.startLoopLevel, Game.maxLevel);
             }
         }
 

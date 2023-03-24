@@ -1,18 +1,19 @@
 using Pancake;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "GameConfig", menuName = "ScriptableObject/GameConfig")]
 public class GameConfig : ScriptableObject
 {
     [Header("UI config")]
-    public float DurationPopup = .5f;
-    public int WatchAdsMoney = 1000;
+    public float durationPopup = .5f;
+    public int watchAdsMoney = 1000;
     [Header("Level config")] 
-    public LevelLoopType LevelLoopType;
-    public int MaxLevel = 2;
-    public int StartLoopLevel;
+    public LevelLoopType levelLoopType;
+    public int maxLevel = 2;
+    public int startLoopLevel;
     [Header("Gameplay config")]
-    public int WinLevelMoney = 100;
+    public int winLevelMoney = 100;
     
 }
 

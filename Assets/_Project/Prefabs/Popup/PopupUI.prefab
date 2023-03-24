@@ -337,10 +337,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487761dac61860e4593f873a9e94a26e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrencyAmountText: {fileID: 4168884197679007341}
-  StepCount: 10
-  DelayTime: 0.02
-  CurrencyGenerate: {fileID: 2757695876848171150}
+  currencyAmountText: {fileID: 4168884197679007341}
+  stepCount: 10
+  delayTime: 0.01
+  currencyGenerate: {fileID: 2757695876848171150}
 --- !u!1 &4114352211823136304
 GameObject:
   m_ObjectHideFlags: 0

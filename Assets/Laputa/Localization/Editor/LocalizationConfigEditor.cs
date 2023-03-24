@@ -27,7 +27,7 @@ namespace Laputa.Localization.Editor
             
             if(GUILayout.Button("Translate All Predata", GUILayout.Height(40)))
             {
-                await  _localizationConfig.TranslateAllPredata();
+                await _localizationConfig.TranslateAllPredata();
                 serializedObject.SetIsDifferentCacheDirty();
                 serializedObject.ApplyModifiedProperties();
             }

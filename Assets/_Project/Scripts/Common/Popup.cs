@@ -24,11 +24,11 @@ public class Popup : MonoBehaviour
             {
                 case ShowAnimationType.OutBack:
                     DOTween.Sequence().OnStart(() => container.transform.localScale = Vector3.one*.9f)
-                        .Append(container.transform.DOScale(Vector3.one, ConfigController.Game.DurationPopup).SetEase(Ease.OutBack).OnComplete(AfterShown));
+                        .Append(container.transform.DOScale(Vector3.one, ConfigController.Game.durationPopup).SetEase(Ease.OutBack).OnComplete(AfterShown));
                     break;
                 case ShowAnimationType.Flip:
                     DOTween.Sequence().OnStart(() => container.transform.localEulerAngles = new Vector3(0,180,0))
-                        .Append(container.transform.DORotate(Vector3.zero, ConfigController.Game.DurationPopup)).SetEase(Ease.Linear).OnComplete(AfterShown);
+                        .Append(container.transform.DORotate(Vector3.zero, ConfigController.Game.durationPopup)).SetEase(Ease.Linear).OnComplete(AfterShown);
                     break;
             }
         }
@@ -46,14 +46,14 @@ public class Popup : MonoBehaviour
             switch (hideAnimationType)
             {
                 case HideAnimationType.InBack:
-                    DOTween.Sequence().Append(container.transform.DOScale(Vector3.one*.7f, ConfigController.Game.DurationPopup).SetEase(Ease.InBack).OnComplete(() =>
+                    DOTween.Sequence().Append(container.transform.DOScale(Vector3.one*.7f, ConfigController.Game.durationPopup).SetEase(Ease.InBack).OnComplete(() =>
                         {
                             gameObject.SetActive(false);
                             AfterShown();
                         }));
                     break;
                 case HideAnimationType.Fade:
-                    CanvasGroup.DOFade(0, ConfigController.Game.DurationPopup).OnComplete(() =>
+                    CanvasGroup.DOFade(0, ConfigController.Game.durationPopup).OnComplete(() =>
                     {
                         CanvasGroup.alpha = 1;
                         gameObject.SetActive(false);

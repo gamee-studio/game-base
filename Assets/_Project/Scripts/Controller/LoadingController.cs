@@ -22,7 +22,7 @@ public class LoadingController : MonoBehaviour
 
     void Start()
     {
-        _operation = SceneManager.LoadSceneAsync(Constant.GAMEPLAY_SCENE);
+        _operation = SceneManager.LoadSceneAsync(Constant.GameplayScene);
         _operation.allowSceneActivation = false;
 
         var preLoadingText = LocalizationController.Instance.GetPreTranslatedText("Loading...");

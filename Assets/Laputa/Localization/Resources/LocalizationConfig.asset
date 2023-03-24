@@ -25,4 +25,8 @@ MonoBehaviour:
     tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
   localizedDataList:
   - content: Loading...
-    preLocalizedDataList: []
+    preLocalizedDataList:
+    - languageName: 0
+      translatedContent: Loading...
+    - languageName: 1
+      translatedContent: "\u0110ang t\u1EA3i..."

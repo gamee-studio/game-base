@@ -19,13 +19,13 @@ public class GameBase : EditorWindow
     
     [MenuItem("GameBase/Open Scene/Loading Scene %F1")]
     public static void OpenLoadingScene(){
-        EditorSceneManager.OpenScene($"Assets/_Project/Scenes/{Constant.LOADING_SCENE}.unity");
+        EditorSceneManager.OpenScene($"Assets/_Project/Scenes/{Constant.LoadingScene}.unity");
         Debug.Log($"<color=Green>Change scene succeed</color>");
     }
 
     [MenuItem("GameBase/Open Scene/Gameplay Scene %F2")]
     public static void OpenGamePlayScene(){
-        EditorSceneManager.OpenScene($"Assets/_Project/Scenes/{Constant.GAMEPLAY_SCENE}.unity");
+        EditorSceneManager.OpenScene($"Assets/_Project/Scenes/{Constant.GameplayScene}.unity");
         Debug.Log($"<color=Green>Change scene succeed</color>");
     } 
     

@@ -12,31 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75a28a2ec6ee994e88538513390cdb6, type: 3}
   m_Name: SoundConfig
   m_EditorClassIdentifier: 
-  SoundDatas:
-  - SoundType: 0
-    Clips: []
-  - SoundType: 1
-    Clips: []
-  - SoundType: 2
-    Clips:
+  soundData:
+  - soundType: 0
+    clips: []
+  - soundType: 1
+    clips: []
+  - soundType: 2
+    clips:
     - {fileID: 8300000, guid: ace45cf110d1bc7408ee20f51318c4a2, type: 3}
-  - SoundType: 3
-    Clips:
+  - soundType: 3
+    clips: []
+  - soundType: 4
+    clips:
     - {fileID: 8300000, guid: 3351374e9b19d7a4cbdb139022a09c5f, type: 3}
-  - SoundType: 4
-    Clips:
-    - {fileID: 8300000, guid: 3351374e9b19d7a4cbdb139022a09c5f, type: 3}
-  - SoundType: 5
-    Clips: []
-  - SoundType: 6
-    Clips: []
-  - SoundType: 7
-    Clips: []
-  - SoundType: 8
-    Clips: []
-  - SoundType: 9
-    Clips: []
-  - SoundType: 10
-    Clips: []
-  - SoundType: 11
-    Clips: []
+  - soundType: 5
+    clips:
+    - {fileID: 8300000, guid: d5d65442eccfa3548921d7156b6d821a, type: 3}
+  - soundType: 6
+    clips: []
+  - soundType: 7
+    clips: []
+  - soundType: 8
+    clips: []
+  - soundType: 9
+    clips: []
+  - soundType: 10
+    clips: []
+  - soundType: 11
+    clips:
+    - {fileID: 8300000, guid: e64a815b5b859704a8b9fb7d8ae396cf, type: 3}
