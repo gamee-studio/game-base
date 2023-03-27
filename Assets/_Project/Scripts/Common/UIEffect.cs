@@ -11,11 +11,11 @@ public class UIEffect : MonoBehaviour
     [SerializeField] private float delayAnimTime;
     
     [SerializeField] private Vector3 fromScale = Vector3.zero;
-    [SerializeField] private Vector3 saveLocalScale; 
+    [SerializeField] [ReadOnly] private Vector3 saveLocalScale; 
     [Header("Shake Effect")]
     [SerializeField] private float strength = 3f;
     [Header("Move Effect")] 
-    [ShowIf("UIAnimType", AnimType.Move)] private MoveType _moveType;
+    [ShowIf("animType", AnimType.Move)] private MoveType _moveType;
     [ShowIf("IsShowAttributeFromPosition")] [SerializeField] private Vector3 fromPosition;
     [ShowIf("IsShowAttributesMoveDirection")] [SerializeField] private DirectionType directionType;
     [ShowIf("IsShowAttributesMoveDirection")] [SerializeField] private float offset;

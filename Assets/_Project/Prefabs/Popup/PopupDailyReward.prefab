@@ -74,6 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 173523979912265271}
   - component: {fileID: 4241069192494886544}
+  - component: {fileID: 3754141562158053143}
   m_Layer: 5
   m_Name: Container
   m_TagString: Untagged
@@ -93,6 +94,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1444936919147334741}
   - {fileID: 9044227625509702554}
   - {fileID: 1510507528621896489}
   - {fileID: 2230126689644734067}
@@ -122,6 +124,28 @@ MonoBehaviour:
   ConformX: 1
   ConformY: 1
   Logging: 0
+--- !u!114 &3754141562158053143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65604307107627601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe270764967ed7b4abbfde5c9a04e74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animType: 0
+  playOnAwake: 1
+  animTime: 0.5
+  delayAnimTime: 0
+  fromScale: {x: 0.5, y: 0.5, z: 0.5}
+  saveLocalScale: {x: 0, y: 0, z: 0}
+  strength: 3
+  fromPosition: {x: 0, y: 0, z: 0}
+  directionType: 0
+  offset: 0
 --- !u!1 &87697190871830783
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,8 +175,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1444936919147334741}
+  m_Children: []
   m_Father: {fileID: 7370416450938019889}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -643,7 +666,7 @@ RectTransform:
   m_Children:
   - {fileID: 8713767365282444240}
   m_Father: {fileID: 173523979912265271}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -681,7 +704,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6824529895861451023}
+  m_Father: {fileID: 173523979912265271}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -887,7 +910,7 @@ RectTransform:
   - {fileID: 1237731737530762080}
   - {fileID: 8068856608805670655}
   m_Father: {fileID: 173523979912265271}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1089,7 +1112,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 173523979912265271}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1411,7 +1434,7 @@ RectTransform:
   m_Children:
   - {fileID: 4480383991957934793}
   m_Father: {fileID: 173523979912265271}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -2127,7 +2150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentText: Day 7
+  currentText: Day {x}
   isFirstGenerated: 1
   languageDataList:
   - save: 0
@@ -2137,7 +2160,7 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
       font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
       tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-    text: Day 7
+    text: Day {x}
   - save: 0
     languageData:
       languageName: 1
@@ -2145,8 +2168,10 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
       font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
       tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
-    text: "Ng\xE0y 7"
-  localizedDataTextList: []
+    text: "Ng\xE0y {x}"
+  localizedDataTextList:
+  - wordReplace: x
+    value: 7
 --- !u!1 &7151091472365318068
 GameObject:
   m_ObjectHideFlags: 0
@@ -2180,7 +2205,7 @@ RectTransform:
   m_Children:
   - {fileID: 5353515275498109144}
   m_Father: {fileID: 173523979912265271}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2652,7 +2677,7 @@ RectTransform:
   - {fileID: 5179432089586039187}
   - {fileID: 7598077619917613652}
   m_Father: {fileID: 173523979912265271}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

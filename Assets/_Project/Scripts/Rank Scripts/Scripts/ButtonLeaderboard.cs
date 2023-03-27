@@ -167,7 +167,7 @@ namespace Pancake.GameService
 
 #if UNITY_EDITOR
     [CustomEditor(typeof(ButtonLeaderboard))]
-    public class ButtonLeaderboardEdior : UnityEditor.Editor
+    public class ButtonLeaderboardEditor : UnityEditor.Editor
     {
         private ButtonLeaderboard _buttonLeaderboard;
 

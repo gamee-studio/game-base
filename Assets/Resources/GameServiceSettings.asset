@@ -24,11 +24,11 @@ MonoBehaviour:
   infoRequestParams:
     GetCharacterInventories: 0
     GetCharacterList: 0
-    GetPlayerProfile: 0
-    GetPlayerStatistics: 0
+    GetPlayerProfile: 1
+    GetPlayerStatistics: 1
     GetTitleData: 0
-    GetUserAccountInfo: 0
-    GetUserData: 0
+    GetUserAccountInfo: 1
+    GetUserData: 1
     GetUserInventory: 0
     GetUserReadOnlyData: 0
     GetUserVirtualCurrency: 0
@@ -39,11 +39,11 @@ MonoBehaviour:
       ShowCampaignAttributions: 0
       ShowContactEmailAddresses: 0
       ShowCreated: 0
-      ShowDisplayName: 0
+      ShowDisplayName: 1
       ShowExperimentVariants: 0
       ShowLastLogin: 0
-      ShowLinkedAccounts: 0
-      ShowLocations: 0
+      ShowLinkedAccounts: 1
+      ShowLocations: 1
       ShowMemberships: 0
       ShowOrigination: 0
       ShowPushNotificationRegistrations: 0
@@ -52,5 +52,6 @@ MonoBehaviour:
       ShowTotalValueToDateInUsd: 0
       ShowValuesToDate: 0
     TitleDataKeys: []
-    UserDataKeys: []
+    UserDataKeys:
+    - _internal_config
     UserReadOnlyDataKeys: []

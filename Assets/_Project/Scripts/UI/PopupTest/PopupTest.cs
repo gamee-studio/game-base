@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class PopupTest : Popup
 {
-    private bool isShowBanner;
+    private bool _isShowBanner;
     
     #region SetupInAppReview
 #if UNITY_ANDROID
@@ -103,7 +103,7 @@ public class PopupTest : Popup
 
     public void OnClickBtnShowBannerAds()
     {
-        if (!isShowBanner)
+        if (!_isShowBanner)
         {
             Advertising.ShowBannerAd();
         }

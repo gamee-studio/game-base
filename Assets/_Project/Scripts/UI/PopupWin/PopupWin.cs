@@ -1,10 +1,7 @@
-
-
 using DG.Tweening;
 using Pancake;
 using Pancake.Monetization;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PopupWin : Popup
 {
@@ -33,6 +30,7 @@ public class PopupWin : Popup
     {
         btnRewardAds.SetActive(true);
         btnTapToContinue.SetActive(false);
+        bonusArrowHandler.MoveObject.ResumeMoving();
     }
 
     protected override void BeforeHide()
@@ -50,18 +48,21 @@ public class PopupWin : Popup
         }
         else
         {
-            if (Advertising.IsRewardedAdReady()) bonusArrowHandler.MoveObject.StopMoving();
             AdsManager.ShowRewardAds(() =>
             {
-                //FirebaseManager.OnWatchAdsRewardWin();
                 GetRewardAds();
                 Observer.ClaimReward?.Invoke();
-            }, (() =>
+            }, skipCallback: () =>
             {
                 bonusArrowHandler.MoveObject.ResumeMoving();
                 btnRewardAds.SetActive(true);
                 btnTapToContinue.SetActive(true);
-            }));
+            },closeCallback: () =>
+            {
+                bonusArrowHandler.MoveObject.ResumeMoving();
+                btnRewardAds.SetActive(true);
+                btnTapToContinue.SetActive(true);
+            });
         }
     }
     

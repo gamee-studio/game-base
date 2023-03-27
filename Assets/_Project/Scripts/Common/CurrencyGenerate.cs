@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using System.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CurrencyGenerate : MonoBehaviour
 {
-       public GameObject overlay;
+    public GameObject overlay;
     public GameObject coinPrefab;
     public GameObject from;
     public GameObject to;
@@ -17,9 +17,9 @@ public class CurrencyGenerate : MonoBehaviour
     public Ease easeNear;
     public Ease easeTarget;
     public float scale = 1;
-    private int numberCoinMoveDone;
-    private System.Action moveOneCoinDone;
-    private System.Action moveAllCoinDone;
+    private int _numberCoinMoveDone;
+    private Action _moveOneCoinDone;
+    private Action _moveAllCoinDone;
 
     public void SetFromGameObject(GameObject from)
     {
@@ -36,14 +36,14 @@ public class CurrencyGenerate : MonoBehaviour
         overlay.SetActive(false);
     }
 
-    public async void GenerateCoin(System.Action moveOneCoinDone, System.Action moveAllCoinDone, GameObject from = null, GameObject to = null, int numberCoin = -1)
+    public async void GenerateCoin(Action moveOneCoinDone, Action moveAllCoinDone, GameObject from = null, GameObject to = null, int numberCoin = -1)
     {
-        this.moveOneCoinDone = moveOneCoinDone;
-        this.moveAllCoinDone = moveAllCoinDone;
+        this._moveOneCoinDone = moveOneCoinDone;
+        this._moveAllCoinDone = moveAllCoinDone;
         this.from = from == null ? this.from : from;
         this.to = to == null ? this.to : to;
         this.numberCoin = numberCoin < 0 ? this.numberCoin : numberCoin;
-        numberCoinMoveDone = 0;
+        _numberCoinMoveDone = 0;
         overlay.SetActive(true);
         for (int i = 0; i < this.numberCoin; i++)
         {
@@ -62,12 +62,12 @@ public class CurrencyGenerate : MonoBehaviour
         {
             MoveToTarget(coin).OnComplete(() =>
             {
-                numberCoinMoveDone++;
+                _numberCoinMoveDone++;
                 Destroy(coin);
-                moveOneCoinDone?.Invoke();
-                if (numberCoinMoveDone >= numberCoin)
+                _moveOneCoinDone?.Invoke();
+                if (_numberCoinMoveDone >= numberCoin)
                 {
-                    moveAllCoinDone?.Invoke();
+                    _moveAllCoinDone?.Invoke();
                     overlay.SetActive(false);
                 }
             });
@@ -89,8 +89,8 @@ public class CurrencyGenerate : MonoBehaviour
         return MoveTo(to.transform.position, coin, durationTarget, easeTarget);
     }
     
-    public void SetNumberCoin(int _numberCoin)
+    public void SetNumberCoin(int coin)
     {
-        numberCoin = _numberCoin;
+        numberCoin = coin;
     }
 }

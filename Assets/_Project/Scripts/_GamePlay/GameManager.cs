@@ -95,9 +95,11 @@ public class GameManager : SingletonDontDestroy<GameManager>
         DOTween.Sequence().AppendInterval(delayPopupShowTime).AppendCallback(() =>
         {
             PopupController.Instance.HideAll();
-            PopupWin popupWin = PopupController.Instance.Get<PopupWin>() as PopupWin;
-            popupWin.SetupMoneyWin(levelController.currentLevel.bonusMoney);
-            popupWin.Show();
+            if (PopupController.Instance.Get<PopupWin>() is PopupWin popupWin)
+            {
+                popupWin.SetupMoneyWin(levelController.currentLevel.bonusMoney);
+                popupWin.Show();
+            }
         });
     }
     

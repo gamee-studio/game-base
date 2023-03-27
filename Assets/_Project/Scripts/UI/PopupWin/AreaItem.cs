@@ -1,19 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class AreaItem : MonoBehaviour
 {
-    public int MultiBonus = 1;
-    public GameObject BoderLight;
+    [SerializeField] private GameObject borderLight;
+    [SerializeField] private int multiBonus = 1;
+
+    public int MultiBonus
+    {
+        get => multiBonus;
+        set => multiBonus = value;
+    }
 
     public void ActivateBorderLight()
     {
-        BoderLight.SetActive(true);
+        borderLight.SetActive(true);
     }
 
     public void DeActivateBorderLight()
     {
-        BoderLight.SetActive(false);
+        borderLight.SetActive(false);
     }
 }

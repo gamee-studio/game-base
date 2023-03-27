@@ -41,14 +41,14 @@ public class Level : MonoBehaviour
         if (!finger.IsOverGui)
         {
             _isFingerDown = true;
-        }
+            
+            //Get Object raycast hit
+            var ray = finger.GetRay(Camera);
+            var hit = default(RaycastHit);
         
-        //Get Object raycast hit
-        var ray = finger.GetRay(Camera);
-        var hit = default(RaycastHit);
-        
-        if (Physics.Raycast(ray, out hit, float.PositiveInfinity)) { //ADDED LAYER SELECTION
-            Debug.Log(hit.collider.gameObject);
+            if (Physics.Raycast(ray, out hit, float.PositiveInfinity)) { //ADDED LAYER SELECTION
+                Debug.Log(hit.collider.gameObject);
+            }
         }
     }
     

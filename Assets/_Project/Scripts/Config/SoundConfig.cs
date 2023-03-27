@@ -13,7 +13,7 @@ public class SoundConfig : ScriptableObject
 
     #if UNITY_EDITOR
     [Button]
-    public void UpdatesoundData()
+    public void UpdateSoundData()
     {
         for (int i = 0; i < Enum.GetNames(typeof(SoundType)).Length; i++)
         {

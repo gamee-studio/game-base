@@ -51,6 +51,30 @@
         {
             "key": "PLAYFAB_FEATURE",
             "state": true
+        },
+        {
+            "key": "UIPOPUP_LEADERBOARD",
+            "state": true
+        },
+        {
+            "key": "LB_COLOR_RANK1",
+            "state": true
+        },
+        {
+            "key": "LB_COLOR_RANK2",
+            "state": true
+        },
+        {
+            "key": "LB_COLOR_RANK3",
+            "state": true
+        },
+        {
+            "key": "LB_COLOR_RANKYOU",
+            "state": true
+        },
+        {
+            "key": "LB_COLOR_OUTRANK",
+            "state": true
         }
     ]
 }
