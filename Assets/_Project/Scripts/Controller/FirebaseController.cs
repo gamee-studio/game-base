@@ -23,8 +23,7 @@ public class FirebaseController : SingletonDontDestroy<FirebaseController>
         Observer.StartLevel += OnStartLevel;
         Observer.WinLevel += OnWinLevel;
         Observer.LoseLevel += OnLoseLevel;
-
-        Observer.TrackClickButton += OnClickButton;
+        
         Observer.RequestBanner += OnRequestBanner;
         Observer.ShowBanner += OnShowBanner;
         Observer.RequestInterstitial += OnRequestInterstitial;

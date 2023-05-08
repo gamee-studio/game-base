@@ -16,49 +16,31 @@ public class PopupHome : Popup
 
     public void OnClickStart()
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        Observer.TrackClickButton?.Invoke(function.Name);
-        
         GameManager.Instance.StartGame();
     }
 
     public void OnClickDebug()
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        Observer.TrackClickButton?.Invoke(function.Name);
-        
         PopupController.Instance.Show<PopupDebug>();
     }
 
     public void OnClickSetting()
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        Observer.TrackClickButton?.Invoke(function.Name);
-        
         PopupController.Instance.Show<PopupSetting>();
     }
 
     public void OnClickDailyReward()
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        Observer.TrackClickButton?.Invoke(function.Name);
-        
         PopupController.Instance.Show<PopupDailyReward>();
     }
 
     public void OnClickShop()
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        Observer.TrackClickButton?.Invoke(function.Name);
-        
         PopupController.Instance.Show<PopupShop>();
     }
     
     public void OnClickTest()
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        Observer.TrackClickButton?.Invoke(function.Name);
-        
         PopupController.Instance.Show<PopupTest>();
     }
 }

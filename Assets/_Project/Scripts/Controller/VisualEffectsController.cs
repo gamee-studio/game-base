@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Pancake;
-using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,14 +8,14 @@ public class VisualEffectsController : SingletonDontDestroy<VisualEffectsControl
 {
     public List<VisualEffectData> visualEffectDatas;
 
-    public VisualEffectData GetVisualEffectDataByType(VisualEffectType visualEffectType)
+    public VisualEffectData GetVisualEffectDataByType(string name)
     {
-        return visualEffectDatas.Find(item => item.visualEffectType == visualEffectType);
+        return visualEffectDatas.Find(item => item.name == name);
     }
 
-    public void SpawnEffect(VisualEffectType visualEffectType,Vector3 position, Transform parent, Vector3? localScale = null, bool isDestroyedOnEnd = true, float timeDestroy = 3f)
+    public void SpawnEffect(string name,Vector3 position, Transform parent, Vector3? localScale = null, bool isDestroyedOnEnd = true, float timeDestroy = 3f)
     {
-        VisualEffectData visualEffectData = GetVisualEffectDataByType(visualEffectType);
+        VisualEffectData visualEffectData = GetVisualEffectDataByType(name);
         if (visualEffectData != null)
         {
             GameObject randomEffect = visualEffectData.GetRandomEffect();
@@ -28,48 +25,17 @@ public class VisualEffectsController : SingletonDontDestroy<VisualEffectsControl
             if (isDestroyedOnEnd) Destroy(effect, timeDestroy);
         }
     }
-    
-    private bool IsItemExistedByVisualEffectType(VisualEffectType visualEffectType)
-    {
-        foreach (VisualEffectData item in visualEffectDatas)
-        {
-            if (item.visualEffectType == visualEffectType)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    [Button]
-    public void UpdateVisualEffects()
-    {
-        for (int i = 0; i < Enum.GetNames(typeof(VisualEffectType)).Length; i++)
-        {
-            VisualEffectData visualEffectData = new VisualEffectData();
-            visualEffectData.visualEffectType = (VisualEffectType) i;
-            if (IsItemExistedByVisualEffectType(visualEffectData.visualEffectType)) continue;
-            visualEffectDatas.Add(visualEffectData);
-        }
-
-        visualEffectDatas = visualEffectDatas.GroupBy(elem => elem.visualEffectType).Select(group => group.First()).ToList();
-    }
 }
 
 [Serializable]
 public class VisualEffectData
 {
-    public List<GameObject> effectList;
-    public VisualEffectType visualEffectType;
+    public string name;
+    public List<GameObject> effects;
+    
 
     public GameObject GetRandomEffect()
     {
-        return effectList[Random.Range(0, effectList.Count)];
+        return effects[Random.Range(0, effects.Count)];
     }
-}
-
-public enum VisualEffectType
-{
-    Default,
 }

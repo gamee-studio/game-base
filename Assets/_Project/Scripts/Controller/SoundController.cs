@@ -1,10 +1,11 @@
+using Pancake;
 using UnityEngine;
 
 public class SoundController : SingletonDontDestroy<SoundController>
 {
     public AudioSource backgroundAudio;
     public AudioSource fxAudio;
-    public SoundConfig SoundConfig => ConfigController.Sound;
+    private SoundConfig SoundConfig => ConfigController.Sound;
 
     public void Start()
     {
@@ -12,12 +13,6 @@ public class SoundController : SingletonDontDestroy<SoundController>
 
         Observer.MusicChanged += OnMusicChanged;
         Observer.SoundChanged += OnSoundChanged;
-
-        Observer.WinLevel += WinLevel;
-        Observer.LoseLevel += LoseLevel;
-        Observer.StartLevel += StartLevel;
-        Observer.ClickButton += ClickButton;
-        Observer.CoinMove += CoinMove;
     }
 
     private void OnMusicChanged()
@@ -29,76 +24,73 @@ public class SoundController : SingletonDontDestroy<SoundController>
     {
         fxAudio.mute = !Data.FxSoundState;
     }
-    
-    public void Setup()
+
+    private void Setup()
     {
         OnMusicChanged();
         OnSoundChanged();
     }
 
-    private void PlayFX(SoundType soundType)
+    public void PlayFX(string soundName)
     {
-        SoundData soundData = SoundConfig.GetSoundDataByType(soundType);
+        SoundData soundData = SoundConfig.GetSoundDataByType(soundName);
 
         if (soundData != null)
         {
-            fxAudio.PlayOneShot(soundData.GetRandomAudioClip());
+            var soundClip = soundData.GetRandomAudioClip();
+            if (soundClip)
+            {
+                fxAudio.PlayOneShot(soundClip);
+            }
+            else
+            {
+                Debug.LogWarning($"<color=Red>Missing {soundName} clip</color>");
+            }
         }
         else
         {
-            Debug.LogWarning("Can't found sound data");
+            Debug.LogWarning($"<color=Red>Missing {soundName}</color>");
         }
     }
 
-    private void PlayBackground(SoundType soundType)
+    public void PlayBackground(string soundName)
     {
-        SoundData soundData = SoundConfig.GetSoundDataByType(soundType);
+        SoundData soundData = SoundConfig.GetSoundDataByType(soundName);
 
         if (soundData != null)
         {
-            backgroundAudio.clip = soundData.GetRandomAudioClip();
-            backgroundAudio.Play();
+            var clip = soundData.GetRandomAudioClip();
+
+            if (clip)
+            {
+                if (!backgroundAudio.clip == clip)
+                {
+                    backgroundAudio.clip = clip;
+                    backgroundAudio.Play();
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"<color=Red>Missing {soundName} clip</color>");
+            }
         }
         else
         {
-            Debug.LogWarning("Can't found sound data");
+            Debug.LogWarning($"<color=Red>Missing {soundName}</color>");
         }
     }
 
-    public void PauseBackground()
+    [Button]
+    public void TestBackground()
     {
-        if (backgroundAudio)
-        {
-            backgroundAudio.Pause();
-        }
-    }
-
-    #region ActionEvent
-
-    private void StartLevel(Level level)
-    {
-        PlayFX(SoundType.StartLevel);
-    }
-
-    private void WinLevel(Level level)
-    {
-        PlayFX(SoundType.WinLevel);
-    }
-
-    private void LoseLevel(Level level)
-    {
-        PlayFX(SoundType.LoseLevel);
-    }
-
-    private void ClickButton()
-    {
-        PlayFX(SoundType.ClickButton);
-    }
-
-    private void CoinMove()
-    {
-        PlayFX(SoundType.CoinMove);
+        if (!Application.isPlaying) return;
+        PlayFX("background");
     }
     
-    #endregion
+    [Button]
+    public void TestFX()
+    {
+        if (!Application.isPlaying) return;
+        PlayFX("success");
+    }
 }

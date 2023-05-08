@@ -45,9 +45,6 @@ public class PopupInGame : Popup
 
    public void OnClickHome()
    {
-      MethodBase function = MethodBase.GetCurrentMethod();
-      Observer.TrackClickButton?.Invoke(function.Name);
-      
       GameManager.Instance.ReturnHome();
    }
 
@@ -61,9 +58,6 @@ public class PopupInGame : Popup
       {
          AdsManager.ShowInterstitial(() =>
          {
-            MethodBase function = MethodBase.GetCurrentMethod();
-            Observer.TrackClickButton?.Invoke(function.Name);
-            
             GameManager.Instance.ReplayGame();
          });
       }
@@ -84,9 +78,6 @@ public class PopupInGame : Popup
       {
          AdsManager.ShowRewardAds(() =>
          {
-            MethodBase function = MethodBase.GetCurrentMethod();
-            Observer.TrackClickButton?.Invoke(function.Name);
-            
             GameManager.Instance.NextLevel();
          });
       }

@@ -24,7 +24,6 @@ public static class Observer
     // Other
     public static Action CoinMove;
     public static Action ClickButton;
-    public static Action<string> TrackClickButton;
     public static Action PurchaseFail;
     public static Action PurchaseSucceed;
     public static Action ClaimReward;
