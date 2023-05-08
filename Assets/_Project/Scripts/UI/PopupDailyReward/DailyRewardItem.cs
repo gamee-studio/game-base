@@ -1,5 +1,4 @@
 using System;
-using Laputa.Localization.Components;
 using Pancake;
 using TMPro;
 using UnityEngine;
@@ -8,7 +7,7 @@ using UnityEngine.UI;
 public class DailyRewardItem : MonoBehaviour
 {
     [ReadOnly] public int dayIndex;
-    public GameObject textDay;
+    public TextMeshProUGUI textDay;
     public TextMeshProUGUI rewardValue;
     public Image greenTick;
     public Image backgroundClaim;
@@ -73,7 +72,7 @@ public class DailyRewardItem : MonoBehaviour
     public void SetUpUI(int i)
     {
         SetDefaultUI();
-        textDay.GetComponent<LocalizedText>()?.SetValue("x",(i+1).ToString());
+        textDay.text = $"Day {i + 1}";
         rewardValue.text = _coinValue.ToString();
         switch (_dailyRewardItemState)
         {

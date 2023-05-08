@@ -1,5 +1,4 @@
 using DG.Tweening;
-using Laputa.Localization;
 using Pancake.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -24,10 +23,9 @@ public class LoadingController : MonoBehaviour
     {
         _operation = SceneManager.LoadSceneAsync(Constant.GameplayScene);
         _operation.allowSceneActivation = false;
-
-        var preLoadingText = LocalizationController.Instance.GetPreTranslatedText("Loading...");
+        
         progressBar.fillAmount = 0;
-        progressBar.DOFillAmount(5, timeLoading).OnUpdate(()=>loadingText.text = $"{preLoadingText} {(int) (progressBar.fillAmount * 100)}%").OnComplete(()=> _flagDoneProgress = true);
+        progressBar.DOFillAmount(5, timeLoading).OnUpdate(()=>loadingText.text = $"Loading {(int) (progressBar.fillAmount * 100)}%").OnComplete(()=> _flagDoneProgress = true);
         WaitProcess();
     }
     

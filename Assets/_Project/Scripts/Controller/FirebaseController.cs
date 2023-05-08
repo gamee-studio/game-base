@@ -35,7 +35,7 @@ public class FirebaseController : SingletonDontDestroy<FirebaseController>
 
     #region FirebaseInitGetRemoteConfig
 
-    public void Initialize()
+    private void Initialize()
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
@@ -76,9 +76,9 @@ public class FirebaseController : SingletonDontDestroy<FirebaseController>
         await FetchDataAsync();
     }
 
-    public Task FetchDataAsync()
+    private Task FetchDataAsync()
     {
-        Debug.Log("Fetching data...");
+        Debug.Log("<color=Green>Fetching data from Firebase ...</color>");
         System.Threading.Tasks.Task fetchTask =
             Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.FetchAsync(TimeSpan.Zero);
         if (fetchTask.IsCanceled)
@@ -103,8 +103,7 @@ public class FirebaseController : SingletonDontDestroy<FirebaseController>
                 Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.ActivateAsync()
                     .ContinueWithOnMainThread(task =>
                     {
-                        Debug.Log(String.Format("Remote data loaded and ready (last fetch time {0}).",
-                            info.FetchTime));
+                        Debug.LogWarning($"Remote data loaded and ready (last fetch time {info.FetchTime}).");
                     });
 
                 Data.UseLevelABTesting = int.Parse(FirebaseRemoteConfig.DefaultInstance
@@ -120,22 +119,22 @@ public class FirebaseController : SingletonDontDestroy<FirebaseController>
                 Data.TimeLoseBetweenTwoInterstitial = int.Parse(FirebaseRemoteConfig.DefaultInstance
                     .GetValue(Constant.SpaceTimeLoseBetweenTwoInterstitial).StringValue);
 
-                Debug.Log("<color=Green>Firebase Remote Config Fetching Values</color>");
-                Debug.Log($"<color=Green>Data.UseLevelABTesting: {Data.UseLevelABTesting}</color>");
-                Debug.Log($"<color=Green>Data.LevelTurnOnInterstitial: {Data.LevelTurnOnInterstitial}</color>");
-                Debug.Log(
+                Debug.LogWarning("<color=Green>Firebase Remote Config Fetching Values</color>");
+                Debug.LogWarning($"<color=Green>Data.UseLevelABTesting: {Data.UseLevelABTesting}</color>");
+                Debug.LogWarning($"<color=Green>Data.LevelTurnOnInterstitial: {Data.LevelTurnOnInterstitial}</color>");
+                Debug.LogWarning(
                     $"<color=Green>Data.CounterNumbBetweenTwoInterstitial: {Data.CounterNumbBetweenTwoInterstitial}</color>");
-                Debug.Log(
+                Debug.LogWarning(
                     $"<color=Green>Data.TimeWinBetweenTwoInterstitial: {Data.TimeWinBetweenTwoInterstitial}</color>");
-                Debug.Log(
+                Debug.LogWarning(
                     $"<color=Green>Data.UseShowInterstitialOnLoseGame: {Data.UseShowInterstitialOnLoseGame}</color>");
-                Debug.Log(
+                Debug.LogWarning(
                     $"<color=Green>Data.TimeLoseBetweenTwoInterstitial: {Data.TimeLoseBetweenTwoInterstitial}</color>");
                 Debug.Log("<color=Green>Firebase Remote Config Fetching completed!</color>");
             }
             else
             {
-                Debug.Log("Fetching data did not completed!");
+                Debug.Log("<color=Red>Fetching data did not completed!</color>");
             }
 
             isInitialized = true;

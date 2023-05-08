@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using Laputa.Localization.Components;
 using Pancake.Threading.Tasks;
 #if PANCAKE_FACEBOOK
 using Pancake.Facebook;
@@ -264,7 +263,7 @@ namespace Pancake.GameService
 
         protected virtual void Refresh(Data data)
         {
-            txtCurrentPage.GetComponent<LocalizedText>()?.SetValue("x", $"{data.currentPage + 1}".ToString());
+            txtCurrentPage.text = $"{data.currentPage + 1}";
             if (data.currentPage >= data.pageCount) // reach the end
             {
                 btnNextPage.gameObject.SetActive(false);
@@ -401,7 +400,7 @@ namespace Pancake.GameService
             }
             else
             {
-                txtRank.GetComponent<LocalizedText>()?.SetValue("x",$"{countryData.myPosition + 1}");
+                txtRank.text = $"{countryData.myPosition + 1}";
                 Refresh(countryData);
             }
         }
@@ -622,7 +621,7 @@ namespace Pancake.GameService
         private void OnGetLeaderboardAroundUserWorldSuccess(GetLeaderboardAroundUserResult success)
         {
             worldData.myPosition = success.Leaderboard[0].Position;
-            txtRank.GetComponent<LocalizedText>()?.SetValue("x",$"{worldData.myPosition + 1}");
+            txtRank.text = $"{worldData.myPosition + 1}";
             AuthService.RequestLeaderboard(nameTableLeaderboard, RequestWorldLeaderboardSuccess,
                 RequestWorldLeaderboardError);
         }
@@ -673,7 +672,7 @@ namespace Pancake.GameService
             else
             {
                 // display with old data
-                txtRank.GetComponent<LocalizedText>()?.SetValue("x",$"{worldData.myPosition + 1}");
+                txtRank.text = $"{worldData.myPosition + 1}";
                 Refresh(worldData);
             }
         }
@@ -712,7 +711,7 @@ namespace Pancake.GameService
         private void OnGetLeaderboardAroundUserCountrySuccess(GetLeaderboardAroundUserResult success)
         {
             countryData.myPosition = success.Leaderboard[0].Position;
-            txtRank.GetComponent<LocalizedText>()?.SetValue("x",$"{countryData.myPosition + 1}");
+            txtRank.text = $"{countryData.myPosition + 1}";
             AuthService.RequestLeaderboard($"{nameTableLeaderboard}_{LoginResultModel.countryCode}",
                 RequestCountryLeaderboardSuccess, RequestCountryLeaderboardError);
         }

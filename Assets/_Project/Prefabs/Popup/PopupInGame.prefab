@@ -1663,7 +1663,6 @@ GameObject:
   - component: {fileID: 8866243066703971776}
   - component: {fileID: 4609003189904288388}
   - component: {fileID: 6799461052049465040}
-  - component: {fileID: 8834913937742084582}
   - component: {fileID: 6420284947709119311}
   m_Layer: 5
   m_Name: LevelTypeText
@@ -1722,8 +1721,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LEVEL TYPE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-  m_sharedMaterial: {fileID: 4336404976236956249, guid: 98d0d209208b35f4fac01695a397a6b5,
+  m_fontAsset: {fileID: 11400000, guid: 8d15ab71442963c47b22b47460111e35, type: 2}
+  m_sharedMaterial: {fileID: 3604630249188092411, guid: 8d15ab71442963c47b22b47460111e35,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1812,38 +1811,6 @@ MonoBehaviour:
   fromPosition: {x: 0, y: 0, z: 0}
   directionType: 0
   offset: 0
---- !u!114 &8834913937742084582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4957344726548281664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentText: "LO\u1EA0I C\u1EA4P \u0110\u1ED8"
-  isFirstGenerated: 1
-  languageDataList:
-  - save: 0
-    languageData:
-      languageName: 0
-      encode: en
-      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
-      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-    text: LEVEL TYPE
-  - save: 0
-    languageData:
-      languageName: 1
-      encode: vi
-      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
-      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
-    text: "LO\u1EA0I C\u1EA4P \u0110\u1ED8"
-  localizedDataTextList: []
 --- !u!114 &6420284947709119311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2455,7 +2422,6 @@ GameObject:
   - component: {fileID: 90131745076631226}
   - component: {fileID: 3421561290902501057}
   - component: {fileID: 4657326729282631673}
-  - component: {fileID: 7098871591999568343}
   m_Layer: 5
   m_Name: LevelText
   m_TagString: Untagged
@@ -2513,8 +2479,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LEVEL 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-  m_sharedMaterial: {fileID: 4336404976236956249, guid: 98d0d209208b35f4fac01695a397a6b5,
+  m_fontAsset: {fileID: 11400000, guid: 8d15ab71442963c47b22b47460111e35, type: 2}
+  m_sharedMaterial: {fileID: 3604630249188092411, guid: 8d15ab71442963c47b22b47460111e35,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2603,40 +2569,6 @@ MonoBehaviour:
   fromPosition: {x: 0, y: 0, z: 0}
   directionType: 0
   offset: 0
---- !u!114 &7098871591999568343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7103074859387387540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentText: "C\u1EA4P {x}"
-  isFirstGenerated: 1
-  languageDataList:
-  - save: 0
-    languageData:
-      languageName: 0
-      encode: en
-      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
-      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-    text: LEVEL {x}
-  - save: 0
-    languageData:
-      languageName: 1
-      encode: vi
-      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
-      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
-    text: "C\u1EA4P {x}"
-  localizedDataTextList:
-  - wordReplace: x
-    value: 1
 --- !u!1 &7370416450938019894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2748,7 +2680,7 @@ MonoBehaviour:
   showAnimationType: 0
   useHideAnimation: 0
   hideAnimationType: 0
-  levelText: {fileID: 7103074859387387540}
+  levelText: {fileID: 3421561290902501057}
   levelTypeText: {fileID: 4609003189904288388}
 --- !u!1 &7582038696164621230
 GameObject:

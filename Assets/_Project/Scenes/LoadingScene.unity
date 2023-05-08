@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3708985, g: 0.3783704, b: 0.35722548, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -165,7 +165,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &183462098
 GameObject:
@@ -339,75 +339,6 @@ Transform:
   m_Father: {fileID: 1882194249}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &389409662
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8343282781896442375, guid: 6cdeaf9234b0a7e418264e2e5fe77a38,
-        type: 3}
-      propertyPath: m_Name
-      value: LocalizationController
-      objectReference: {fileID: 0}
-    - target: {fileID: 8343282781896442425, guid: 6cdeaf9234b0a7e418264e2e5fe77a38,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8343282781896442425, guid: 6cdeaf9234b0a7e418264e2e5fe77a38,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8343282781896442425, guid: 6cdeaf9234b0a7e418264e2e5fe77a38,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8343282781896442425, guid: 6cdeaf9234b0a7e418264e2e5fe77a38,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8343282781896442425, guid: 6cdeaf9234b0a7e418264e2e5fe77a38,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8343282781896442425, guid: 6cdeaf9234b0a7e418264e2e5fe77a38,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8343282781896442425, guid: 6cdeaf9234b0a7e418264e2e5fe77a38,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8343282781896442425, guid: 6cdeaf9234b0a7e418264e2e5fe77a38,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8343282781896442425, guid: 6cdeaf9234b0a7e418264e2e5fe77a38,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8343282781896442425, guid: 6cdeaf9234b0a7e418264e2e5fe77a38,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8343282781896442425, guid: 6cdeaf9234b0a7e418264e2e5fe77a38,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6cdeaf9234b0a7e418264e2e5fe77a38, type: 3}
 --- !u!1 &415201456
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +544,6 @@ GameObject:
   - component: {fileID: 913765156}
   - component: {fileID: 913765158}
   - component: {fileID: 913765157}
-  - component: {fileID: 913765159}
   m_Layer: 5
   m_Name: Tittle
   m_TagString: Untagged
@@ -665,8 +595,8 @@ MonoBehaviour:
 
     SCENE'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-  m_sharedMaterial: {fileID: 4336404976236956249, guid: 98d0d209208b35f4fac01695a397a6b5,
+  m_fontAsset: {fileID: 11400000, guid: 8d15ab71442963c47b22b47460111e35, type: 2}
+  m_sharedMaterial: {fileID: 3604630249188092411, guid: 8d15ab71442963c47b22b47460111e35,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -741,96 +671,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913765155}
   m_CullTransparentMesh: 1
---- !u!114 &913765159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913765155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentText: 'LOADING
-
-    SCENE'
-  isFirstGenerated: 1
-  languageDataList:
-  - save: 0
-    languageData:
-      languageName: 0
-      encode: en
-      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
-      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-    text: 'LOADING
-
-      SCENE'
-  - save: 0
-    languageData:
-      languageName: 1
-      encode: ja
-      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
-      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
-    text: "\u0110ANG T\u1EA2I\n"
-  - save: 0
-    languageData:
-      languageName: 2
-      encode: de
-      sprite: {fileID: 21300000, guid: f4aa59e93f3c3df4ca432d64dca6f7c1, type: 3}
-      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-    text: 'WIRD GELADEN
-
-'
-  - save: 0
-    languageData:
-      languageName: 3
-      encode: ko
-      sprite: {fileID: 21300000, guid: 2c43d2cdcf90f1c449973258743e5470, type: 3}
-      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-    text: "\uB85C\uB4DC \uC911\n"
-  - save: 0
-    languageData:
-      languageName: 4
-      encode: ru
-      sprite: {fileID: 21300000, guid: 5633ad8e2e7c535498db531bf7d28209, type: 3}
-      font: {fileID: 12800000, guid: 85ffa2da2bef62f4bb972f5897545bc9, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: 1b86122c6bd09154eb914f5caf2c17dd, type: 2}
-    text: "\u0417\u0410\u0413\u0420\u0423\u0417\u041A\u0410\n"
-  - save: 0
-    languageData:
-      languageName: 5
-      encode: pt
-      sprite: {fileID: 21300000, guid: bbe070880a31c56488c28c05950e2d5f, type: 3}
-      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-    text: 'CARREGANDO
-
-'
-  - save: 0
-    languageData:
-      languageName: 6
-      encode: fr
-      sprite: {fileID: 21300000, guid: 8a6dcc3d5769ce74c8651da6ae80fd46, type: 3}
-      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-    text: 'CHARGEMENT
-
-'
-  - save: 0
-    languageData:
-      languageName: 7
-      encode: vi
-      sprite: {fileID: 21300000, guid: 7b0d8b34dfa5f42498ac6b2c4afb6fa3, type: 3}
-      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
-    text: "\u0110ANG T\u1EA2I\n"
-  localizedDataTextList: []
 --- !u!1 &963128603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,7 +1018,6 @@ GameObject:
   - component: {fileID: 1603526853}
   - component: {fileID: 1603526855}
   - component: {fileID: 1603526854}
-  - component: {fileID: 1603526856}
   m_Layer: 5
   m_Name: LoadingText
   m_TagString: Untagged
@@ -1228,8 +1067,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Loading 0%
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-  m_sharedMaterial: {fileID: 4336404976236956249, guid: 98d0d209208b35f4fac01695a397a6b5,
+  m_fontAsset: {fileID: 11400000, guid: 8d15ab71442963c47b22b47460111e35, type: 2}
+  m_sharedMaterial: {fileID: 3604630249188092411, guid: 8d15ab71442963c47b22b47460111e35,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1254,8 +1093,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1304,86 +1143,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603526852}
   m_CullTransparentMesh: 1
---- !u!114 &1603526856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603526852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b16fd6a2f811c3458429bcb6aa428b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentText: Loading 0%
-  isFirstGenerated: 1
-  languageDataList:
-  - save: 0
-    languageData:
-      languageName: 0
-      encode: en
-      sprite: {fileID: 21300000, guid: c86d859501ce3f64daf5ed8861c2f507, type: 3}
-      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-    text: Loading 0%
-  - save: 0
-    languageData:
-      languageName: 1
-      encode: ja
-      sprite: {fileID: 21300000, guid: f55a22613dde2a94daccc960288670d2, type: 3}
-      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
-    text: "\u0110ang t\u1EA3i 0%"
-  - save: 0
-    languageData:
-      languageName: 2
-      encode: de
-      sprite: {fileID: 21300000, guid: f4aa59e93f3c3df4ca432d64dca6f7c1, type: 3}
-      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-    text: Laden 0%
-  - save: 0
-    languageData:
-      languageName: 3
-      encode: ko
-      sprite: {fileID: 21300000, guid: 2c43d2cdcf90f1c449973258743e5470, type: 3}
-      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-    text: "\uB85C\uB529\uC911 0%"
-  - save: 0
-    languageData:
-      languageName: 4
-      encode: ru
-      sprite: {fileID: 21300000, guid: 5633ad8e2e7c535498db531bf7d28209, type: 3}
-      font: {fileID: 12800000, guid: 85ffa2da2bef62f4bb972f5897545bc9, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: 1b86122c6bd09154eb914f5caf2c17dd, type: 2}
-    text: "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 0%"
-  - save: 0
-    languageData:
-      languageName: 5
-      encode: pt
-      sprite: {fileID: 21300000, guid: bbe070880a31c56488c28c05950e2d5f, type: 3}
-      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-    text: Carregando 0%
-  - save: 0
-    languageData:
-      languageName: 6
-      encode: fr
-      sprite: {fileID: 21300000, guid: 8a6dcc3d5769ce74c8651da6ae80fd46, type: 3}
-      font: {fileID: 12800000, guid: bb4c786385cb06247bebe7a28ab7e178, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: 98d0d209208b35f4fac01695a397a6b5, type: 2}
-    text: Chargement 0%
-  - save: 0
-    languageData:
-      languageName: 7
-      encode: vi
-      sprite: {fileID: 21300000, guid: 7b0d8b34dfa5f42498ac6b2c4afb6fa3, type: 3}
-      font: {fileID: 12800000, guid: 776b49ffcdb2a1f42872bfb9d72993dd, type: 3}
-      tmpFontAsset: {fileID: 11400000, guid: efe3698275e827848b43e5a9c8f2a4f4, type: 2}
-    text: "\u0110ang t\u1EA3i 0%"
-  localizedDataTextList: []
 --- !u!1 &1607607002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,7 +1502,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1926659685
 GameObject:

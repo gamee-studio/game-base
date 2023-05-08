@@ -4,6 +4,8 @@ public class GoDebug : MonoBehaviour
 {
     void Start()
     {
+        OnDebugChanged();
+        
         Observer.DebugChanged += OnDebugChanged;
     }
 

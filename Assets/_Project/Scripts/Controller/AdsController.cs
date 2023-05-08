@@ -11,6 +11,7 @@ public class AdsController : SingletonDontDestroy<AdsController>
 
     protected override void Awake()
     {
+        base.Awake();
         Initialize();
     }
 
@@ -22,7 +23,7 @@ public class AdsController : SingletonDontDestroy<AdsController>
     
     private void FixedUpdate()
     {
-        if (GameManager.Instance!=null && GameManager.Instance.gameState == GameState.PlayingGame)
+        if (GameManager.Instance != null && GameManager.Instance.gameState == GameState.PlayingGame)
         {
             _timePlay += Time.deltaTime;
         }
@@ -32,8 +33,14 @@ public class AdsController : SingletonDontDestroy<AdsController>
     {
         _adsCounter++;
     }
-    
-    public async void Initialize()
+
+    private void Reset()
+    {
+        _adsCounter = 0;
+        _timePlay = 0;
+    }
+
+    private async void Initialize()
     {
         await UniTask.WaitUntil(() => Advertising.ApplovinAdClient.IsInitialized);
         Advertising.ApplovinAdClient.OnRewardedAdRevenuePaid += OnRevenuePaid;
@@ -69,7 +76,11 @@ public class AdsController : SingletonDontDestroy<AdsController>
     {
         if (IsEnableToShowInter())
         {
-            AdsManager.ShowInterstitial(completeCallback,displayCallback);
+            AdsManager.ShowInterstitial(()=>
+            {
+                completeCallback?.Invoke();
+                Reset();
+            },displayCallback);
         }
         else
         {
@@ -83,7 +94,7 @@ public class AdsController : SingletonDontDestroy<AdsController>
         AdsManager.ShowRewardAds(completeCallback, displayCallback, closeCallback, skipCallback);
     }
 
-    public static bool IsSufficientConditionToShowBanner()
+    private static bool IsSufficientConditionToShowBanner()
     {
         // if (IAPManager.Instance.IsPurchased(Constant.ANDROID_IAP_REMOVE_ADS) || IAPManager.Instance.IsPurchased(Constant.IOS_IAP_REMOVE_ADS))
         // {
@@ -99,12 +110,12 @@ public class AdsController : SingletonDontDestroy<AdsController>
         if (IsSufficientConditionToShowBanner())
         {
             //FirebaseManager.OnShowBanner();
-            Advertising.ShowBannerAd();
+            AdsManager.ShowBanner();
         }
     }
 
     public static void HideBanner()
     {
-        Advertising.HideBannerAd();
+        AdsManager.HideBanner();
     }
 }
