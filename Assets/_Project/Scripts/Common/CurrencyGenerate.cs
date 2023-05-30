@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using DG.Tweening;
+using Lean.Pool;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -38,8 +39,8 @@ public class CurrencyGenerate : MonoBehaviour
 
     public async void GenerateCoin(Action moveOneCoinDone, Action moveAllCoinDone, GameObject from = null, GameObject to = null, int numberCoin = -1)
     {
-        this._moveOneCoinDone = moveOneCoinDone;
-        this._moveAllCoinDone = moveAllCoinDone;
+        _moveOneCoinDone = moveOneCoinDone;
+        _moveAllCoinDone = moveAllCoinDone;
         this.from = from == null ? this.from : from;
         this.to = to == null ? this.to : to;
         this.numberCoin = numberCoin < 0 ? this.numberCoin : numberCoin;
@@ -48,7 +49,7 @@ public class CurrencyGenerate : MonoBehaviour
         for (int i = 0; i < this.numberCoin; i++)
         {
             await Task.Delay(Random.Range(0, delay));
-            GameObject coin = Instantiate(coinPrefab, transform);
+            GameObject coin = LeanPool.Spawn(coinPrefab, transform);
             coin.transform.localScale = Vector3.one * scale;
             coin.transform.position = this.from.transform.position;
             MoveCoin(coin);
@@ -57,13 +58,13 @@ public class CurrencyGenerate : MonoBehaviour
 
     private void MoveCoin(GameObject coin)
     {
-        //Observer.PlayOnce(SoundType.CoinMove);
+        SoundController.Instance.PlayFX("coin_move");
         MoveToNear(coin).OnComplete(() =>
         {
             MoveToTarget(coin).OnComplete(() =>
             {
                 _numberCoinMoveDone++;
-                Destroy(coin);
+                LeanPool.Despawn(coin);
                 _moveOneCoinDone?.Invoke();
                 if (_numberCoinMoveDone >= numberCoin)
                 {

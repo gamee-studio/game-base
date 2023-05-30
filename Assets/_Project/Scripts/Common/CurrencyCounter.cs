@@ -1,7 +1,6 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class CurrencyCounter : MonoBehaviour
 {
@@ -53,7 +52,6 @@ public class CurrencyCounter : MonoBehaviour
             }
         }, ()=>
         {
-            SoundController.Instance.PlayFX("coin_move");
             if (!isPopupUIActive) PopupController.Instance.Hide<PopupUI>();
         });
     }

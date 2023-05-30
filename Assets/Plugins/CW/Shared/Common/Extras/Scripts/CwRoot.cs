@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CW.Common
 {
-	/// <summary>If your scene is massive, then you can add this component to an empty GameObject. Any components that support this feature will add GameObjects to this as children and transform them in a way that makes them render properly using a floating origin system.</summary>
+	/// <summary>If this component is added to your scene, then any GmaeObjects that get spawned at runtime from CW code will be placed as children of this, rather than being placed in the scene root.</summary>
 	[ExecuteInEditMode]
 	[DefaultExecutionOrder(-100)]
 	[HelpURL(CwShared.HelpUrlPrefix + "CwRoot")]
@@ -74,7 +74,7 @@ namespace CW.Common
 		{
 			TARGET tgt; TARGET[] tgts; GetTargets(out tgt, out tgts);
 
-			Info("If your scene is massive, then you can add this component to an empty GameObject. Any components that support this feature will add GameObjects to this as children and transform them in a way that makes them render properly using a floating origin system.");
+			Info("If this component is added to your scene, then any GmaeObjects that get spawned at runtime from CW code will be placed as children of this, rather than being placed in the scene root.");
 		}
 	}
 }

@@ -1,6 +1,5 @@
 {
     "name": "CW.Common",
-    "rootNamespace": "",
     "references": [
         "Unity.InputSystem",
         "Unity.RenderPipelines.Core.Runtime",
