@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dependencies>
     <androidPackages>
-        <androidPackage spec="com.applovin.mediation:adcolony-adapter:4.8.0.2"/>
+        <androidPackage spec="com.applovin.mediation:adcolony-adapter:4.8.0.4"/>
     </androidPackages>
     <iosPods>
-        <iosPod name="AppLovinMediationAdColonyAdapter" version="4.9.0.0.2"/>
+        <iosPod name="AppLovinMediationAdColonyAdapter" version="4.9.0.0.4"/>
     </iosPods>
 </dependencies>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dependencies>
     <androidPackages>
-        <androidPackage spec="com.applovin.mediation:bytedance-adapter:4.8.0.8.1">
+        <androidPackage spec="com.applovin.mediation:bytedance-adapter:5.1.1.1.0">
             <repositories>
                 <repository>https://artifact.bytedance.com/repository/pangle</repository>
             </repositories>
         </androidPackage>
     </androidPackages>
     <iosPods>
-        <iosPod name="AppLovinMediationByteDanceAdapter" version="4.7.0.8.1" />
+        <iosPod name="AppLovinMediationByteDanceAdapter" version="5.2.0.7.0" />
     </iosPods>
 </dependencies>
