@@ -7,7 +7,6 @@ using Firebase.Extensions;
 using Firebase.RemoteConfig;
 using Pancake;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class FirebaseController : SingletonDontDestroy<FirebaseController>
 {

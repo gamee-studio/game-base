@@ -109,7 +109,6 @@ public class AdsController : SingletonDontDestroy<AdsController>
     {
         if (IsSufficientConditionToShowBanner())
         {
-            //FirebaseManager.OnShowBanner();
             AdsManager.ShowBanner();
         }
     }

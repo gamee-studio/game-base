@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using MoreMountains.NiceVibrations;
-using UnityEngine;
 
 public class VibrationController : SingletonDontDestroy<VibrationController>
 {
