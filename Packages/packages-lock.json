@@ -22,38 +22,38 @@
       "hash": "50d04b09ae563e7eed9b72180973870171e15423"
     },
     "com.google.external-dependency-manager": {
-      "version": "https://github.com/snorluxe/external-dependency-manager.git?path=Assets/_Root#1.2.169",
+      "version": "https://github.com/google-unity/external-dependency-manager.git#1.2.176",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "8479d378666d8af0e30fc0308df447196857659d"
+      "hash": "9653785bd7f9edae4689c3e3d99a9186ddbf6cb2"
     },
     "com.google.firebase.analytics": {
-      "version": "https://github.com/snorluxe/firebase-analytics.git?path=Assets/_Root#10.0.1",
+      "version": "https://github.com/firebase-unity/firebase-analytics.git#11.0.0",
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.google.firebase.app": "10.0.1"
+        "com.google.firebase.app": "11.0.0"
       },
-      "hash": "c00d406af7851d3a7592aa5629039e275102e4b2"
+      "hash": "6d48ced3a1665393a0ef7b2ed08bf0df1076a790"
     },
     "com.google.firebase.app": {
-      "version": "https://github.com/snorluxe/firebase-app.git?path=Assets/_Root#10.0.1",
+      "version": "https://github.com/firebase-unity/firebase-app.git#11.0.0",
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.google.external-dependency-manager": "1.2.174"
+        "com.google.external-dependency-manager": "1.2.176"
       },
-      "hash": "d5da6989c01c5e6a8b5933bceb29a19f66867965"
+      "hash": "864ca94dec10b46c84b90a404f37ca4ecb8e3ab0"
     },
     "com.google.firebase.remote-config": {
-      "version": "https://github.com/snorluxe/firebase-remote-config.git?path=Assets/_Root#10.0.1",
+      "version": "https://github.com/firebase-unity/firebase-remote-config.git#11.0.0",
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.google.firebase.app": "10.0.1"
+        "com.google.firebase.app": "11.0.0"
       },
-      "hash": "bf914402e69cd5a27df4a9fa6708e097ec53c7aa"
+      "hash": "df48769eb059645102c02e1ca2f3bc6394cc0a44"
     },
     "com.google.play.common": {
       "version": "https://github.com/google-unity/google-play-common.git#1.8.1",
