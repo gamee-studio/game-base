@@ -43,9 +43,9 @@ public class AdsController : SingletonDontDestroy<AdsController>
     private async void Initialize()
     {
         await UniTask.WaitUntil(() => Advertising.ApplovinAdClient.IsInitialized);
-        Advertising.ApplovinAdClient.OnRewardedAdRevenuePaid += OnRevenuePaid;
-        Advertising.ApplovinAdClient.OnBannerAdRevenuePaid += OnRevenuePaid;
-        Advertising.ApplovinAdClient.OnInterstitialAdRevenuePaid += OnRevenuePaid;
+        //Advertising.ApplovinAdClient.OnRewardedAdRevenuePaid += OnRevenuePaid;
+        //Advertising.ApplovinAdClient.OnBannerAdRevenuePaid += OnRevenuePaid;
+        //Advertising.ApplovinAdClient.OnInterstitialAdRevenuePaid += OnRevenuePaid;
     }
     
     private static void OnRevenuePaid(MaxSdkBase.AdInfo adInfo)
@@ -94,7 +94,7 @@ public class AdsController : SingletonDontDestroy<AdsController>
         AdsManager.ShowRewardAds(completeCallback, displayCallback, closeCallback, skipCallback);
     }
 
-    private static bool IsSufficientConditionToShowBanner()
+    private static bool IsEnableToShowBanner()
     {
         // if (IAPManager.Instance.IsPurchased(Constant.ANDROID_IAP_REMOVE_ADS) || IAPManager.Instance.IsPurchased(Constant.IOS_IAP_REMOVE_ADS))
         // {
@@ -107,7 +107,7 @@ public class AdsController : SingletonDontDestroy<AdsController>
 
     public static void ShowBanner()
     {
-        if (IsSufficientConditionToShowBanner())
+        if (IsEnableToShowBanner())
         {
             AdsManager.ShowBanner();
         }

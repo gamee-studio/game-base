@@ -1,6 +1,4 @@
-using Pancake;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "GameConfig", menuName = "ScriptableObject/GameConfig")]
 public class GameConfig : ScriptableObject
