@@ -14,6 +14,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
     {
         base.Awake();
         Application.targetFrameRate = 60;
+        Input.multiTouchEnabled = false;
     }
     
     void Start()

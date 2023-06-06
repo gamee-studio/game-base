@@ -305,7 +305,7 @@ namespace Pancake.GameService
         private IEnumerator<float> OnOnePageFetchInternalConfigCompleted(List<PlayerLeaderboardEntry> entries,
             InternalConfig[] internalConfigs)
         {
-            block.SetActive(false);
+            block.SetActive(true);
             content.SetActive(true);
             for (int i = 0; i < internalConfigs.Length; i++)
             {
@@ -327,6 +327,7 @@ namespace Pancake.GameService
                 sequense.Play();
                 yield return Timing.WaitForSeconds(displayRankCurve.Evaluate(i / (float)internalConfigs.Length));
             }
+            block.SetActive(false);
         }
 
         private async void FetchInternalConfig(List<PlayerLeaderboardEntry> entries,
