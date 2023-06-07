@@ -40,9 +40,8 @@ public static partial class Data
         get => GetInt(Constant.CurrencyTotal, 0);
         set
         {
-            Observer.SaveCurrencyTotal?.Invoke();
-            SetInt(Constant.CurrencyTotal, value);
-            Observer.CurrencyTotalChanged?.Invoke();
+            Observer.MoneyChanged?.Invoke(value - CurrencyTotal);
+            SetInt(Constant.CurrencyTotal, Mathf.Max(0,value));
         }
     }
 

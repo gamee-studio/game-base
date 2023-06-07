@@ -6,8 +6,7 @@ public static class Observer
     // Debug
     public static Action DebugChanged;
     // Currency
-    public static Action SaveCurrencyTotal;
-    public static Action CurrencyTotalChanged;
+    public static Action<int> MoneyChanged;
     // Level Spawn
     public static Action CurrentLevelChanged;
     // Setting
