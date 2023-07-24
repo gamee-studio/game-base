@@ -39,7 +39,19 @@ public class Constant
     public const string UnlockItem = "UNLOCK_ITEM";
     public const string EquipItem = "EQUIP_ITEM";
 
-
+    // Firebase
+    public const string TRACKING_REQUEST_BANNER = "TRACKING_REQUEST_BANNER";
+    public const string TRACKING_SHOW_BANNER = "TRACKING_SHOW_BANNER";
+    public const string TRACKING_REQUEST_INTERSTITIAL = "TRACKING_REQUEST_INTERSTITIAL";
+    public const string TRACKING_SHOW_INTERSTITIAL = "TRACKING_REQUEST_INTERSTITIAL";
+    public const string TRACKING_REQUEST_REWARD = "TRACKING_REQUEST_REWARD";
+    public const string TRACKING_SHOW_REWARD = "TRACKING_SHOW_REWARD";
+    
+    public const string TRACKING_ON_START_LEVEL = "TRACKING_ON_START_LEVEL";
+    public const string TRACKING_ON_LOSE_LEVEL = "TRACKING_ON_LOSE_LEVEL";
+    public const string TRACKING_ON_WIN_LEVEL = "TRACKING_ON_WIN_LEVEL";
+    public const string TRACKING_ON_REPLAY_LEVEL = "TRACKING_ON_REPLAY_LEVEL";
+    public const string TRACKING_REPLAY_ON_LOSE = "TRACKING_REPLAY_ON_LOSE";
 
 
 

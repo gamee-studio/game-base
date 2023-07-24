@@ -145,87 +145,72 @@ public class FirebaseController : SingletonDontDestroy<FirebaseController>
 
     private void OnStartLevel(Level level)
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
         Parameter[] parameters =
         {
             new Parameter("level_name", level.gameObject.name),
         };
-        LogEvent(function.Name, parameters);
+        LogEvent(Constant.TRACKING_ON_START_LEVEL, parameters);
     }
 
     private void OnLoseLevel(Level level)
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
         Parameter[] parameters =
         {
             new Parameter("level_name", level.gameObject.name),
         };
-        LogEvent(function.Name, parameters);
+        LogEvent(Constant.TRACKING_ON_LOSE_LEVEL, parameters);
     }
 
     private void OnWinLevel(Level level)
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
         Parameter[] parameters =
         {
             new Parameter("level_name", level.gameObject.name),
         };
-        LogEvent(function.Name, parameters);
+        LogEvent(Constant.TRACKING_ON_WIN_LEVEL, parameters);
     }
 
     private void OnReplayLevel(Level level)
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
         Parameter[] parameters =
         {
             new Parameter("level_name", level.gameObject.name),
         };
-        LogEvent(function.Name, parameters);
+        LogEvent(Constant.TRACKING_ON_REPLAY_LEVEL, parameters);
     }
 
     #endregion
 
     #region TrackingGameSystem
-
-    private void OnClickButton(string buttonName)
-    {
-        LogEvent(buttonName);
-    }
-
+    
     public static void OnRequestInterstitial()
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
+        LogEvent(Constant.TRACKING_REQUEST_INTERSTITIAL);
     }
 
     public static void OnShowInterstitial()
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
+        LogEvent(Constant.TRACKING_SHOW_INTERSTITIAL);
     }
 
     public static void OnRequestReward()
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
+        LogEvent(Constant.TRACKING_REQUEST_REWARD);
     }
 
     public static void OnShowReward()
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
+        LogEvent(Constant.TRACKING_SHOW_REWARD);
     }
 
     public static void OnRequestBanner()
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
+        LogEvent(Constant.TRACKING_REQUEST_BANNER);
     }
 
     public static void OnShowBanner()
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
-        LogEvent(function.Name);
+        LogEvent(Constant.TRACKING_SHOW_BANNER);
     }
 
     #endregion

@@ -16,7 +16,7 @@ public class PopupLose : Popup
 
     public void OnClickReplay()
     {
-        MethodBase function = MethodBase.GetCurrentMethod();
+        FirebaseController.LogEvent(Constant.TRACKING_REPLAY_ON_LOSE);
 
         GameManager.Instance.ReplayGame();
     }
