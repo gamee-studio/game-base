@@ -1,4 +1,3 @@
-using MoreMountains.NiceVibrations;
 using Pancake.Monetization;
 
 public class PopupTest : Popup
@@ -34,22 +33,22 @@ public class PopupTest : Popup
     
     public void OnClickLightVibration()
     {
-        MMVibrationManager.Haptic(HapticTypes.LightImpact);
+        VibrationController.Instance.HapticLight();
     }
     
     public void OnClickMediumVibration()
     {
-        MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+        VibrationController.Instance.HapticMedium();
     }
     
     public void OnClickHeavyVibration()
     {
-        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+        VibrationController.Instance.HapticHeavy();
     }
 
     public void OnClickBuyCoin()
     {
-        
+        Data.CurrencyTotal += 10000;
     }
 
     public void OnClickRemoveAds()

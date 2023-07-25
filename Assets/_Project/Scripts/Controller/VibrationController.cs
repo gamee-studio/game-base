@@ -1,4 +1,4 @@
-using MoreMountains.NiceVibrations;
+using Lofelt.NiceVibrations;
 
 public class VibrationController : SingletonDontDestroy<VibrationController>
 {
@@ -11,21 +11,21 @@ public class VibrationController : SingletonDontDestroy<VibrationController>
 
     void Setup()
     {
-        MMVibrationManager.SetHapticsActive(Data.VibrateState);
+        HapticController.hapticsEnabled = Data.VibrateState;
     }
 
     public void HapticLight()
     {
-        MMVibrationManager.Haptic(HapticTypes.LightImpact);
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.LightImpact);
     }
     
     public void HapticMedium()
     {
-        MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.MediumImpact);
     }
     
     public void HapticHeavy()
     {
-        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.HeavyImpact);
     }
 }
