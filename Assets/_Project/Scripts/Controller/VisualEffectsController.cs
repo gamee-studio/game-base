@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Lean.Pool;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,10 +20,10 @@ public class VisualEffectsController : SingletonDontDestroy<VisualEffectsControl
         if (visualEffectData != null)
         {
             GameObject randomEffect = visualEffectData.GetRandomEffect();
-            GameObject effect = Instantiate(randomEffect, parent, false);
+            GameObject effect = LeanPool.Spawn(randomEffect, parent, false);
             effect.transform.position = position;
             if (localScale != null) effect.transform.localScale = localScale.Value;
-            if (isDestroyedOnEnd) Destroy(effect, timeDestroy);
+            if (isDestroyedOnEnd) LeanPool.Despawn(effect, timeDestroy);
         }
     }
 }
