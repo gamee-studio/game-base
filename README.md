@@ -18,6 +18,14 @@ Description: Gamebase for mobile hyper casual, casual game
 ## Install
 - Version: **Unity 2022.3.5f1 LTS**
 - Type select: **Android**
+- Module:
+	- **Android Build Support**
+ 	- **IOS Build Support**
+<details>
+
+![image](https://github.com/gamee-studio/game-base/assets/88299194/a5942af4-247b-43a0-9a78-835b28a52221)
+
+</details>
 
 ## Documents
 ### Sound Controller
