@@ -94,3 +94,4 @@ protected virtual void AfterHidden() { }
 - UI Particle: https://github.com/mob-sakai/ParticleEffectForUGUI.git
 - PlayPref Debug: https://github.com/sabresaurus/PlayerPrefsEditor.git
 - IAP: https://github.com/gamee-studio/iap.git
+- Build Report: https://assetstore.unity.com/packages/tools/utilities/build-report-tool-8162
