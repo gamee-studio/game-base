@@ -21,7 +21,8 @@ Description: Gamebase for mobile hyper casual, casual game
 - Module:
 	- **Android Build Support**
  	- **IOS Build Support**
-<details>
+  
+<details><summary>Show install setting</summary>
 
 ![image](https://github.com/gamee-studio/game-base/assets/88299194/a5942af4-247b-43a0-9a78-835b28a52221)
 
