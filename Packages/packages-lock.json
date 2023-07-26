@@ -92,14 +92,14 @@
       "hash": "e39981bca07f08f068231f651e1e8d0f69397222"
     },
     "com.pancake.heart": {
-      "version": "https://github.com/pancake-llc/heart.git#1.3.8",
+      "version": "https://github.com/pancake-llc/heart.git#1.3.9",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.0.2",
         "com.unity.2d.sprite": "1.0.0"
       },
-      "hash": "dd78e05155a15843d71bcbe38bca56149ca2990c"
+      "hash": "e89d2fc8a13972bc0a8f926e027462aad011901d"
     },
     "com.pancake.playfab": {
       "version": "https://github.com/pancake-llc/playfab.git#2.153.221024",
