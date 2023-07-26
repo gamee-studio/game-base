@@ -1677,6 +1677,7 @@ MonoBehaviour:
   showAnimationType: 0
   useHideAnimation: 0
   hideAnimationType: 0
+  btnRestorePurchased: {fileID: 0}
 --- !u!1 &7808417288728340493
 GameObject:
   m_ObjectHideFlags: 0
