@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using DG.Tweening;
 using Lean.Pool;
@@ -6,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class MoneyHandler : MonoBehaviour
+public class MoneyHandler : SingletonDontDestroy<MoneyHandler>
 {
     [SerializeField] private int numberCoin;
     [SerializeField] private int delay;
@@ -16,8 +15,8 @@ public class MoneyHandler : MonoBehaviour
     [SerializeField] private Ease easeTarget;
     [SerializeField] private float scale = 1;
 
-    [SerializeField] private GameObject from;
-    [SerializeField] private GameObject to;
+    [SerializeField] private Vector3? from;
+    [SerializeField] private GameObject target;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private TextMeshProUGUI currencyAmountText;
     [SerializeField] private PopupUI popupUI;
@@ -33,7 +32,7 @@ public class MoneyHandler : MonoBehaviour
     {
         ResetCache();
     }
-
+    
     void ResetCache()
     {
         _moneyCache = Data.CurrencyTotal;
@@ -76,15 +75,15 @@ public class MoneyHandler : MonoBehaviour
             }
         }
     }
-    
-    public void SetFromGameObject(GameObject from)
+
+    public void SetFrom(Vector3 from)
     {
         this.from = from;
     }
-
-    public void SetToGameObject(GameObject to)
+    
+    public void SetToGameObject(GameObject targetGo)
     {
-        this.to = to;
+        target = targetGo;
     }
 
     public async void GenerateCoin(int moneyAmount)
@@ -96,7 +95,14 @@ public class MoneyHandler : MonoBehaviour
             await Task.Delay(Random.Range(0, delay));
             GameObject coin = LeanPool.Spawn(coinPrefab, transform);
             coin.transform.localScale = Vector3.one * scale;
-            coin.transform.position = from.transform.position;
+            if (from != null)
+            {
+                coin.transform.position = from.Value;
+            }
+            else
+            {
+                coin.transform.localPosition = Vector3.zero;
+            }
             
             SoundController.Instance.PlayFX("coin_move");
             
@@ -108,6 +114,7 @@ public class MoneyHandler : MonoBehaviour
 
                     _moneyCache += moneyPerStep;
                     currencyAmountText.text = $"{_moneyCache}";
+                    from = null;
                 });
             });
         }
@@ -125,7 +132,7 @@ public class MoneyHandler : MonoBehaviour
 
     private DG.Tweening.Core.TweenerCore<Vector3, Vector3, DG.Tweening.Plugins.Options.VectorOptions> MoveToTarget(GameObject coin)
     {
-        return MoveTo(to.transform.position, coin, durationTarget, easeTarget);
+        return MoveTo(target.transform.position, coin, durationTarget, easeTarget);
     }
     
     public void SetNumberCoin(int coin)
