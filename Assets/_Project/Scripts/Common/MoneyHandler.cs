@@ -104,7 +104,7 @@ public class MoneyHandler : SingletonDontDestroy<MoneyHandler>
                 coin.transform.localPosition = Vector3.zero;
             }
             
-            SoundController.Instance.PlayFX("coin_move");
+            SoundController.Instance.PlayFX(SoundName.CoinMoving);
             
             MoveToNear(coin).OnComplete(() =>
             {

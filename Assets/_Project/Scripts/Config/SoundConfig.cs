@@ -8,7 +8,7 @@ public class SoundConfig : ScriptableObject
 {
     public List<SoundData> soundData;
     
-    public SoundData GetSoundDataByType(string soundName)
+    public SoundData GetSoundDataByType(SoundName soundName)
     {
         return soundData.Find(item => item.name == soundName);
     }
@@ -18,7 +18,7 @@ public class SoundConfig : ScriptableObject
 [Serializable]
 public class SoundData
 {
-    public string name;
+    public SoundName name;
     public List<AudioClip> clips;
 
     public AudioClip GetRandomAudioClip()
@@ -30,4 +30,14 @@ public class SoundData
 
         return null;
     }
+}
+
+public enum SoundName
+{
+    Background,
+    Music,
+    ClickButton,
+    PurchaseCompleted,
+    PurchaseFailed,
+    CoinMoving,
 }

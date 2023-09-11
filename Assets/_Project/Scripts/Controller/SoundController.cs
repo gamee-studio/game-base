@@ -31,7 +31,7 @@ public class SoundController : SingletonDontDestroy<SoundController>
         OnSoundChanged();
     }
 
-    public void PlayFX(string soundName)
+    public void PlayFX(SoundName soundName)
     {
         SoundData soundData = SoundConfig.GetSoundDataByType(soundName);
 
@@ -53,7 +53,7 @@ public class SoundController : SingletonDontDestroy<SoundController>
         }
     }
 
-    public void PlayBackground(string soundName)
+    public void PlayBackground(SoundName soundName)
     {
         SoundData soundData = SoundConfig.GetSoundDataByType(soundName);
 
@@ -78,19 +78,5 @@ public class SoundController : SingletonDontDestroy<SoundController>
         {
             Debug.LogWarning($"<color=Red>Missing {soundName}</color>");
         }
-    }
-
-    [Button]
-    public void TestBackground()
-    {
-        if (!Application.isPlaying) return;
-        PlayFX("background");
-    }
-    
-    [Button]
-    public void TestFX()
-    {
-        if (!Application.isPlaying) return;
-        PlayFX("success");
     }
 }

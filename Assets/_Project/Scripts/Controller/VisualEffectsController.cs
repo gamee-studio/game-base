@@ -9,12 +9,12 @@ public class VisualEffectsController : SingletonDontDestroy<VisualEffectsControl
 {
     public List<VisualEffectData> visualEffectDatas;
 
-    public VisualEffectData GetVisualEffectDataByType(string name)
+    public VisualEffectData GetVisualEffectDataByType(EffectName effectName)
     {
-        return visualEffectDatas.Find(item => item.name == name);
+        return visualEffectDatas.Find(item => item.name == effectName);
     }
 
-    public void SpawnEffect(string name,Vector3 position, Transform parent, Vector3? localScale = null, bool isDestroyedOnEnd = true, float timeDestroy = 3f)
+    public void SpawnEffect(EffectName name,Vector3 position, Transform parent, Vector3? localScale = null, bool isDestroyedOnEnd = true, float timeDestroy = 3f)
     {
         VisualEffectData visualEffectData = GetVisualEffectDataByType(name);
         if (visualEffectData != null)
@@ -31,7 +31,7 @@ public class VisualEffectsController : SingletonDontDestroy<VisualEffectsControl
 [Serializable]
 public class VisualEffectData
 {
-    public string name;
+    public EffectName name;
     public List<GameObject> effects;
     
 
@@ -39,4 +39,9 @@ public class VisualEffectData
     {
         return effects[Random.Range(0, effects.Count)];
     }
+}
+
+public enum EffectName
+{
+    Default,
 }

@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: SoundConfig
   m_EditorClassIdentifier: 
   soundData:
-  - name: background
+  - name: 0
     clips: []
-  - name: music
+  - name: 1
     clips: []
-  - name: click_button
+  - name: 2
     clips:
     - {fileID: 8300000, guid: ace45cf110d1bc7408ee20f51318c4a2, type: 3}
-  - name: purchase_complete
+  - name: 3
     clips:
     - {fileID: 8300000, guid: 3351374e9b19d7a4cbdb139022a09c5f, type: 3}
-  - name: success
+  - name: 4
     clips:
-    - {fileID: 8300000, guid: d5d65442eccfa3548921d7156b6d821a, type: 3}
-  - name: coin_move
+    - {fileID: 0}
+  - name: 5
     clips:
     - {fileID: 8300000, guid: e64a815b5b859704a8b9fb7d8ae396cf, type: 3}
