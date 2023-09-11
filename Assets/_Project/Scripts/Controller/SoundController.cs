@@ -1,4 +1,3 @@
-using Pancake;
 using UnityEngine;
 
 public class SoundController : SingletonDontDestroy<SoundController>

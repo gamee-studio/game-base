@@ -401,6 +401,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dependencyStatus: 7
   isInitialized: 0
+--- !u!1 &519333496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 519333497}
+  - component: {fileID: 519333498}
+  m_Layer: 0
+  m_Name: InternetController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &519333497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519333496}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519333498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519333496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93ad35fb8c77484c932108b66d8e1a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &653625963
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,7 +776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualEffectDatas:
-  - name: default
+  - name: 0
     effects: []
 --- !u!1 &964121671
 GameObject:
@@ -1552,7 +1596,6 @@ MonoBehaviour:
   gameConfig: {fileID: 11400000, guid: fc010066eec5ef24eb9fa923867c670f, type: 2}
   soundConfig: {fileID: 11400000, guid: 9e4fe3c39c0d13245a16b3df1d05522d, type: 2}
   dailyRewardConfig: {fileID: 11400000, guid: 8595dbcfcc8e4d24b85c87242a5d3778, type: 2}
-  countryConfig: {fileID: 11400000, guid: b15475063ca7e6b4e9076ad755721ba3, type: 2}
   itemConfig: {fileID: 11400000, guid: bf6201b4097e66c43983ff56f832ac35, type: 2}
 --- !u!1 &1885131754
 GameObject:
@@ -1862,4 +1905,5 @@ SceneRoots:
   - {fileID: 415201457}
   - {fileID: 18655970}
   - {fileID: 1445753323}
+  - {fileID: 519333497}
   - {fileID: 1885131756}
