@@ -8,13 +8,15 @@ using UnityEngine.UI;
 
 public class LoadingController : MonoBehaviour
 {
+    [FormerlySerializedAs("TimeLoading")]
+    [Header("Attributes")] 
+    [Range(0.1f, 10f)] public float timeLoading = 5f;
+    
     [Header("Components")]
     public Image progressBar;
     public TextMeshProUGUI loadingText;
 
-    [FormerlySerializedAs("TimeLoading")]
-    [Header("Attributes")] 
-    [Range(0.1f, 10f)] public float timeLoading = 5f;
+    
 
     private bool _flagDoneProgress;
     private AsyncOperation _operation;

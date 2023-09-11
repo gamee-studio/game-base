@@ -35,7 +35,7 @@ public class MoneyHandler : SingletonDontDestroy<MoneyHandler>
     
     void ResetCache()
     {
-        _moneyCache = Data.CurrencyTotal;
+        _moneyCache = Data.MoneyTotal;
         currencyAmountText.text = $"{_moneyCache}";
     }
 

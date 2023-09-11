@@ -48,7 +48,7 @@ public class PopupTest : Popup
 
     public void OnClickBuyCoin()
     {
-        Data.CurrencyTotal += 10000;
+        Data.MoneyTotal += 10000;
     }
 
     public void OnClickRemoveAds()

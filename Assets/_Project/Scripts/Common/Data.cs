@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using PlayFab.ClientModels;
 using UnityEngine;
 
@@ -26,7 +24,7 @@ public static partial class Data
 
     public static int CurrentLevel
     {
-        get { return GetInt(Constant.IndexLevelCurrent, 1); }
+        get => GetInt(Constant.IndexLevelCurrent, 1);
 
         set
         {
@@ -35,13 +33,13 @@ public static partial class Data
         }
     }
 
-    public static int CurrencyTotal
+    public static int MoneyTotal
     {
-        get => GetInt(Constant.CurrencyTotal, 0);
+        get => GetInt(Constant.MoneyTotal, 0);
         set
         {
-            Observer.MoneyChanged?.Invoke(value - CurrencyTotal);
-            SetInt(Constant.CurrencyTotal, Mathf.Max(0,value));
+            Observer.MoneyChanged?.Invoke(value - MoneyTotal);
+            SetInt(Constant.MoneyTotal, Mathf.Max(0,value));
         }
     }
 

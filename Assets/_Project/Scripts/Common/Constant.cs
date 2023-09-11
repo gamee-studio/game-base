@@ -33,7 +33,7 @@ public class Constant
     public const string SpaceTimeLoseBetweenTwoInterstitial = "SPACE_TIME_LOSE_BETWEEN_TWO_INTERSTITIAL";
 
     // Game Data
-    public const string CurrencyTotal = "CURRENCY_TOTAL";
+    public const string MoneyTotal = "MONEY_TOTAL";
     public const string IndexLevelCurrent = "INDEX_LEVEL_CURRENT";
     public const string ProgressAmount = "PROGRESS_AMOUNT";
     public const string UnlockItem = "UNLOCK_ITEM";

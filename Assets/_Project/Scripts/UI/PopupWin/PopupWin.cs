@@ -68,7 +68,7 @@ public class PopupWin : Popup
     
     public void GetRewardAds()
     {
-        Data.CurrencyTotal += totalMoney * bonusArrowHandler.CurrentAreaItem.MultiBonus;
+        Data.MoneyTotal += totalMoney * bonusArrowHandler.CurrentAreaItem.MultiBonus;
         bonusArrowHandler.MoveObject.StopMoving();
         btnRewardAds.SetActive(false);
         btnTapToContinue.SetActive(false);
@@ -79,7 +79,7 @@ public class PopupWin : Popup
 
     public void OnClickContinue()
     {
-        Data.CurrencyTotal += totalMoney;
+        Data.MoneyTotal += totalMoney;
         btnRewardAds.SetActive(false);
         btnTapToContinue.SetActive(false);
 
