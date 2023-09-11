@@ -1,11 +1,12 @@
 using UnityEngine;
 using DG.Tweening;
 using Pancake;
-using UnityEngine.Serialization;
 
 public class Popup : MonoBehaviour
 {
     [SerializeField] private bool useAnimation;
+    [ShowIf("useAnimation")] public GameObject background;
+    [ShowIf("useAnimation")] public GameObject container;
     [ShowIf("useAnimation")] [SerializeField] private bool useShowAnimation;
     [ShowIf("useShowAnimation")] [SerializeField] private ShowAnimationType showAnimationType;
     [ShowIf("useAnimation")] [SerializeField] private bool useHideAnimation;
@@ -13,6 +14,7 @@ public class Popup : MonoBehaviour
     
     public CanvasGroup CanvasGroup => GetComponent<CanvasGroup>();
     public Canvas Canvas => GetComponent<Canvas>();
+
     public virtual void Show()
     {
         BeforeShow();
@@ -21,15 +23,15 @@ public class Popup : MonoBehaviour
         {
             switch (showAnimationType)
             {
+                case ShowAnimationType.OutBack:
+                    DOTween.Sequence().OnStart(() => container.transform.localScale = Vector3.one*.9f)
+                        .Append(container.transform.DOScale(Vector3.one, ConfigController.Game.durationPopup).SetEase(Ease.OutBack));
+                    break;
                 case ShowAnimationType.Fade:
-                    CanvasGroup.DOFade(1, ConfigController.Game.durationPopup).OnComplete(() =>
-                    {
-                        CanvasGroup.alpha = 0;
-                        gameObject.SetActive(false);
-                        AfterHidden();
-                    });
+                    CanvasGroup.DOFade(1, ConfigController.Game.durationPopup);
                     break;
             }
+            AfterShown();
         }
         else
         {
@@ -49,10 +51,10 @@ public class Popup : MonoBehaviour
                     {
                         CanvasGroup.alpha = 1;
                         gameObject.SetActive(false);
-                        AfterHidden();
                     });
                     break;
             }
+            AfterHidden();
         }
         else
         {
@@ -60,8 +62,7 @@ public class Popup : MonoBehaviour
             AfterHidden();
         }
     }
-
-    protected virtual void AfterInstantiate() { }
+    
     protected virtual void BeforeShow() { }
     protected virtual void AfterShown() { }
     protected virtual void BeforeHide() { }
@@ -70,6 +71,7 @@ public class Popup : MonoBehaviour
 
 public enum ShowAnimationType
 {
+    OutBack,
     Fade
 }
 
