@@ -16,7 +16,7 @@ Description: Gamebase for mobile hyper casual, casual game
 - The project has simple data stream flow to help you to handle the game easier.
 
 ## Install
-- Version: **Unity 2022.3.5f1 LTS**
+- Version: **Unity 2022.3.8f1 LTS**
 - Type select: **Android**
 - Module:
 	- **Android Build Support**
