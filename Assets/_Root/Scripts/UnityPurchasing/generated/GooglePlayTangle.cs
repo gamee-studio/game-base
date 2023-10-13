@@ -5,7 +5,7 @@ namespace UnityEngine.Purchasing.Security {
     {
         private static byte[] data = System.Convert.FromBase64String("");
         private static int[] order = new int[] { 0 };
-        private static int key = 188;
+        private static int key = 104;
 
         public static readonly bool IsPopulated = false;
 

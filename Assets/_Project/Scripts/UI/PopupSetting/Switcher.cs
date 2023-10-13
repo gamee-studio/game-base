@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using Pancake;
 using TMPro;
@@ -76,12 +73,15 @@ public class Switcher : MonoBehaviour
             switch (settingType)
             {
                 case SettingType.BackgroundSound:
+                    Observer.ClickButton?.Invoke(SettingType.BackgroundSound.ToString());
                     Data.BgSoundState = !isOn;
                     break;
                 case SettingType.FxSound:
+                    Observer.ClickButton?.Invoke(SettingType.FxSound.ToString());
                     Data.FxSoundState = !isOn;
                     break;
                 case SettingType.Vibration:
+                    Observer.ClickButton?.Invoke(SettingType.Vibration.ToString());
                     Data.VibrateState = !isOn;
                     break;
             }

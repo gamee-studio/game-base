@@ -6,6 +6,8 @@ using UnityEngine.iOS;
 public class PopupSetting : Popup
 {
     public GameObject btnRestorePurchased;
+    
+    private const string SettingOnClickRestorePurchase = "OnClickRestorePurchase";
 
     void Start()
     {
@@ -16,10 +18,7 @@ public class PopupSetting : Popup
     
     public void OnClickRestorePurchase()
     {
-        #if UNITY_ANDROID
-        
-        #endif
-
+        Observer.ClickButton?.Invoke(SettingOnClickRestorePurchase);
         #if UNITY_IOS
             IAPManager.Instance.RestorePurchase();
         #endif

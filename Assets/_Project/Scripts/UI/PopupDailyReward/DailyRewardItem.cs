@@ -109,19 +109,6 @@ public class DailyRewardItem : MonoBehaviour
 
     public void OnClaim(bool isClaimX5 = false)
     {
-        // if (isClaimX5)
-        //     FirebaseManager.OnClaimDailyRewardX5(dayIndex);
-        // else
-        //     FirebaseManager.OnClaimDailyReward(dayIndex);
-
-        Observer.ClaimReward?.Invoke();
-
-        // Save datas
-        Data.LastDailyRewardClaimed = DateTime.Now.ToString();
-        Data.DailyRewardDayIndex++;
-        Data.TotalClaimDailyReward++;
-
-        // Claim by type
         switch (_dailyRewardData.DailyRewardType)
         {
             case DailyRewardType.Currency:
@@ -133,9 +120,6 @@ public class DailyRewardItem : MonoBehaviour
                 //Data.CurrentEquippedSkin = shopItemData.Id;
                 break;
         }
-
-        //Reset Items
-        _popupDailyReward.Setup();
     }
 }
 

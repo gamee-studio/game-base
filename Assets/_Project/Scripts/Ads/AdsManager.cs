@@ -5,43 +5,57 @@ public class AdsManager
 {
     public static void ShowInterstitial(Action completeCallback, Action displayCallback = null)
     {
-        if (Advertising.IsInterstitialAdReady())
+        if (Data.IsTesting)
         {
-            Advertising.ShowInterstitialAd().OnDisplayed(() =>
-                {
-                    displayCallback?.Invoke();
-                })
-                .OnCompleted(() =>
-                {
-                    completeCallback?.Invoke();
-                });
+            completeCallback?.Invoke();
         }
         else
         {
-            completeCallback?.Invoke();
+            if (Advertising.IsInterstitialAdReady())
+            {
+                Advertising.ShowInterstitialAd().OnDisplayed(() =>
+                    {
+                        displayCallback?.Invoke();
+                    })
+                    .OnCompleted(() =>
+                    {
+                        completeCallback?.Invoke();
+                    });
+            }
+            else
+            {
+                completeCallback?.Invoke();
+            }
         }
     }
 
     public static void ShowRewardAds(Action completeCallback, Action displayCallback = null,
         Action closeCallback = null, Action skipCallback = null)
     {
-        if (Advertising.IsRewardedAdReady())
+        if (Data.IsTesting)
         {
-            Advertising.ShowRewardedAd().OnDisplayed(() =>
+            completeCallback?.Invoke();
+        }
+        else
+        {
+            if (Advertising.IsRewardedAdReady())
             {
-                displayCallback?.Invoke();
-            })
-            .OnClosed(() =>
-            {
-                closeCallback?.Invoke();
-            }).OnSkipped(() =>
-            {
-                skipCallback?.Invoke();
-            })
-            .OnCompleted(() =>
-            {
-                completeCallback?.Invoke();
-            });
+                Advertising.ShowRewardedAd().OnDisplayed(() =>
+                    {
+                        displayCallback?.Invoke();
+                    })
+                    .OnClosed(() =>
+                    {
+                        closeCallback?.Invoke();
+                    }).OnSkipped(() =>
+                    {
+                        skipCallback?.Invoke();
+                    })
+                    .OnCompleted(() =>
+                    {
+                        completeCallback?.Invoke();
+                    });
+            }
         }
     }
 

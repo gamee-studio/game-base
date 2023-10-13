@@ -13,6 +13,9 @@ public static class Observer
     public static Action MusicChanged;
     public static Action SoundChanged;
     public static Action VibrationChanged;
+    // Daily Reward
+    public static Action ClaimDailyReward;
+    
     // Ads
     public static Action RequestBanner;
     public static Action ShowBanner;
@@ -22,10 +25,11 @@ public static class Observer
     public static Action ShowReward;
     // Other
     public static Action CoinMove;
-    public static Action ClickButton;
     public static Action PurchaseFail;
     public static Action PurchaseSucceed;
     public static Action ClaimReward;
+    
+    public static Action<string> ClickButton;
     
     #endregion
 

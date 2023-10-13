@@ -13,9 +13,9 @@ public class PopupDailyReward : Popup
 
     [ReadOnly] public DailyRewardItem currentItem;
     public List<DailyRewardItem> DailyRewardItems => GetComponentsInChildren<DailyRewardItem>().ToList();
-    
-    
-    private Sequence sequence;
+
+    private const string DailyOnClickClaim = "DailyOnClickClaim";
+    private const string DailyOnClickClaimX5 = "DailyOnClickClaimX5";
 
     protected override void BeforeShow()
     {
@@ -44,7 +44,6 @@ public class PopupDailyReward : Popup
             GameManager.Instance.gameState = GameState.PlayingGame;
             PopupController.Instance.Hide<PopupUI>();
         }
-        sequence?.Kill();
     }
 
     private bool IsCurrentItem(int index)
@@ -94,17 +93,29 @@ public class PopupDailyReward : Popup
     {
         AdsManager.ShowRewardAds(() =>
         {
-            Observer.ClaimReward?.Invoke();
-            //Observer.OnNotifying?.Invoke();
-            currentItem.OnClaim(true);
+            Observer.ClickButton?.Invoke(DailyOnClickClaimX5);
+            OnClaimReward(true);
         });
     }
 
     public void OnClickBtnClaim()
     {
-        Observer.ClaimReward?.Invoke();
-        //Observer.OnNotifying?.Invoke();
-        currentItem.OnClaim();
+        Observer.ClickButton?.Invoke(DailyOnClickClaim);
+        OnClaimReward(false);
+    }
+
+    private void OnClaimReward(bool isX5Reward)
+    {
+        Observer.ClaimDailyReward?.Invoke();
+        
+        // Save data
+        Data.LastDailyRewardClaimed = DateTime.Now.ToString();
+        Data.DailyRewardDayIndex++;
+        Data.TotalClaimDailyReward++;
+        
+        currentItem.OnClaim(isX5Reward);
+        
+        Setup();
     }
 
     public void OnClickNextDay()
@@ -112,6 +123,5 @@ public class PopupDailyReward : Popup
         Data.LastDailyRewardClaimed = DateTime.Now.AddDays(-1).ToString();
         ResetDailyReward();
         Setup();
-        //Observer.OnNotifying?.Invoke();
     }
 }

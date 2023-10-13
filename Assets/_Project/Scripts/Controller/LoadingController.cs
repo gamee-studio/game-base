@@ -27,7 +27,7 @@ public class LoadingController : MonoBehaviour
         _operation.allowSceneActivation = false;
         
         progressBar.fillAmount = 0;
-        progressBar.DOFillAmount(5, timeLoading).OnUpdate(()=>loadingText.text = $"Loading {(int) (progressBar.fillAmount * 100)}%").OnComplete(()=> _flagDoneProgress = true);
+        progressBar.DOFillAmount(1, timeLoading).OnUpdate(()=>loadingText.text = $"Loading {(int) (progressBar.fillAmount * 100)}%").OnComplete(()=> _flagDoneProgress = true);
         WaitProcess();
     }
     

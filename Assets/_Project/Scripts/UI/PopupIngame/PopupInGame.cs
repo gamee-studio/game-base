@@ -10,6 +10,9 @@ public class PopupInGame : Popup
    public TextMeshProUGUI levelTypeText;
 
    private List<UIEffect> UIEffects => GetComponentsInChildren<UIEffect>().ToList();
+   
+   private const string InGameOnClickHome = "InGameOnClickHome";
+   private const string InGameOnClickReplay = "InGameOnClickReplay";
 
    public void Start()
    {
@@ -45,22 +48,17 @@ public class PopupInGame : Popup
 
    public void OnClickHome()
    {
+      Observer.ClickButton?.Invoke(InGameOnClickHome);
       GameManager.Instance.ReturnHome();
    }
 
    public void OnClickReplay()
    {
-      if (Data.IsTesting)
+      AdsManager.ShowInterstitial(() =>
       {
+         Observer.ClickButton?.Invoke(InGameOnClickReplay);
          GameManager.Instance.ReplayGame();
-      }
-      else
-      {
-         AdsManager.ShowInterstitial(() =>
-         {
-            GameManager.Instance.ReplayGame();
-         });
-      }
+      });
    }
 
    public void OnClickPrevious()

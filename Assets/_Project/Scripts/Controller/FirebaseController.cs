@@ -29,7 +29,11 @@ public class FirebaseController : SingletonDontDestroy<FirebaseController>
         Observer.ShowInterstitial += OnShowInterstitial;
         Observer.RequestReward += OnRequestReward;
         Observer.ShowReward += OnShowReward;
+        
+        Observer.ClickButton += OnClickButton;
     }
+
+    
 
     #region FirebaseInitGetRemoteConfig
 
@@ -182,6 +186,14 @@ public class FirebaseController : SingletonDontDestroy<FirebaseController>
     #endregion
 
     #region TrackingGameSystem
+    
+    private void OnClickButton(string buttonName)
+    {
+        if (buttonName is {Length: > 0})
+        {
+            LogEvent(buttonName);
+        }
+    }
     
     public static void OnRequestInterstitial()
     {

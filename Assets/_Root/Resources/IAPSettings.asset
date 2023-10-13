@@ -14,5 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runtimeAutoInitialize: 1
   testMode: 1
-  skusData: []
+  skusData:
+  - sku:
+      overrideId: 0
+      defaultId: com.gamee.gamebase.50000coin
+      androidId: 
+      iOSId: 
+    productType: 0
+  - sku:
+      overrideId: 0
+      defaultId: com.gamee.gamebase.removeads
+      androidId: 
+      iOSId: 
+    productType: 1
   googlePlayStorePublicKey: 

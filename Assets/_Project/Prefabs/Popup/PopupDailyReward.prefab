@@ -2370,6 +2370,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useAnimation: 0
+  background: {fileID: 0}
+  container: {fileID: 0}
   useShowAnimation: 0
   showAnimationType: 0
   useHideAnimation: 0
